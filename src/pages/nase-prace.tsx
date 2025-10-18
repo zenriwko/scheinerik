@@ -5,7 +5,7 @@ export default function NasePracePage() {
   return (
     <main>
       <SubHero
-        kicker="Ukázky našich realizací (delete me)"
+        kicker="Ukázky našich realizací (delete)"
         title="Naše práce"
         subtitle="Prohlédněte si vybrané projekty – od luxusních rezidenčních stropů až po precizní instalace v interiérech automobilů."
       />
