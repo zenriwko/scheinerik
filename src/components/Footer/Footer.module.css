@@ -1,0 +1,85 @@
+/* === FOOTER WRAPPER === */
+.footerSection {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8));
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 3rem 0;
+  color: var(--text, #fff);
+}
+
+/* === CONTAINER === */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+  flex-wrap: wrap;
+}
+
+/* === LOGO SECTION === */
+.footerLogo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 250px;
+}
+
+.logoWrapper {
+  position: relative; /* needed for Image fill */
+  width: 160px;
+  height: 70px;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.footerLogo p {
+  color: var(--text, #ccc);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-width: 380px;
+}
+
+/* === NAVIGATION LINKS === */
+.footerNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  min-width: 250px;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.footerNav a {
+  color: var(--text, #fff);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerNav a:hover {
+  color: var(--accent, #ffcd00);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .footerNav {
+    justify-content: center;
+  }
+
+  .footerLogo p {
+    text-align: center;
+  }
+}

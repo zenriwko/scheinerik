@@ -1,0 +1,115 @@
+/* === NAV WRAPPER === */
+.nav {
+  position: fixed;
+  top: 0;
+  inset-inline: 0;
+  height: 70px;
+  z-index: 40;
+
+  display: flex;
+  align-items: center;
+
+  backdrop-filter: saturate(1.2) blur(10px);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.05));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* === INNER CONTAINER === */
+.inner {
+  height: 70px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+/* === LOGO WRAPPER === */
+.logoWrapper {
+  position: relative; /* Needed for next/image fill */
+  width: 150px; /* Adjust logo size */
+  height: 55px;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* === BRAND MARK (Optional) === */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+.brand .mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(160deg, #141a24, #0b0f14);
+  border: 1px solid #1f2937;
+  position: relative;
+  overflow: hidden;
+}
+
+.brand .mark::after {
+  content: "MN";
+  font-weight: 800;
+  background: linear-gradient(180deg, var(--accent), #d3ad00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.5px;
+}
+
+/* === NAVIGATION === */
+.nav ul {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Target real <a> tags rendered by <Link> */
+.navigation :global(a) {
+  position: relative;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  transition: all 0.5s ease-in;
+  text-transform: uppercase;
+  padding: 22px 12px;
+  text-decoration: none;
+}
+
+.navigation :global(a)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #0077ff, transparent);
+  box-shadow: 0 0 8px rgba(0, 119, 255, 0.8);
+  transform: translateX(-50%);
+  transition: width 0.5s ease-in;
+  border-radius: 2px;
+}
+
+.navigation :global(a):hover::after {
+  width: 100%;
+}
+
+/* === CTA INLINE === */
+.ctaInline {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}

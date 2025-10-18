@@ -1,0 +1,46 @@
+.hero {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 70px);
+  margin: 0 auto;
+}
+
+.heroWrap {
+  display: grid;
+  text-align: center;
+}
+
+.kicker {
+  padding-bottom: 15px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.78rem;
+}
+
+.hero h1 {
+  font-size: clamp(80px, 6vw, 120px);
+  margin: 0;
+  letter-spacing: 1px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.sub {
+  color: var(--text);
+  font-size: clamp(18px, 1.1vw, 20px);
+  padding-bottom: 20px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.actions a {
+  padding: 10px 36px;
+}

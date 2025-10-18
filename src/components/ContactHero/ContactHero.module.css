@@ -1,0 +1,53 @@
+.hero {
+  padding: 100px 2rem;
+  color: var(--text);
+}
+
+.wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  align-items: center;
+  gap: 3rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.text h1 {
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  color: #fff;
+  margin-bottom: 1.2rem;
+}
+
+.text p {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+
+.highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.highlights li {
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 800px) {
+  .hero {
+    text-align: center;
+  }
+
+  .text p {
+    margin: 0 auto 1.5rem;
+  }
+}

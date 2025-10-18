@@ -1,0 +1,67 @@
+.hero {
+  position: relative;
+  min-height: calc( 100vh - 70px );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 2rem;
+  animation: fadeInUp 1.2s ease both;
+}
+
+.kicker {
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #ffcd00;
+  display: block;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.04em;
+}
+
+.sub {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.left {
+  justify-content: flex-start;
+  text-align: left;
+  padding-left: 10%;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

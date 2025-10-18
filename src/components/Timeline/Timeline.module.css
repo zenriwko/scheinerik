@@ -1,0 +1,49 @@
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.lead {
+  padding-bottom: 20px;
+}
+
+.timeline ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* === STEP CARD === */
+.step {
+  display: flex;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space);
+}
+
+.num {
+  min-width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(180deg, var(--acc2), var(--acc3));
+  box-shadow: 0 0 10px #fff;
+}
+
+/* === MEDIA SECTION === */
+.tMedia {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid #1a2432;
+}
+
+.tMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

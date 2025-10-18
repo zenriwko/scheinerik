@@ -1,0 +1,17 @@
+:root {
+  --bg: linear-gradient(0deg, #05080E 80%, #000000 100%);
+  --card: #1C2333;
+  --heading: #fff;
+  --text: #EAEAEA;
+  --muted: #9CA3AF;
+  --line: #9CA3AF;
+  --separator: rgba(255, 255, 255, 0.1);
+
+  --main-cta: linear-gradient(180deg, #000 90%, #FBBF24 100%);
+  --main-cta-hover: linear-gradient(190deg, #000 60%, #FBBF24 100%);
+  --secondary-cta: linear-gradient(180deg, #000 90%, #0077FF 100%);
+  --secondary-cta-hover: linear-gradient(170deg, #000 60%, #0077FF 100%);
+
+  --radius: 16px;
+  --space: clamp(16px, 1.7vw, 28px);
+}

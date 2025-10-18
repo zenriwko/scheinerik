@@ -1,0 +1,89 @@
+.calc {
+  color: var(--text);
+  padding: 120px 2rem;
+}
+
+.wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.intro {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+}
+
+.field label {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0.5rem;
+}
+
+.field input {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.field input:focus {
+  border-color: #ffcd00;
+}
+
+.button {
+  background: linear-gradient(90deg, #ffcd00, #f0f0f0);
+  color: #000;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.85;
+}
+
+.result {
+  margin-top: 2.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.result p {
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.result span {
+  color: #ffcd00;
+  font-weight: 700;
+}
+
+.result small {
+  color: rgba(255, 255, 255, 0.7);
+}
