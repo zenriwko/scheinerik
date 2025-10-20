@@ -11,7 +11,7 @@ export default function ServicesGrid() {
           <article className={styles.card}>
             <div className={styles.imageWrap}>
               <Image
-                src="/images/auto-stars.jpg"
+                src="https://picsum.photos/1920/1080/?random=1"
                 alt="Hvězdná obloha do auta"
                 fill
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -46,7 +46,7 @@ export default function ServicesGrid() {
           <article className={styles.card}>
             <div className={styles.imageWrap}>
               <Image
-                src="/images/interior-stars.jpg"
+                src="https://picsum.photos/1920/1080"
                 alt="Hvězdná dekorace interiér"
                 fill
                 sizes="(max-width: 900px) 100vw, 50vw"

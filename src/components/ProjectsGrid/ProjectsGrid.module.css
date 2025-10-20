@@ -1,10 +1,8 @@
 .projects {
   color: var(--text);
-  padding: 120px 2rem;
 }
 
 .wrap {
-  max-width: 1300px;
   margin: 0 auto;
 }
 

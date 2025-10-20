@@ -13,25 +13,25 @@ const sampleProjects: Project[] = [
     id: 1,
     title: "Rezidenční ložnice – hvězdný strop",
     category: "residential",
-    image: "/assets/projects/residential-1.jpg",
+    image: "https://picsum.photos/1920/1080?random=101",
   },
   {
     id: 2,
     title: "Luxusní automobil – interiér s vlákny",
     category: "automotive",
-    image: "/assets/projects/auto-1.jpg",
+    image: "https://picsum.photos/1920/1080?random=102",
   },
   {
     id: 3,
     title: "Obývací pokoj s efektem noční oblohy",
     category: "residential",
-    image: "/assets/projects/residential-2.jpg",
+    image: "https://picsum.photos/1920/1080?random=103",
   },
   {
     id: 4,
     title: "Interiér vozu Porsche – ambientní hvězdy",
     category: "automotive",
-    image: "/assets/projects/auto-2.jpg",
+    image: "https://picsum.photos/1920/1080?random=104",
   },
 ];
 

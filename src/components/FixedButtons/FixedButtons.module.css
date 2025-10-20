@@ -57,3 +57,19 @@
   max-width: 200px;
   opacity: 1;
 }
+
+/* Responsive adjustments */
+@media (max-width:980px) {
+  .fixedButtons {
+    position: fixed;
+    bottom: 20px !important;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    z-index: 9999;
+  }
+}

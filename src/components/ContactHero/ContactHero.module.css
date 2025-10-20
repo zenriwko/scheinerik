@@ -1,53 +1,119 @@
 .hero {
-  padding: 100px 2rem;
+  position: relative;
+  isolation: isolate;
   color: var(--text);
+  overflow: hidden;
+}
+
+/* subtle decorative background */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(255, 205, 0, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 120% 20%, rgba(255, 255, 255, 0.06), transparent 50%),
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+  mask-image: radial-gradient(1200px 600px at 50% 0%, #000 30%, transparent 85%);
+  pointer-events: none;
 }
 
 .wrap {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  align-items: center;
-  gap: 3rem;
-  max-width: 1300px;
+  grid-template-columns: 1fr 1fr; /* equal columns */
+  justify-content: space-between;
+  gap: clamp(24px, 4vw, 48px);
   margin: 0 auto;
 }
 
-.text h1 {
-  font-size: clamp(2.2rem, 5vw, 3rem);
-  color: #fff;
-  margin-bottom: 1.2rem;
+/* ----- Left/Text column ----- */
+.text {}
+
+.kicker {
+  display: inline-block;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
 }
 
-.text p {
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  max-width: 600px;
+.title {
+  font-size: clamp(2rem, 5.2vw, 3.2rem);
+  line-height: 1.1;
+  color: #fff;
+  margin: 0.8rem 0 1rem 0;
+  letter-spacing: 0.01em;
+}
+
+.lead {
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.75;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
 }
 
 .highlights {
-  list-style: none;
+  margin: 1.2rem 0 0 0;
   padding: 0;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.9);
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+  color: rgba(255, 255, 255, 0.92);
 }
-
 .highlights li {
-  margin-bottom: 0.6rem;
-  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.03rem;
 }
 
-.form {
+/* ----- Right/Form column ----- */
+.formCol {
   display: flex;
   justify-content: center;
 }
+.formCard {
+  /* glass card around your ContactForm */
+  border-radius: 16px;
+  width:100%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 15px 55px rgba(0,0,0,0.35);
+  padding: clamp(5px, 1.2vw, 8px);
+  backdrop-filter: blur(10px);
+}
 
-@media (max-width: 800px) {
-  .hero {
+/* ----- Hover micro-interactions on the whole section ----- */
+.wrap:hover .formCard {
+  transform: translateY(-2px);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+.wrap:hover .formCard {
+  box-shadow: 0 25px 70px rgba(0,0,0,0.45);
+}
+
+/* ----- Responsive: stack under 900px ----- */
+@media (max-width: 900px) {
+  .wrap {
+    grid-auto-flow: row;
+    grid-template-columns: 1fr; /* stack */
     text-align: center;
   }
+  .lead {
+    margin: 0 auto;
+  }
+  .formCol {
+    margin-top: 24px;
+  }
+}
 
-  .text p {
-    margin: 0 auto 1.5rem;
+/* Extra small tweaks */
+@media (max-width: 480px) {
+  .formCard {
+    padding: 10px;
+    border-radius: 14px;
   }
 }

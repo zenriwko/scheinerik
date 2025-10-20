@@ -20,7 +20,7 @@ export default function AboutContent() {
         </div>
 
         <div className={styles.image}>
-          <img src="/assets/about-showroom.jpg" alt="Showroom Noční Nebe" />
+          <img src="https://picsum.photos/1920/1080" alt="Showroom Noční Nebe" />
         </div>
       </div>
     </section>

@@ -16,7 +16,7 @@ export default function Services() {
               className={styles.img}
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop')",
+                  "url('https://picsum.photos/1920/1080?random=1')",
               }}
             />
             <div className={styles.fade}></div>
@@ -28,7 +28,7 @@ export default function Services() {
               className={styles.img}
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop')",
+                  "url('https://picsum.photos/1920/1080?random=3')",
               }}
             />
             <div className={styles.fade}></div>
@@ -40,7 +40,7 @@ export default function Services() {
               className={styles.img}
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop')",
+                  "url('https://picsum.photos/1920/1080?random=5')",
               }}
             />
             <div className={styles.fade}></div>
@@ -52,7 +52,7 @@ export default function Services() {
               className={styles.img}
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop')",
+                  "url('https://picsum.photos/1920/1080?random=7')",
               }}
             />
             <div className={styles.fade}></div>
@@ -64,7 +64,7 @@ export default function Services() {
               className={styles.img}
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop')",
+                  "url('https://picsum.photos/1920/1080?random=8')",
               }}
             />
             <div className={styles.fade}></div>
