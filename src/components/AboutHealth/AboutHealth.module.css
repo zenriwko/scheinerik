@@ -8,16 +8,7 @@
 
 .inner {
   margin: 0 auto;
-  text-align: left;
-}
-
-.title {
   text-align: center;
-  margin-bottom: 1rem;
-  background: linear-gradient(90deg, var(--main), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: 0.8px;
 }
 
 .intro {
@@ -46,6 +37,7 @@
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
+  text-align:left;
 }
 
 .list li::before {
@@ -74,7 +66,7 @@
   transform: translateY(-3px);
 }
 
-.list h3 {
+.list h4 {
 
   margin-bottom: 0.6rem;
   display: flex;
@@ -82,7 +74,7 @@
   gap: 8px;
 }
 
-.list h3::before {
+.list h4::before {
   content: "✦";
   font-size: 1.1rem;
   color: var(--secondary)!important;

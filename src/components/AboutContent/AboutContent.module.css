@@ -12,14 +12,6 @@
   z-index: 0;
 }
 
-.title {
-  margin-bottom: 1rem;
-  background: linear-gradient(90deg, var(--main), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: 0.8px;
-}
-
 @keyframes drift {
   from {
     transform: translate(0, 0);

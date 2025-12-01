@@ -5,7 +5,8 @@ export default function AboutContent() {
     <section className={styles.section}>
       <div className={`container ${styles.wrap}`}>
         <div className={styles.text}>
-          <h2 className={styles.title}>Vliv na lidské zdraví</h2>
+          <h2>Příběh Naší Značky</h2>
+          <h3>Kvalita, Která Vydrží a Opravdu Vyniká</h3>
           <p>
             Naše firma vznikla v roce 2016 s cílem přinést do světa automobilového designu
             něco jedinečného a luxusního - noční nebe do stropů vozidel. Díky našim
