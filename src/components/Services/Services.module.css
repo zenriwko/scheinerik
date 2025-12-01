@@ -1,73 +1,132 @@
 .services {
-  margin: 0 auto;
+  position: relative;
+  text-align: center;
 }
 
+.intro {
+  margin: 0 0 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===============================
+   GRID LAYOUT
+=================================*/
 .galleryGrid {
-  position: relative;
   display: grid;
-  width: 100%;
   grid-template-columns: repeat(12, 1fr);
-  gap: 20px;
+  gap: 1.5rem;
+  width: 100%;
 }
 
-.services p {
-  padding-bottom: 30px;
-  margin: 0 auto;
-}
-
-/* === CARD BASE === */
+/* ===============================
+   CARD BASE
+=================================*/
 .card {
-  position: relative;
-  border-radius: var(--radius, 12px);
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border-radius: var(--radius);
   overflow: hidden;
-  background: #0e141c;
-  border: 1px solid #1a2432;
-  transition: transform 0.3s ease;
+  border: 1px solid var(--border-base);
+  transition: 0.3s ease;
+  cursor: pointer;
 }
 
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--secondary);
+  box-shadow: 0 0 25px rgba(56, 232, 255, 0.12);
+}
+
+/* ===============================
+   IMAGE TOP
+=================================*/
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  filter: brightness(1) saturate(1.1);
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+  filter: brightness(0.9);
+}
+
+/* ===============================
+   BLURB TEXT BELOW IMAGE
+=================================*/
+.blurb {
+  padding: 1.8rem;
+  text-align: left;
+}
+
+.blurb h4 {
+  color: var(--heading);
+  margin-bottom: 0.6rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.blurb p {
+  margin-bottom: 1rem;
+  line-height: 1.55;
+}
+
+.blurb ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.blurb li {
+  margin-bottom: 0.45rem;
+  font-size: 1.05rem;
+}
+
+/* ===============================
+   SIZING / GRID SPAN
+=================================*/
 .t1 {
   grid-column: span 6;
-  aspect-ratio: 16/9;
 }
 
 .t2 {
   grid-column: span 4;
-  aspect-ratio: 4/3;
 }
 
-/* === CARD IMAGE === */
-.img {
-  position: absolute;
-  inset: 0;
-  background-position: center;
-  background-size: cover;
-  filter: saturate(1.05) contrast(1.05);
-  transition: transform 0.6s ease, filter 0.3s ease;
+/* ===============================
+   RESPONSIVE
+=================================*/
+@media (max-width: 1024px) {
+  .galleryGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .t1,
+  .t2 {
+    grid-column: span 1;
+  }
 }
 
-.card:hover .img {
-  transform: scale(1.05);
-  filter: brightness(0.8);
-}
+@media (max-width: 640px) {
+  .galleryGrid {
+    grid-template-columns: 1fr;
+  }
 
-/* === CARD FADE OVERLAY === */
-.fade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), transparent 60%);
-}
+  .blurb h4 {
+    font-size: 1.2rem;
+  }
 
-/* === LABEL === */
-.label {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  padding: 6px 24px;
-  border-radius: 6px;
-  font-size: 1.25rem;
-  font-weight: 500;
-  text-align: center;
+  .blurb {
+    padding: 1.4rem;
+  }
 }

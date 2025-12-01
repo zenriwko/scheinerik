@@ -1,12 +1,13 @@
 .hero {
   position: relative;
-  min-height: calc( 100vh - 70px );
+  min-height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #fff;
   overflow: hidden;
+  padding:0;
 }
 
 .hero::before {
@@ -20,7 +21,6 @@
   position: relative;
   z-index: 2;
   max-width: 900px;
-  padding: 2rem;
   animation: fadeInUp 1.2s ease both;
 }
 
@@ -28,25 +28,10 @@
   font-size: 1rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #ffcd00;
+  color: var(--main);
   display: block;
   margin-bottom: 1rem;
   opacity: 0.9;
-}
-
-.title {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 700;
-  margin-bottom: 1.2rem;
-  letter-spacing: 0.04em;
-}
-
-.sub {
-  font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.8;
-  max-width: 700px;
-  margin: 0 auto;
 }
 
 .left {

@@ -11,22 +11,22 @@ export default function ServicesGrid() {
           <article className={styles.card}>
             <div className={styles.imageWrap}>
               <Image
-                src="https://picsum.photos/1920/1080/?random=1"
+                src="/images/hvezdny-strop-auto.webp"
                 alt="Hvězdná obloha do auta"
                 fill
-                sizes="(max-width: 900px) 100vw, 50vw"
+                sizes="1920px, 1080px"
                 style={{ objectFit: "cover" }}
               />
             </div>
             <div className={styles.textBlock}>
-              <h2>Hvězdná Obloha do Auta</h2>
+              <h3>Hvězdný strop do auta</h3>
               <p>
-                Proměňte interiér svého vozu v noční oblohu s ovládáním přes
-                aplikaci nebo dálkový ovladač. Každý světelný bod je ručně
-                instalován pro realistický efekt.
+                Dodejte interiéru luxusní vzhled s osvětlením, které připomíná noční oblohu. 
+                Každý strop je ručně vyráběn z kvalitního materiálu s desítkami svítících hvězd. 
+                Skvělý způsob, jak zvýšit styl, pohodlí i zážitek z jízdy.
               </p>
               <ul>
-                <li>Instalace do většiny vozidel</li>
+                <li>Profesionální montáž pro každý vůz</li>
                 <li>Volitelné barvy a efekty</li>
                 <li>Napájení z elektroinstalace auta</li>
                 <li>Ovládání přes aplikaci</li>
@@ -46,25 +46,24 @@ export default function ServicesGrid() {
           <article className={styles.card}>
             <div className={styles.imageWrap}>
               <Image
-                src="https://picsum.photos/1920/1080"
-                alt="Hvězdná dekorace interiér"
+                src="/images/hvezdne-osvetleni-dekoraci.webp"
+                alt="Hvězdná obloha do auta"
                 fill
-                sizes="(max-width: 900px) 100vw, 50vw"
+                sizes="1920px, 1080px"
                 style={{ objectFit: "cover" }}
               />
             </div>
             <div className={styles.textBlock}>
-              <h2>Hvězdná Dekorace a Panely</h2>
+              <h3>Hvězdné osvětlení dekorací</h3>
               <p>
-                Instalujeme hvězdné panely do stropů, nábytku i stěn.
-                Designové světlo pro interiéry domů, kin, wellness zón nebo
-                kaváren.
+                Optická vlákna integrovaná do nábytku, soch nebo doplňků vytvářejí efekt noční oblohy. 
+                Originální detail, který dodá každému předmětu luxusní vzhled.
               </p>
               <ul>
-                <li>Montáž do sádrokartonu i panelů</li>
-                <li>Rozložení hvězd dle prostoru</li>
-                <li>Propojení s akustickými panely</li>
-                <li>Plně přizpůsobitelné barvy světla</li>
+                <li>Optická vlákna s efektem hvězdné oblohy</li>
+                <li>Vhodné pro nábytek, doplňky i umělecké objekty</li>
+                <li>Možnost volby barvy, jasu a efektu světla</li>
+                <li>Profesionální montáž na různé materiály</li>
               </ul>
               <div className={styles.actions}>
                 <Link href="/#kontakt" className="button">

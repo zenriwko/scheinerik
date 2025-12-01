@@ -1,51 +1,144 @@
 .section {
-  padding: 120px 2rem;
-  color: var(--text);
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  animation: drift 160s linear infinite;
+  z-index: 0;
+}
+
+.title {
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, var(--main), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.8px;
+}
+
+@keyframes drift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-6%, -8%);
+  }
 }
 
 .wrap {
-  margin: 0 auto;
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
   gap: 4rem;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+/* Text block */
+.text {
+  position: relative;
+}
+
+.text::before {
+  content: "";
+  position: absolute;
+  left: -2rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--main), var(--secondary));
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--secondary-glow);
+  animation: flow 6s linear infinite alternate;
+}
+
+@keyframes flow {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .text p {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.9;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.6rem;
   animation: fadeIn 1s ease both;
+  position: relative;
+  transition: color 0.4s ease;
+}
+
+.text p:hover {
+  color: var(--text);
+}
+
+/* Image block */
+.image {
+  position: relative;
+}
+
+.image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: radial-gradient(
+    circle at 70% 30%,
+    rgba(56, 232, 255, 0.05),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.image:hover::after {
+  opacity: 1;
 }
 
 .image img {
   width: 100%;
+  height: auto;
   border-radius: 20px;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+  box-shadow: 0 0 50px rgba(56, 232, 255, 0.05);
   transition: transform 0.6s ease, box-shadow 0.6s ease;
+  filter: brightness(0.95) contrast(1.05);
 }
 
 .image img:hover {
   transform: scale(1.03);
-  box-shadow: 0 0 60px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 70px rgba(56, 232, 255, 0.25);
 }
 
+/* Responsive */
 @media (max-width: 900px) {
   .wrap {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 3rem;
   }
+
+  .text::before {
+    display: none;
+  }
+
   .image {
     order: -1;
   }
 }
 
+/* Fade-in animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }

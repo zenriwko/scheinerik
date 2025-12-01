@@ -5,29 +5,22 @@
   overflow: hidden;
 }
 
-/* subtle decorative background */
-.bg {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(1200px 600px at 20% -10%, rgba(255, 205, 0, 0.10), transparent 60%),
-    radial-gradient(900px 500px at 120% 20%, rgba(255, 255, 255, 0.06), transparent 50%),
-    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
-  mask-image: radial-gradient(1200px 600px at 50% 0%, #000 30%, transparent 85%);
-  pointer-events: none;
-}
-
 .wrap {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* equal columns */
+  grid-template-columns: 1.2fr 0.8fr;
   justify-content: space-between;
   gap: clamp(24px, 4vw, 48px);
   margin: 0 auto;
+  align-items: stretch; /* 🔹 ensures both columns are equal height */
 }
 
 /* ----- Left/Text column ----- */
-.text {}
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 🔹 pushes highlights to bottom */
+  height: 100%;
+}
 
 .kicker {
   display: inline-block;
@@ -42,32 +35,105 @@
 }
 
 .title {
-  font-size: clamp(2rem, 5.2vw, 3.2rem);
-  line-height: 1.1;
-  color: #fff;
+
   margin: 0.8rem 0 1rem 0;
   letter-spacing: 0.01em;
 }
 
 .lead {
   color: rgba(255, 255, 255, 0.88);
-  line-height: 1.75;
-  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  margin-bottom: 1rem;
 }
 
 .highlights {
-  margin: 1.2rem 0 0 0;
+  margin-top: auto;
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 0.45rem;
-  color: rgba(255, 255, 255, 0.92);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
+
+/* Base card style */
 .highlights li {
+  border-radius: 14px;
+  overflow: hidden; /* ensures full-link hover stays clean */
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-base);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+/* Full clickable link inside the first card */
+.fullLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem 1rem;
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+/* Icon bubble */
+.icon {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 1.03rem;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, var(--secondary-soft), transparent);
+  box-shadow: 0 0 8px var(--shadow-hover-cyan);
+}
+
+/* Primary (first) highlight special style */
+.primary {
+  border: 1.5px solid var(--secondary);
+  box-shadow: 0 0 18px var(--shadow-hover-cyan);
+  background: rgba(56, 232, 255, 0.08);
+}
+
+.primary:hover,
+.primary:has(.fullLink:hover) {
+  box-shadow: 0 0 18px var(--secondary-glow);
+  transform: translateY(-5px);
+}
+
+.fullLink:hover {
+  color: var(--secondary);
+}
+
+/* Other cards (non-link ones) */
+.highlights li:not(.primary) {
+  padding: 1.5rem 1rem;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.highlights li:not(.primary):hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--border-hover);
+  box-shadow: 0 12px 28px var(--shadow-hover-cyan);
+}
+
+/* Responsive stacking */
+@media (max-width: 700px) {
+  .highlights {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ----- Right/Form column ----- */
@@ -87,10 +153,6 @@
 }
 
 /* ----- Hover micro-interactions on the whole section ----- */
-.wrap:hover .formCard {
-  transform: translateY(-2px);
-  transition: transform 300ms ease, box-shadow 300ms ease;
-}
 .wrap:hover .formCard {
   box-shadow: 0 25px 70px rgba(0,0,0,0.45);
 }

@@ -1,6 +1,8 @@
 import SubHero from "@/components/SubHero/SubHero";
 import AboutContent from "@/components/AboutContent/AboutContent";
 import AboutPhilosophy from "@/components/AboutPhilosophy/AboutPhilosophy";
+import AboutHealth from "@/components/AboutHealth/AboutHealth";
+import FooterCTA from "@/components/FooterCTA/FooterCTA";
 
 export default function AboutPage() {
   return (
@@ -12,6 +14,8 @@ export default function AboutPage() {
       />
       <AboutContent />
       <AboutPhilosophy />
+      <AboutHealth />
+      <FooterCTA />
     </main>
   );
 }

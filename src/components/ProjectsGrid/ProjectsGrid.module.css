@@ -1,21 +1,25 @@
 .projects {
-  color: var(--text);
+  position: relative;
 }
 
 .wrap {
   margin: 0 auto;
-}
-
-.header {
   text-align: center;
-  margin-bottom: 3rem;
 }
 
 .header h2 {
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #fff;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--main), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.6rem;
+}
+
+.header p {
+  color: var(--text-muted-strong);
+  max-width: 600px;
+  margin: 0 auto 2rem;
 }
 
 .filters {
@@ -23,52 +27,59 @@
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
+  margin-bottom: 3rem;
 }
 
 .filterBtn {
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
-  padding: 0.6rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.7rem 1.6rem;
   border-radius: 50px;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   backdrop-filter: blur(10px);
 }
 
 .filterBtn:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: linear-gradient(90deg, var(--main-soft), var(--secondary-soft));
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
+              0 0 25px var(--main-soft);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .active {
-  background: linear-gradient(90deg, #ffcd00, #f0f0f0);
+  background: linear-gradient(90deg, var(--main), var(--secondary));
   color: #000;
-  font-weight: 600;
+  font-weight: 700;
+  box-shadow: 0 0 20px rgba(56, 232, 255, 0.3);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2.5rem;
 }
 
 .card {
   position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 16px;
   overflow: hidden;
+  cursor: pointer;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 40px rgba(56, 232, 255, 0.15);
 }
 
 .imageWrap {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
@@ -82,13 +93,47 @@
 }
 
 .card:hover img {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
-.card h3 {
-  padding: 1.2rem;
-  font-size: 1.1rem;
+/* Gradient overlay for cinematic depth */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.8));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.card:hover .overlay {
+  opacity: 1;
+}
+
+/* Caption text */
+.caption {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
   color: #fff;
-  text-align: center;
-  line-height: 1.5;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.card:hover .caption {
+  opacity: 1;
+  transform: translate(-50%, -10%);
+}
+
+@media (max-width: 768px) {
+  .filters {
+    gap: 0.6rem;
+  }
+  .filterBtn {
+    padding: 0.6rem 1.2rem;
+  }
+  .caption {
+    font-size: 1rem;
+  }
 }

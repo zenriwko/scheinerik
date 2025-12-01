@@ -5,7 +5,7 @@ export default function ContactDetails() {
     <section className={styles.details}>
       <div className={`container ${styles.grid}`}>
         <div className={styles.block}>
-          <h2>Kontakt</h2>
+          <h3>Kontakt</h3>
           <p>
             <strong>Telefon:</strong>{" "}
             <a href="tel:+420777123456">+420 777 123 456</a>
@@ -18,7 +18,7 @@ export default function ContactDetails() {
         </div>
 
         <div className={styles.block}>
-          <h2>Otevírací doba</h2>
+          <h3>Otevírací doba</h3>
           <ul className={styles.hours}>
             <li>
               <span>Pondělí – Pátek:</span> 9:00 – 18:00

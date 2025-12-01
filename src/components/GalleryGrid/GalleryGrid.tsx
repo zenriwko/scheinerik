@@ -59,7 +59,6 @@ export default function GalleryGrid() {
   return (
     <section className={styles.gallery}>
       <div className={`container ${styles.wrap}`}>
-        <h2 className={styles.heading}>Galerie projektů</h2>
 
         {/* Grid for current page */}
         <div className={styles.grid}>

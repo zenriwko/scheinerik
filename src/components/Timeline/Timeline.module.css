@@ -1,49 +1,78 @@
+.story {
+  text-align:center;
+}
+
 .timeline {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top:2rem;
+  gap: 2rem;
+  width: 100%;
 }
 
-.lead {
-  padding-bottom: 20px;
-}
-
-.timeline ul {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* === STEP CARD === */
+/* Each step */
 .step {
   display: flex;
-  gap: 10px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: var(--space);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.num {
-  min-width: 50px;
-  height: 50px;
+/* Orb always in first row */
+.orb {
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(56, 232, 255, 0.15),
+    rgba(121, 134, 203, 0.08)
+  );
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 0 25px rgba(56, 232, 255, 0.15),
+    inset 0 0 25px rgba(121, 134, 203, 0.15);
   display: grid;
   place-items: center;
-  font-weight: 800;
-  color: #fff;
-  background: linear-gradient(180deg, var(--acc2), var(--acc3));
-  box-shadow: 0 0 10px #fff;
+  position: relative;
+  z-index: 2;
 }
 
-/* === MEDIA SECTION === */
-.tMedia {
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid #1a2432;
+/* Text always in second row */
+.text {
+  margin-top: 1rem;
 }
 
-.tMedia img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* Icon inside orb */
+.icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 0 8px var(--secondary));
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timeline {
+    gap: 1.2rem;
+    padding: 0 1rem 2rem;
+  }
+
+  .orb {
+    width: 90px;
+    height: 90px;
+  }
+
+  .text {
+    max-width: 180px;
+  }
 }

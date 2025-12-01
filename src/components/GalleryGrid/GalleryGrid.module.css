@@ -4,7 +4,6 @@
 
 .wrap {
   margin: 0 auto;
-  padding: 0 8%;
 }
 
 .heading {
@@ -60,27 +59,54 @@
 .pagination {
   display: flex;
   justify-content: center;
-  gap: 0.6rem;
-  margin-top: 3rem;
+  gap: 0.8rem;
+  margin-top: 3.5rem;
+  flex-wrap: wrap;
 }
+
 .pageBtn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(56, 232, 255, 0.15);
+  color: var(--text);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: inset 0 0 10px rgba(121, 134, 203, 0.05),
+              0 0 12px rgba(56, 232, 255, 0.08);
 }
+
 .pageBtn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.05);
+  border-color: var(--secondary);
+  background: linear-gradient(90deg, var(--main), var(--secondary));
+  color: #000;
+  box-shadow: 0 0 25px rgba(56, 232, 255, 0.4);
 }
+
+/* Active page */
 .active {
-  background: #ffcd00;
+  background: linear-gradient(90deg, var(--main), var(--secondary));
   color: #000;
   font-weight: 700;
+  border-color: transparent;
+  box-shadow: 0 0 30px rgba(56, 232, 255, 0.4);
+  animation: pulseGlow 2s ease-in-out infinite alternate;
 }
+
+@keyframes pulseGlow {
+  from {
+    box-shadow: 0 0 20px rgba(56, 232, 255, 0.25);
+  }
+  to {
+    box-shadow: 0 0 35px rgba(121, 134, 203, 0.45);
+  }
+}
+
 
 /* Overlay / Lightbox */
 .overlay {

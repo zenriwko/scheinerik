@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className={styles.footerSection}>
-      <div className={`container ${styles.footer}`}>
+      <div className={styles.footer}>
         {/* Logo + Text */}
         <div className={styles.footerLogo}>
           <a href="/" className={styles.logoWrapper} aria-label="Magické Nebe - domů">

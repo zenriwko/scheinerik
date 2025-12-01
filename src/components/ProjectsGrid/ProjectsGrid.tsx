@@ -47,26 +47,21 @@ export default function ProjectsGrid() {
     <section className={styles.projects}>
       <div className={`container ${styles.wrap}`}>
         <div className={styles.header}>
-          <h2>Naše Realizace</h2>
+
           <div className={styles.filters}>
-            <button
-              onClick={() => setFilter("all")}
-              className={`${styles.filterBtn} ${filter === "all" ? styles.active : ""}`}
-            >
-              Vše
-            </button>
-            <button
-              onClick={() => setFilter("residential")}
-              className={`${styles.filterBtn} ${filter === "residential" ? styles.active : ""}`}
-            >
-              Rezidenční
-            </button>
-            <button
-              onClick={() => setFilter("automotive")}
-              className={`${styles.filterBtn} ${filter === "automotive" ? styles.active : ""}`}
-            >
-              Automotive
-            </button>
+            {[
+              { key: "all", label: "Vše" },
+              { key: "residential", label: "Rezidenční" },
+              { key: "automotive", label: "Automotive" },
+            ].map(({ key, label }) => (
+              <button
+                key={key}
+                onClick={() => setFilter(key as any)}
+                className={`${styles.filterBtn} ${filter === key ? styles.active : ""}`}
+              >
+                {label}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -74,9 +69,12 @@ export default function ProjectsGrid() {
           {filteredProjects.map((project) => (
             <div key={project.id} className={styles.card}>
               <div className={styles.imageWrap}>
-                <img src={project.image} alt={project.title} />
+                <img src={project.image} alt={project.title} loading="lazy" />
+                <div className={styles.overlay}></div>
+                <div className={styles.caption}>
+                  <span>{project.title}</span>
+                </div>
               </div>
-              <h3>{project.title}</h3>
             </div>
           ))}
         </div>

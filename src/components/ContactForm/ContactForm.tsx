@@ -3,7 +3,6 @@ import styles from "./ContactForm.module.css";
 
 interface FormData {
   name: string;
-  phone: string;
   email: string;
   message: string;
 }
@@ -11,7 +10,6 @@ interface FormData {
 export default function ContactForm() {
   const [form, setForm] = useState<FormData>({
     name: "",
-    phone: "",
     email: "",
     message: "",
   });
@@ -39,7 +37,7 @@ export default function ContactForm() {
       if (!res.ok || !data.ok) throw new Error(data.error || "Send failed");
 
       setStatus("success");
-      setForm({ name: "", phone: "", email: "", message: "" });
+      setForm({ name: "", email: "", message: "" });
     } catch (err: any) {
       console.error(err);
       setError(err.message);
@@ -49,48 +47,37 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <h2 className={styles.heading}>Kontaktujte nás</h2>
 
-      <div className={styles.field}>
-        <label htmlFor="name">Jméno*</label>
-        <input
-          id="name"
-          type="text"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          required
-          placeholder="Vaše jméno"
-        />
+      <div className={styles.row}>
+        <div className={styles.field}>
+          <label htmlFor="name">Jméno</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+            required
+            placeholder="Vaše jméno"
+          />
+        </div>
+
+        <div className={styles.field}>
+          <label htmlFor="email">E-mail</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            required
+            placeholder="Váš e-mail"
+          />
+        </div>
       </div>
 
       <div className={styles.field}>
-        <label htmlFor="phone">Telefon</label>
-        <input
-          id="phone"
-          type="tel"
-          name="phone"
-          value={form.phone}
-          onChange={handleChange}
-          placeholder="Váš telefon"
-        />
-      </div>
-
-      <div className={styles.field}>
-        <label htmlFor="email">E-mail*</label>
-        <input
-          id="email"
-          type="email"
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-          required
-          placeholder="Váš e-mail"
-        />
-      </div>
-
-      <div className={styles.field}>
-        <label htmlFor="message">Zpráva*</label>
+        <label htmlFor="message">Zpráva</label>
         <textarea
           id="message"
           name="message"

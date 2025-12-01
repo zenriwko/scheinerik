@@ -24,7 +24,7 @@ export default function SubHero({
       className={`${styles.hero} ${align === "left" ? styles.left : ""}`}
       style={heroStyle}
     >
-      <div className={`container ${styles.wrap}`}>
+      <div className={`${styles.wrap}`}>
         {kicker && <span className={styles.kicker}>{kicker}</span>}
         <h1 className={styles.title}>{title}</h1>
         {subtitle && <p className={styles.sub}>{subtitle}</p>}

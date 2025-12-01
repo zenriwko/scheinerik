@@ -1,75 +1,113 @@
 .fixedButtons {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 24px;
+  right: 24px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 15px;
+  gap: 16px;
   z-index: 9999;
 }
 
+/* --- Individual button --- */
 .fixedBtn {
+  position: relative;
   display: flex;
   align-items: center;
-  background: transparent;
-  color: #fff;
+  justify-content: flex-start;
   border-radius: 100px;
   text-decoration: none;
-  overflow: hidden;
-  padding: 0;
-  cursor: pointer;
-  border: 2px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   background: rgba(0, 0, 0, 0.4);
-  transition: all 0.3s ease;
+  backdrop-filter: blur(8px) saturate(1.2);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.35s ease;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  overflow: visible; /* ✅ allows glow to show */
 }
 
 .fixedBtn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px) scale(1.05);
+  border-color: var(--secondary);
+  box-shadow: 0 0 20px var(--secondary-glow);
+  background: rgba(56, 232, 255, 0.08);
+}
+
+/* --- Icon wrapper --- */
+.iconWrap {
+  position: relative;
+  z-index: 2;
+  overflow: visible;
 }
 
 .icon {
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
+  padding: 10px;
   flex-shrink: 0;
-  padding: 8px;
-  margin-bottom: 0;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 8px var(--secondary-soft));
   background: transparent;
-  overflow: visible;
-  border: none;
 }
 
+.fixedBtn:hover .icon {
+  transform: scale(1.1);
+  color: var(--secondary);
+  filter: drop-shadow(0 0 18px var(--secondary-glow));
+}
+
+/* --- Label Reveal --- */
 .label {
   display: flex;
-  font-size: 20px;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
   max-width: 0;
   opacity: 0;
-  overflow: hidden;
-  white-space: nowrap;
   margin-left: 0;
   padding: 0;
-  transition: max-width 0.5s ease-in, padding 0.5s ease-in-out, opacity 0.5s ease-in;
+  transform: translateX(-10px);
+  transition: 
+    max-width 0.45s ease,
+    opacity 0.45s ease,
+    transform 0.45s ease,
+    padding 0.45s ease;
 }
 
 .fixedBtn:hover .label {
-  display: flex;
-  padding-right: 10px;
-  max-width: 200px;
+  padding-right: 18px;
+  max-width: 220px;
   opacity: 1;
+  transform: translateX(0);
 }
 
-/* Responsive adjustments */
-@media (max-width:980px) {
+/* --- Responsive --- */
+@media (max-width: 980px) {
   .fixedButtons {
-    position: fixed;
     bottom: 20px !important;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    gap: 10px;
-    z-index: 9999;
+    gap: 12px;
+  }
+
+  .fixedBtn {
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    justify-content: center;
+  }
+
+  .label {
+    display: none !important;
   }
 }

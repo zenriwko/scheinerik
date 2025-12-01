@@ -5,13 +5,30 @@
   inset-inline: 0;
   height: 70px;
   z-index: 40;
-
   display: flex;
   align-items: center;
-
   backdrop-filter: saturate(1.2) blur(10px);
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.05));
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background 0.4s ease;
+}
+.nav {
+  padding: 0 15%;
+}
+@media(max-width: 1200px) {
+  .nav {
+    padding: 0 8%;
+}
+}
+@media(max-width: 1120px) {
+  .nav {
+    padding: 0 20px;
+  }
+}
+@media(max-width: 600px) {
+  .nav {
+    padding: 0 15px;
+  }
 }
 
 /* === INNER CONTAINER === */
@@ -27,42 +44,11 @@
 
 /* === LOGO WRAPPER === */
 .logoWrapper {
-  position: relative; /* Needed for next/image fill */
-  width: 150px; /* Adjust logo size */
+  position: relative;
+  width: 150px;
   height: 55px;
   flex-shrink: 0;
   display: inline-block;
-}
-
-/* === BRAND MARK (Optional) === */
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  font-weight: 800;
-  letter-spacing: 0.4px;
-}
-
-.brand .mark {
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(160deg, #141a24, #0b0f14);
-  border: 1px solid #1f2937;
-  position: relative;
-  overflow: hidden;
-}
-
-.brand .mark::after {
-  content: "MN";
-  font-weight: 800;
-  background: linear-gradient(180deg, var(--accent), #d3ad00);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  letter-spacing: 0.5px;
 }
 
 /* === NAVIGATION === */
@@ -74,19 +60,28 @@
   list-style: none;
 }
 
-/* Target real <a> tags rendered by <Link> */
+/* === NAV LINKS === */
 .navigation :global(a) {
   position: relative;
   display: inline-block;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
-  color: var(--text);
-  transition: all 0.5s ease-in;
+  color: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
   padding: 22px 12px;
   text-decoration: none;
+  transition: all 0.4s ease;
 }
 
+/* Hover: soft gradient text + subtle glow */
+.navigation :global(a):hover {
+  background: linear-gradient(90deg, var(--main), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px rgba(92, 201, 190, 0.4);
+}
+
+/* Underline animation */
 .navigation :global(a)::after {
   content: "";
   position: absolute;
@@ -94,15 +89,32 @@
   left: 50%;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #0077ff, transparent);
-  box-shadow: 0 0 8px rgba(0, 119, 255, 0.8);
+  background: linear-gradient(90deg, var(--main), var(--secondary));
+  box-shadow: 0 0 8px rgba(92, 201, 190, 0.4);
   transform: translateX(-50%);
-  transition: width 0.5s ease-in;
+  transition: width 0.4s ease;
   border-radius: 2px;
 }
 
 .navigation :global(a):hover::after {
   width: 100%;
+}
+
+/* Active link with bright gradient text */
+.navigation :global(a).activeLink,
+.activeLink {
+  background: linear-gradient(90deg, var(--main), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 0 0 10px rgba(92, 201, 190, 0.5), 0 0 16px rgba(142, 231, 255, 0.4);
+}
+
+/* Active underline glow */
+.navigation :global(a).activeLink::after {
+  width: 100%;
+  background: linear-gradient(90deg, var(--main), var(--secondary));
+  box-shadow: 0 0 6px var(--secondary-glow);
 }
 
 /* === CTA INLINE === */
@@ -113,7 +125,6 @@
 }
 
 /* === MOBILE MENU === */
-/* Hamburger icon */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -131,9 +142,10 @@
   width: 100%;
   background: white;
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
+/* Hamburger active state (X animation) */
 .hamburger.active span:nth-child(1) {
   transform: translateY(7.5px) rotate(45deg);
 }
@@ -143,26 +155,32 @@
 .hamburger.active span:nth-child(3) {
   transform: translateY(-7.5px) rotate(-45deg);
 }
-@media(max-width:980px) {
+
+/* === MOBILE RESPONSIVE === */
+@media (max-width: 980px) {
   .navigation {
     display: none;
   }
+
   .nav {
-    height:100px;
+    height: 100px;
   }
+
   .inner {
     justify-content: flex-start;
-    padding: 0 35px;
+    padding: 0;
   }
+
   .ctaInline {
     display: none;
   }
+
   .logoWrapper {
     width: 145px;
     height: 60px;
-    z-index:1001;
+    z-index: 1001;
   }
-  
+
   .hamburger {
     display: flex;
     flex-direction: column;
@@ -176,19 +194,24 @@
     cursor: pointer;
     z-index: 1001;
   }
+
   .hamburger span {
     width: 100%;
     height: 4px;
     background: #fff;
     border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
   }
+
   .hamburger.active span:nth-child(1) {
     transform: translateY(13px) rotate(-45deg);
   }
+
   .hamburger.active span:nth-child(2) {
-    opacity: 0;transform: translatex(60px);
+    opacity: 0;
+    transform: translateX(60px);
   }
+
   .hamburger.active span:nth-child(3) {
     transform: translateY(-13px) rotate(45deg);
   }
@@ -207,7 +230,7 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    animation: fadeIn 0.3s ease forwards;
+    animation: fadeIn 0.4s ease forwards;
   }
 
   .overlay ul {
@@ -222,23 +245,27 @@
 
   .overlay a {
     color: white;
-    opacity:0.9;
+    opacity: 0.9;
     font-size: 1.6rem;
     font-weight: 500;
     text-decoration: none;
     letter-spacing: 0.04em;
-    transition: opacity 0.2s;
+    transition: opacity 0.4s, transform 0.4s ease;
   }
 
   .overlay a:hover {
-    opacity:1; /* or your CTA color */
+    opacity: 1;
+    background: linear-gradient(90deg, #5CC9BE 0%, #8EE7FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: scale(1.05);
   }
 
-  .overlay a {
-    padding: 6px 24px;
-    text-transform:unset;
-    box-shadow:none!important;
-    border-bottom:1px
+  .overlay .activeLink {
+    background: linear-gradient(90deg, #5CC9BE 0%, #8EE7FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(92, 201, 190, 0.6);
   }
 
   .overlayCTA {
@@ -259,7 +286,6 @@
     }
   }
 
-  /* Hide desktop nav + CTA */
   .navigation,
   .ctaInline {
     display: none;

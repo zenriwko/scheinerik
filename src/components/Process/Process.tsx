@@ -1,6 +1,6 @@
 import styles from './Process.module.css';
 
-export default function Process1() {
+export default function Process() {
   return (
     <section id="process" className={`section ${styles.processSection}`}>
       <div className={`container ${styles.process}`}>

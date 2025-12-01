@@ -1,0 +1,48 @@
+.section {
+  text-align: center;
+  overflow: hidden;
+}
+.pricingLite {
+  display:flex;
+}
+/* Description */
+.left p {
+  margin: 0 0 2rem;
+}
+.left {
+  flex:1;
+}
+.right {
+  display:flex;
+  flex:0.75;
+  flex-direction:column;
+  gap:30px;
+}
+.pricingCard h4 {
+  margin-bottom:0px;
+}
+.pricingCard {
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: radial-gradient(circle at top left, var(--main-soft), transparent);
+  padding: 14px 16px 14px;
+  font-size: 14px;
+}
+.price {
+  font-size:24px;
+  color:var(--secondary);
+}
+
+/* Optional faint ambient glow */
+.section::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 50%, var(--secondary-soft), transparent 70%);
+  opacity: 0.05;
+  pointer-events: none;
+}

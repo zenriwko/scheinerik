@@ -1,0 +1,87 @@
+.inner {
+  display: grid;
+  grid-template-columns: 3fr 2fr; /* 60% / 40% */
+  gap: 3rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-base);
+  box-shadow: 0 0 60px var(--shadow-form-cyan);
+  position: relative;
+}
+
+/* === VERTICAL DIVIDER (AT REAL COLUMN BREAKPOINT) === */
+.inner::before {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  bottom: 2rem;
+  left: calc(100% * 3 / 5 - 16px);
+  width: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  pointer-events: none;
+}
+
+
+
+/* Columns */
+.column {
+  text-align: left;
+}
+
+/* Headings */
+.heading {
+  color: var(--heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.4rem;
+}
+
+/* Reviews */
+.review {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-base);
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 20px rgba(56, 232, 255, 0.06);
+}
+
+.review p {
+  margin: 0 0 0.4rem;
+  color: var(--text-muted-strong);
+}
+
+.review span {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* CTA text */
+.subheading {
+  margin-bottom: 1.4rem;
+  color: var(--text-muted-strong);
+  line-height: 1.6;
+}
+
+/* Buttons */
+.buttons {
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  /* Remove vertical line on mobile */
+  .inner::before {
+    display: none;
+  }
+}
