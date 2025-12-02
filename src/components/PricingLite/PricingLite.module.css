@@ -4,13 +4,14 @@
 }
 .pricingLite {
   display:flex;
+  gap: 40px;
 }
 /* Description */
 .left p {
   margin: 0 0 2rem;
 }
 .left {
-  flex:1;
+  flex:0.9;
 }
 .right {
   display:flex;

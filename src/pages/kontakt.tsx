@@ -11,7 +11,6 @@ export default function ContactPage() {
         subtitle="Ať už máte zájem o hvězdné nebe do auta, interiéru nebo jen potřebujete poradit — jsme tu pro vás. Rádi vám pomůžeme s návrhem, kalkulací i realizací."
       />
       <ContactHero />
-      <ContactDetails />
     </main>
   );
 }

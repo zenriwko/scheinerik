@@ -55,8 +55,6 @@
 }
 
 .fixedBtn:hover .icon {
-  transform: scale(1.1);
-  color: var(--secondary);
   filter: drop-shadow(0 0 18px var(--secondary-glow));
 }
 
@@ -73,6 +71,7 @@
   opacity: 0;
   margin-left: 0;
   padding: 0;
+  line-height:1;
   transform: translateX(-10px);
   transition: 
     max-width 0.45s ease,

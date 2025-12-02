@@ -33,7 +33,7 @@ export default function Timeline() {
       <div className={`container ${styles.inner}`}>
         <h2>Jak to probíhá</h2>
         <h3>Jednoduchý proces od poptávky po hotové hvězdné nebe</h3>
-        <p>Celý proces nastavujeme tak, aby byl co nejjednodušší. Vše vám vysvětlíme, doporučíme nejlepší řešení a následně se postaráme o montáž.</p>
+        <p className={styles.intro}>Celý proces nastavujeme tak, aby byl co nejjednodušší. Vše vám vysvětlíme, doporučíme nejlepší řešení a následně se postaráme o montáž.</p>
 
         <div className={styles.timeline}>
         {steps.map((step, index) => (

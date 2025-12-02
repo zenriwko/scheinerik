@@ -2,23 +2,22 @@ import styles from "./ContactDetails.module.css";
 
 export default function ContactDetails() {
   return (
-    <section className={styles.details}>
       <div className={`container ${styles.grid}`}>
         <div className={styles.block}>
-          <h3>Kontakt</h3>
+          <h2>Kontakt</h2>
           <p>
             <strong>Telefon:</strong>{" "}
-            <a href="tel:+420777123456">+420 777 123 456</a>
+            <a href="tel:+420737758530">+420 737 758 530</a>
             <br />
             <strong>E-mail:</strong>{" "}
-            <a href="mailto:info@nocninebe.cz">info@nocninebe.cz</a>
+            <a href="mailto:polak.jon@seznam.cz">polak.jon@seznam.cz</a>
             <br />
-            <strong>Sídlo:</strong> Praha, Česká republika
+            <strong>Sídlo:</strong> Višňová 576/3, Milovice, 28924
           </p>
         </div>
 
         <div className={styles.block}>
-          <h3>Otevírací doba</h3>
+          <h2>Otevírací doba</h2>
           <ul className={styles.hours}>
             <li>
               <span>Pondělí – Pátek:</span> 9:00 – 18:00
@@ -32,6 +31,5 @@ export default function ContactDetails() {
           </ul>
         </div>
       </div>
-    </section>
   );
 }

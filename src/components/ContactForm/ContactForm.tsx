@@ -4,6 +4,10 @@ import styles from "./ContactForm.module.css";
 interface FormData {
   name: string;
   email: string;
+  phone?: string;
+  location?: string;
+  service: string;
+  contactMethod: string;
   message: string;
 }
 
@@ -11,12 +15,19 @@ export default function ContactForm() {
   const [form, setForm] = useState<FormData>({
     name: "",
     email: "",
+    phone: "",
+    location: "",
+    service: "",
+    contactMethod: "email",
     message: "",
   });
+
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [error, setError] = useState("");
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
@@ -37,9 +48,18 @@ export default function ContactForm() {
       if (!res.ok || !data.ok) throw new Error(data.error || "Send failed");
 
       setStatus("success");
-      setForm({ name: "", email: "", message: "" });
+
+      // Reset form
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        location: "",
+        service: "",
+        contactMethod: "email",
+        message: "",
+      });
     } catch (err: any) {
-      console.error(err);
       setError(err.message);
       setStatus("error");
     }
@@ -48,6 +68,7 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
 
+      {/* Name + Email */}
       <div className={styles.row}>
         <div className={styles.field}>
           <label htmlFor="name">Jméno</label>
@@ -76,6 +97,70 @@ export default function ContactForm() {
         </div>
       </div>
 
+      {/* Phone + Location */}
+      <div className={styles.row}>
+        <div className={styles.field}>
+          <label htmlFor="phone">Telefon (nepovinné)</label>
+          <input
+            id="phone"
+            type="text"
+            name="phone"
+            value={form.phone}
+            onChange={handleChange}
+            placeholder="Např. +420 777 123 456"
+          />
+        </div>
+
+        <div className={styles.field}>
+          <label htmlFor="location">Místo / Lokalita</label>
+          <input
+            id="location"
+            type="text"
+            name="location"
+            value={form.location}
+            onChange={handleChange}
+            placeholder="Např. Praha, Brno…"
+          />
+        </div>
+      </div>
+
+      <div className={styles.row}>
+        <div className={styles.field}>
+          <label htmlFor="serviceType">Typ služby</label>
+          <select
+            id="service"
+            name="service"
+            value={form.service}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Vyberte službu…</option>
+            <option value="auto">Hvězdný strop do auta</option>
+            <option value="interier">Hvězdný strop v interiéru</option>
+            <option value="nabytkove">Ambientní osvětlení nábytku</option>
+            <option value="jiny">Jiný projekt</option>
+          </select>
+        </div>
+        
+        <div className={styles.field}>
+          <label htmlFor="contactMethod">Preferovaný kontakt</label>
+          <select
+            id="contactMethod"
+            name="contactMethod"
+            value={form.contactMethod}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Vyberte možnost…</option>
+            <option value="email">E-mail</option>
+            <option value="telefon">Telefon</option>
+            <option value="whatsapp">WhatsApp</option>
+          </select>
+        </div>
+      </div>
+        
+
+      {/* Message */}
       <div className={styles.field}>
         <label htmlFor="message">Zpráva</label>
         <textarea
@@ -85,12 +170,16 @@ export default function ContactForm() {
           value={form.message}
           onChange={handleChange}
           required
-          placeholder="Vaše zpráva..."
+          placeholder="Popište nám svůj projekt…"
         />
       </div>
 
-      <button type="submit" disabled={status === "sending"} className={styles.button}>
-        {status === "sending" ? "Odesílání..." : "Odeslat zprávu"}
+      <button
+        type="submit"
+        disabled={status === "sending"}
+        className={styles.button}
+      >
+        {status === "sending" ? "Odesílání…" : "Odeslat zprávu"}
       </button>
 
       {status === "success" && (

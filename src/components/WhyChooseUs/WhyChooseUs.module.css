@@ -25,7 +25,10 @@
   text-align: center;
   z-index: 2;
 }
-
+p.intro  {
+  max-width:75%;
+  margin:0 auto
+}
 .inner p {
     margin-bottom: 2rem;
 }
@@ -44,6 +47,10 @@
   padding: 1.5rem 0.75rem;
   box-shadow: 0 0 20px rgba(56, 232, 255, 0.05);
   transition: all 0.4s ease;
+}
+
+.card h4 {
+  margin-bottom:0.1rem;
 }
 
 .card p {
@@ -76,7 +83,8 @@
 .icon {
   width: 60px;
   height: 60px;
-  border-radius: 14px;
+  padding: 5px;
+  border-radius: 12px;
   display: grid;
   place-items: center;
   margin: 0 auto 1rem;
@@ -90,6 +98,7 @@
 
 .card:hover .icon {
   transform: scale(1.1);
+  color: var(--heading);
   box-shadow: 0 0 30px var(--secondary-glow);
 }
 /* Responsive */

@@ -1,18 +1,21 @@
+"use client";
+
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import styles from "./Navigation.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const router = useRouter();
+  const pathname = usePathname();
 
-  const isActive = (path: string) => router.pathname === path;
+  const isActive = (path: string) => pathname === path;
 
   return (
     <header className={styles.nav}>
       <div className={`container ${styles.inner}`}>
+
         {/* Logo */}
         <Link
           href="/"
@@ -81,10 +84,17 @@ export default function Navigation() {
 
         {/* Desktop CTA buttons */}
         <div className={styles.ctaInline}>
-          <Link className="button" href="/cenik">
+          <Link
+            href="/cenik"
+            className={`button ${isActive("/cenik") ? "active" : ""}`}
+          >
             <span>Ceník</span>
           </Link>
-          <Link className="button ghost" href="/kontakt">
+
+          <Link
+            href="/kontakt"
+            className={`button ghost ${isActive("/kontakt") ? "active" : ""}`}
+          >
             <span>Nezávazná poptávka</span>
           </Link>
         </div>

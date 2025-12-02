@@ -20,7 +20,7 @@ export default function GalleryFeatured() {
       <div className={`container ${styles.inner}`}>
         <h2>Galerie</h2>
         <h3>Ukázky našich realizací</h3>
-        <p>V naší galerii najdete skutečné ukázky instalací hvězdných stropů...</p>
+        <p className={styles.intro}>V naší galerii najdete skutečné ukázky instalací hvězdných stropů...</p>
 
         <Gallery>
           <div className={styles.galleryGrid}>

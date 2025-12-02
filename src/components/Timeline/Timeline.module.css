@@ -9,7 +9,10 @@
   gap: 2rem;
   width: 100%;
 }
-
+p.intro  {
+  max-width:75%;
+  margin:0 auto
+}
 /* Each step */
 .step {
   display: flex;

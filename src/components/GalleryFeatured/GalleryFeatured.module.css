@@ -10,7 +10,10 @@
 .inner {
   text-align:center;
 }
-
+p.intro  {
+  max-width:75%;
+  margin:0 auto
+}
 .inner p {
   margin-bottom: 2rem;
 }
