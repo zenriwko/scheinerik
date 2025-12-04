@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import styles from "./SubServiceHero.module.css";
 
@@ -53,26 +54,28 @@ export default function SubServiceHero({
           )}
 
           {(primaryCta || secondaryCta) && (
-            <div className={styles.heroActions}>
-              {primaryCta && (
-                <a
-                  href={primaryCta.href}
-                  className="button"
-                >
-                  <span>{primaryCta.label}</span>
-                </a>
-              )}
+          <div className={styles.heroActions}>
+        
+            {primaryCta && (
+              <Link
+                href={primaryCta.href}
+                className="button"
+              >
+                <span>{primaryCta.label}</span>
+              </Link>
+            )}
 
-               {secondaryCta && (
-                  <a
-                    href={secondaryCta.href}
-                    className="button ghost"
-                  >
-                    <span>{secondaryCta.label}</span>
-                  </a>
-                )}
-            </div>
-          )}
+            {secondaryCta && (
+              <Link
+                href={secondaryCta.href}
+                className="button ghost"
+              >
+                <span>{secondaryCta.label}</span>
+              </Link>
+            )}
+
+          </div>
+        )}
         </div>
 
         <div className={styles.heroImageWrapper}>
