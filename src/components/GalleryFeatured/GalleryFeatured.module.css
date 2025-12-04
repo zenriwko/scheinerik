@@ -76,13 +76,14 @@ p.intro  {
 }
 
 /* Responsive */
-@media (max-width: 1280px) {
+@media (max-width: 980px) {
   .galleryGrid {
     grid-template-columns: repeat(4, 1fr);
   }
+  p.intro{max-width:100%;}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .galleryGrid {
     grid-template-columns: repeat(2, 1fr);
   }

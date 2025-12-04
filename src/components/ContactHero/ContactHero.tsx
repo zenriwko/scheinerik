@@ -10,7 +10,7 @@ export default function ContactHero() {
 
       <div className={`container ${styles.wrap}`}>
         <div className={styles.text}>
-          <h2 className={styles.title}>Konzultace Zdarma</h2>
+          <h1 className={styles.title}>Konzultace Zdarma</h1>
 
           <p className={styles.lead}>
             Zajímá vás realizace hvězdného stropu nebo potřebujete nezávaznou

@@ -75,9 +75,7 @@
 
 /* Hover: soft gradient text + subtle glow */
 .navigation :global(a):hover {
-  background: linear-gradient(90deg, var(--main), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color:#fff;
   text-shadow: 0 0 8px rgba(92, 201, 190, 0.4);
 }
 
@@ -103,10 +101,7 @@
 /* Active link with bright gradient text */
 .navigation :global(a).activeLink,
 .activeLink {
-  background: linear-gradient(90deg, var(--main), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
+  color:#fff;
   text-shadow: 0 0 10px rgba(92, 201, 190, 0.5), 0 0 16px rgba(142, 231, 255, 0.4);
 }
 

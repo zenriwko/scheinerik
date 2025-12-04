@@ -39,3 +39,41 @@
   color: var(--text-muted-strong);
   text-align: center;
 }
+/* ----------------------------- */
+/* 📱 Tablet < 980px             */
+/* ----------------------------- */
+@media (max-width: 980px) {
+  .list li {
+    padding: 1rem;
+  }
+}
+
+/* ----------------------------- */
+/* 📱 Mobile < 767px             */
+/* ----------------------------- */
+@media (max-width: 767px) {
+  .list li {
+    flex-direction: column;        /* stack text + price */
+    align-items: flex-start;       /* left align */
+    gap: 0.4rem;
+    padding: 1rem;
+  }
+
+  .list li b {
+    align-self: flex-end;          /* price stays on right visually */
+  }
+}
+
+/* ----------------------------- */
+/* 📱 Very Small screens < 400px */
+/* ----------------------------- */
+@media (max-width: 400px) {
+  .list li {
+    padding: 0.8rem;
+    gap: 0.3rem;
+  }
+
+  .list li b {
+    font-size: 0.95rem;            /* prevent overflow */
+  }
+}

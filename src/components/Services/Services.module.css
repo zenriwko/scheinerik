@@ -1,63 +1,46 @@
 .services {
-  position: relative;
   text-align: center;
 }
 
 .intro {
-  margin: 0 0 2rem;
-
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 75%;
+  margin: 0 auto 2rem;
 }
 
-/* ===============================
-   GRID LAYOUT
-=================================*/
-.galleryGrid {
+/* GRID */
+.cards {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
-  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 2rem;
 }
 
-/* ===============================
-   CARD BASE
-=================================*/
+/* CARD */
 .card {
-  display: flex;
-  flex-direction: column;
-  background: var(--card);
-  border-radius: var(--radius);
-  overflow: hidden;
+  background: var(--bg-form);
   border: 1px solid var(--border-base);
-  transition: 0.3s ease;
-  cursor: pointer;
+  border-radius: var(--radius);
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  transition: 0.35s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   border-color: var(--secondary);
   box-shadow: 0 0 25px rgba(56, 232, 255, 0.12);
 }
 
-p.intro  {
-  max-width:75%;
-}
-
-/* ===============================
-   IMAGE TOP
-=================================*/
-.imageWrap {
+/* IMAGE */
+.imageWrapper {
   position: relative;
   width: 100%;
   aspect-ratio: 16/9;
-  overflow: hidden;
 }
 
 .image {
   object-fit: cover;
-  transition: transform 0.6s ease;
-  filter: brightness(1) saturate(1.1);
+  transition: 0.45s ease;
 }
 
 .card:hover .image {
@@ -65,72 +48,121 @@ p.intro  {
   filter: brightness(0.9);
 }
 
-/* ===============================
-   BLURB TEXT BELOW IMAGE
-=================================*/
-.blurb {
+/* CONTENT */
+.content {
   padding: 1.8rem;
   text-align: left;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.blurb h4 {
-  color: var(--heading);
-  margin-bottom: 0.6rem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: 0.4px;
+.content h4 {
+  margin-bottom: 0.4rem;
 }
 
-.blurb p {
+.content p {
+  margin: 0.6rem 0 1rem;
+}
+
+/* LIST */
+.content ul {
+  list-style: none;
+  margin: 0.5rem 0 2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.content li {
+  position: relative;
+  padding-left: 1.25rem;
+  opacity: 0.9;
+}
+
+.content li::before {
+  content: "✦";
+  position: absolute;
+  line-height:2;
+  left: 0;
+  color: var(--secondary);
+  text-shadow: 0 0 6px var(--secondary-glow);
+  font-size: 0.9rem;
+}
+/* BADGES */
+.badges {
   margin-bottom: 1rem;
-  line-height: 1.55;
 }
 
-.blurb ul {
-  padding-left: 1.2rem;
-  margin: 0;
+.badgePrimary,
+.badgeSecondary {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 600;
 }
 
-.blurb li {
-  margin-bottom: 0.45rem;
-  font-size: 1.05rem;
+.badgePrimary {
+  background: rgba(92, 201, 190, 0.15);
+  border: 1px solid rgba(92, 201, 190, 0.35);
+  color: var(--main);
 }
 
-/* ===============================
-   SIZING / GRID SPAN
-=================================*/
-.t1 {
-  grid-column: span 6;
+.badgeSecondary {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-base);
+  color: var(--text-muted-strong);
 }
 
-.t2 {
-  grid-column: span 4;
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: auto;
 }
 
-/* ===============================
-   RESPONSIVE
-=================================*/
-@media (max-width: 1024px) {
-  .galleryGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .t1,
-  .t2 {
-    grid-column: span 1;
-  }
+.actions .button {
+  background: linear-gradient(90deg, var(--main), var(--secondary));
+  color: #000;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  padding: 0.8rem 1.6rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px var(--shadow-button);
 }
 
-@media (max-width: 640px) {
-  .galleryGrid {
-    grid-template-columns: 1fr;
-  }
+.actions .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px var(--shadow-button-hover);
+  opacity: 0.95;
+}
 
-  .blurb h4 {
-    font-size: 1.2rem;
-  }
+.actions .ghost {
+  background: transparent;
+  border: 1px solid var(--border-hover);
+  color: var(--text);
+}
 
-  .blurb {
+.actions .ghost:hover {
+  border-color: var(--secondary);
+  color: var(--secondary);
+  box-shadow: 0 0 15px var(--shadow-button-hover);
+}
+/* RESPONSIVE */
+@media(max-width:980px) {
+  .intro {max-width:100%;}
+}
+
+@media (max-width: 767px) {
+  .content {
     padding: 1.4rem;
+  }
+  .intro {
+    padding-inline: 1rem;
   }
 }

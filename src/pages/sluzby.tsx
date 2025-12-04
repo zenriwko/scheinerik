@@ -1,5 +1,5 @@
 import SubHero from "@/components/SubHero/SubHero";
-import ServicesGrid from "@/components/ServicesGrid/ServicesGrid";
+import Services from "@/components/Services/Services";
 import WhyChooseUs from "@/components/WhyChooseUs/WhyChooseUs";
 import FooterCTA from "@/components/FooterCTA/FooterCTA";
 
@@ -13,7 +13,7 @@ export default function ServicesPage() {
           interiérů i vozidel. Každý projekt vytváříme individuálně - precizní
           montáž, moderní technologie a nadčasový design."
       />
-      <ServicesGrid />
+      <Services />
       <WhyChooseUs />
       <FooterCTA />
     </main>

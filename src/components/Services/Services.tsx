@@ -1,80 +1,103 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./Services.module.css";
 
 export default function Services() {
   return (
     <section id="services" className={`section ${styles.services}`}>
       <div className={`container ${styles.inner}`}>
-        <h2>Služby</h2>
-        <h3>Optické instalace</h3>
+        <h2>Hvězdné instalace do automobilů</h2>
+        <h3>Optická vlákna do stropu a interiéru vozidel</h3>
 
-        <p className={`reveal ${styles.intro}`}>
-          Instalujeme optická vlákna do automobilů a interiérových prvků.
-          Zaměřujeme se výhradně na hvězdné stropy v autech a dekorativní
-          osvětlení pro nábytek a předměty, jako jsou panely, vitríny,
-          barové pulty nebo menší doplňky.
+        <p className={styles.intro}>
+          Zaměřujeme se hlavně na <strong>instalace optických vláken do stropů
+          a interiérových prvků automobilů</strong>.
         </p>
 
-        <div className={styles.galleryGrid}>
+        <div className={styles.cards}>
 
-          {/* === Card 1 === */}
-          <article className={`${styles.card} ${styles.t1} reveal`}>
-            <div className={styles.imageWrap}>
+          {/* CARD 1 — STARLIGHT ROOF */}
+          <article className={styles.card}>
+            <div className={styles.imageWrapper}>
               <Image
                 src="/images/hvezdny-strop-auto.webp"
-                alt="Hvězdná obloha do auta"
+                alt="Instalace optických vláken do stropu automobilu"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
                 className={styles.image}
                 priority
               />
             </div>
 
-            {/* TEXT BELOW IMAGE */}
-            <div className={styles.blurb}>
+            <div className={styles.content}>
+              <div className={styles.text}>
+              <div className={styles.badges}>
+                <span className={styles.badgePrimary}>Nejčastější služba</span>
+              </div>
               <h4>Hvězdný strop do automobilu</h4>
               <p>
-                Instalace optických vláken přímo do stropního čalounění vozu.
-                Efekt hvězdné oblohy v různých variantách s možností animací.
+                Integrace optických vláken přímo do stropního čalounění.
+                Efekt hvězdné oblohy s jemnými animacemi nebo twinkle efektem.
               </p>
               <ul>
-                <li>Vhodné pro sedany, SUV a dodávky</li>
-                <li>Twinkle efekt a jemné světelné animace</li>
-                <li>Jednobarevné nebo vícebarevné režimy</li>
-                <li>Možnost programovatelného ovládání</li>
+                <li>Realistická hvězdná obloha</li>
+                <li>Twinkle efekt a světelné animace</li>
+                <li>Jednobarevné i vícebarevné režimy (RGBW)</li>
+                <li>Možnost individuálního rozložení hvězd</li>
               </ul>
+              </div>
+              <div className={styles.actions}>
+                <Link href="/kontakt" className="button">
+                  <span>Nezávazná poptávka</span>
+                </Link>
+                <Link href="/sluzby/automobily/hvezdny-strop" className="button ghost">
+                  <span>Zobrazit více</span>
+                </Link>
+              </div>
             </div>
           </article>
 
-          {/* === Card 2 === */}
-          <article className={`${styles.card} ${styles.t1} reveal`}>
-            <div className={styles.imageWrap}>
+          {/* CARD 2 — INTERIOR PANELS */}
+          <article className={styles.card}>
+            <div className={styles.imageWrapper}>
               <Image
-                src="/images/hvezdne-osvetleni-dekoraci.webp"
-                alt="Hvězdné osvětlení dekorací"
+                src="/images/nocni-nebe-interier.webp"
+                alt="Optická vlákna v interiéru automobilu"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
                 className={styles.image}
                 priority
               />
             </div>
 
-            {/* TEXT BELOW IMAGE */}
-            <div className={styles.blurb}>
-              <h4>Hvězdné osvětlení dekorací</h4>
+            <div className={styles.content}>
+              <div className={styles.text}>
+              <div className={styles.badges}>
+                <span className={styles.badgeSecondary}>Rozšíření interiéru</span>
+              </div>
+
+              <h4>Osvětlení interiérových panelů</h4>
               <p>
-                Zabudování optických vláken do nábytku, interiérových prvků a
-                dekorací. Ideální pro panely, vitríny, police, barové pulty
-                nebo menší designové doplňky.
+                Optická vlákna instalujeme také do <strong>bočních panelů,
+                sloupků, dveřních výplní, podsvětlení čalounění</strong> nebo jiných částí
+                interiéru. Ideální doplněk k hvězdnému stropu.
               </p>
+
               <ul>
-                <li>Ambientní jemné světlo bez viditelného zdroje</li>
-                <li>Možnost vícebarevných efektů</li>
-                <li>Vhodné pro nábytek, předměty i menší doplňky</li>
+                <li>Ambientní podsvětlení panelů</li>
+                <li>Možnost přesné volby jasu a barvy</li>
+                <li>Dekorativní linky a body světla</li>
+                <li>Kompatibilní se všemi typy vozidel</li>
               </ul>
+              </div>
+              <div className={styles.actions}>
+                <Link href="/kontakt" className="button">
+                  <span>Nezávazná poptávka</span>
+                </Link>
+                <Link href="/galerie" className="button ghost">
+                  <span>Zobrazit více</span>
+                </Link>
+              </div>
             </div>
           </article>
-
         </div>
       </div>
     </section>

@@ -26,7 +26,7 @@ export default function WhyChooseUs() {
                 />
               </svg>
             </div>
-            <h4>Prémiové optické systémy</h4>
+            <h5>Prémiové optické systémy</h5>
             <p>Používáme kvalitní optická vlákna a osvětlení s dlouhou životností a nízkou spotřebou.</p>
           </div>
 
@@ -40,7 +40,7 @@ export default function WhyChooseUs() {
                 />
               </svg>
             </div>
-            <h4>Plně zakázkový design</h4>
+            <h5>Plně zakázkový design</h5>
             <p>Hustota hvězd, barvy, animace i umístění přizpůsobíme vašemu vkusu a stylu interiéru.</p>
           </div>
 
@@ -54,7 +54,7 @@ export default function WhyChooseUs() {
                 />
               </svg>
             </div>
-            <h4>Profesionální montáž</h4>
+            <h5>Profesionální montáž</h5>
             <p>Čistá práce bez poškození čalounění či nábytku. Kabeláž chytře skrytá v konstrukci.</p>
           </div>
 
@@ -70,7 +70,7 @@ export default function WhyChooseUs() {
                   d="M20 2H8c-1.103 0-2 .897-2 2h12c1.103 0 2 .897 2 2v8c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2z"/>
               </svg>
             </div>
-            <h4>Konzultace předem</h4>
+            <h5>Konzultace předem</h5>
             <p>Vysvětlíme možnosti, doporučíme řešení a připravíme cenovou nabídku před instalací.</p>
           </div>
 

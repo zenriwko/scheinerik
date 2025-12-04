@@ -47,3 +47,64 @@
   opacity: 0.05;
   pointer-events: none;
 }
+/* ======================================== */
+/* 📱 TABLET (Below 980px) — 2-column layout */
+/* ======================================== */
+@media (max-width: 980px) {
+  .pricingLite {
+    flex-direction: column;
+    gap: 35px;
+    align-items: center;
+    text-align: left;
+  }
+
+  .left {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .right {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+
+/* ======================================== */
+/* 📱 MOBILE (Below 767px) — stacked layout */
+/* ======================================== */
+@media (max-width: 767px) {
+  .pricingLite {
+    gap: 30px;
+  }
+
+  .pricingCard {
+    padding: 14px 14px 16px;
+  }
+
+  .right {
+    gap: 24px;
+  }
+
+  .price {
+    font-size: 22px;
+  }
+}
+
+
+/* ======================================== */
+/* 📱 VERY SMALL SCREENS (Below 400px)      */
+/* ======================================== */
+@media (max-width: 400px) {
+  .pricingCard {
+    padding: 12px 12px 14px;
+  }
+
+  .price {
+    font-size: 20px;
+  }
+
+  .right {
+    gap: 20px;
+  }
+}

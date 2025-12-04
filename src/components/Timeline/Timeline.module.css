@@ -1,19 +1,21 @@
 .story {
-  text-align:center;
+  text-align: center;
 }
 
+/* ===== DESKTOP (default) – 4 columns ===== */
 .timeline {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin-top:2rem;
-  gap: 2rem;
+  margin-top: 2rem;
+  gap: 2.5rem;
   width: 100%;
 }
-p.intro  {
-  max-width:75%;
-  margin:0 auto
+
+p.intro {
+  max-width: 75%;
+  margin: 0 auto;
 }
-/* Each step */
+
 .step {
   display: flex;
   flex-direction: column;
@@ -21,7 +23,6 @@ p.intro  {
   text-align: center;
 }
 
-/* Orb always in first row */
 .orb {
   width: 90px;
   height: 90px;
@@ -41,41 +42,66 @@ p.intro  {
   z-index: 2;
 }
 
-/* Text always in second row */
 .text {
   margin-top: 1rem;
 }
 
-/* Icon inside orb */
 .icon {
   font-size: 2rem;
   filter: drop-shadow(0 0 8px var(--secondary));
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
+/* ===== TABLET (below 980px) – 2 columns ===== */
+@media (max-width: 980px) {
   .timeline {
-    gap: 1.2rem;
-    padding: 0 1rem 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 
-  .orb {
-    width: 90px;
-    height: 90px;
+  p.intro {
+    max-width: 85%;
   }
 
   .text {
-    max-width: 180px;
+    max-width: 280px;
+  }
+
+  .icon {
+    font-size: 1.5rem;
+  }
+}
+
+/* ===== MOBILE (below 767px) – 1 column ===== */
+@media (max-width: 767px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  p.intro {
+    max-width: 100%;
+  }
+
+  .text {
+    max-width: 100%;
+  }
+
+  .orb {
+    width: 70px;
+    height: 70px;
+  }
+  .icon {
+    font-size: 1.5rem;
+  }
+}
+
+/* ===== VERY SMALL SCREENS (below 400px) ===== */
+@media (max-width: 400px) {
+  .orb {
+    width: 60px;
+    height: 60px;
+  }
+  .icon {
+    font-size: 1.25rem;
   }
 }

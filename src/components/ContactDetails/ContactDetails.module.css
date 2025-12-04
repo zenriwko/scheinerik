@@ -4,6 +4,7 @@
 
 .grid {
   display: grid;
+  margin-top:auto;
   gap: 1rem;
 }
 

@@ -23,7 +23,7 @@
     height: 1px;
     width: 100%;
     background: var(--main);
-    margin-bottom: 15px;
+    margin: 8px 0 12px;
 }
 
 /* === COMMON COLUMN STYLE === */
@@ -165,25 +165,94 @@
   filter: drop-shadow(0 0 8px var(--secondary-glow));
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 768px) {
+/* ========================================= */
+/* 📱 TABLET (below 980px)                   */
+/* ========================================= */
+@media (max-width: 980px) {
+  .footer {
+    padding: 3rem 8%;
+    gap: 3rem;
+  }
+
+  /* Columns still side-by-side but with more breathing room */
+  .footerLogo,
+  .footerContact,
+  .footerNavigation {
+    flex: 1 1 45%;
+  }
+
+  /* Center Google card a bit more on mid screens */
+  .googleReviewInner {
+    padding: 0.8rem 1.2rem;
+  }
+}
+
+
+/* ========================================= */
+/* 📱 MOBILE (below 767px)                   */
+/* ========================================= */
+@media (max-width: 767px) {
   .footer {
     flex-direction: column;
+    align-items: center;
     text-align: center;
+    padding: 2.5rem 1.5rem;
     gap: 2.5rem;
   }
 
-  .footerNav,
+  .footerLogo,
   .footerContact,
-  .footerLogo {
-    align-items: center;
+  .footerNavigation {
+    align-items: center !important;
+    text-align: center;
+    width: 100%;
   }
 
   .footerLogo p {
     text-align: center;
+    max-width: 85%;
+    margin: 0 auto;
+  }
+
+  .footerNav {
+    align-items: center;
+  }
+
+  .footerContact ul {
+    padding-left: 0;
   }
 
   .socialRow {
     justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .googleReviewInner {
+    justify-content: center;
+  }
+}
+
+
+/* ========================================= */
+/* 📱 VERY SMALL SCREENS (below 400px)       */
+/* ========================================= */
+@media (max-width: 400px) {
+  .footer {
+    padding: 2rem 1rem;
+  }
+
+  .socialItem {
+    width: 46px;
+    height: 46px;
+  }
+
+  .socialItem svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .googleReviewInner {
+    padding: 0.6rem 0.9rem;
+    gap: 0.6rem;
   }
 }
