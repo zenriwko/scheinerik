@@ -12,7 +12,7 @@
   align-items: flex-start;
   gap: 3rem;
   width: 100%;
-  padding: clamp(2rem, 4vw, 3.5rem) clamp(1.25rem, 8vw, 15%);
+  padding: clamp(2rem, 4vw, 3.5rem) clamp(1rem, 4vw, 15%);;
   margin: 0 auto;
   flex-wrap: wrap;
 }
