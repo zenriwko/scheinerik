@@ -14,6 +14,7 @@
 
 .list li {
   display: flex;
+  color: var(--text-strong);
   justify-content: space-between;
   align-items: center;
   padding: 1.1rem 1.4rem;
@@ -30,7 +31,7 @@
 }
 
 .list b {
-  color: var(--secondary);
+  color: var(--text-muted-strong);
   font-weight: 600;
 }
 

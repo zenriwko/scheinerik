@@ -33,7 +33,7 @@ export default function Services() {
               <div className={styles.badges}>
                 <span className={styles.badgePrimary}>Nejčastější služba</span>
               </div>
-              <h4>Hvězdný strop do automobilu</h4>
+              <h4>Noční obloha do stropu auta</h4>
               <p>
                 Integrace optických vláken přímo do stropního čalounění.
                 Efekt hvězdné oblohy s jemnými animacemi nebo twinkle efektem.
@@ -74,7 +74,7 @@ export default function Services() {
                 <span className={styles.badgeSecondary}>Rozšíření interiéru</span>
               </div>
 
-              <h4>Osvětlení interiérových panelů</h4>
+              <h4>Noční nebe v dekoru auta</h4>
               <p>
                 Optická vlákna instalujeme také do <strong>bočních panelů,
                 sloupků, dveřních výplní, podsvětlení čalounění</strong> nebo jiných částí
@@ -92,7 +92,7 @@ export default function Services() {
                 <Link href="/kontakt" className="button">
                   <span>Nezávazná poptávka</span>
                 </Link>
-                <Link href="/galerie" className="button ghost">
+                <Link href="/sluzby/automobily/hvezdny-interier" className="button ghost">
                   <span>Zobrazit více</span>
                 </Link>
               </div>

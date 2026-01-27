@@ -10,18 +10,18 @@ export default function FooterCTA() {
           <h3 className={styles.heading}>Co o nás říkají zákazníci</h3>
 
           <div className={styles.review}>
-            <p>„Perfektní práce, hvězdný strop vypadá úžasně. Naprostá spokojenost.“</p>
-            <span>— Martin K.</span>
+            <p>„Vynikající, precizní instalace, vypadá to luxusně a dává to autu úplně jinou atmosféru. Pán milý a ochotný, profesionální přístup. Rozhodně doporučuji🙏“</p>
+            <span>— Michal M.</span>
           </div>
 
           <div className={styles.review}>
-            <p>„Rychlá domluva, precizní zpracování a skvělý výsledek.“</p>
-            <span>— Tomáš B.</span>
+            <p>„Super práce, za skvělou cenu. 100% doporučuji“</p>
+            <span>— Patricie F.</span>
           </div>
 
           <div className={styles.review}>
-            <p>„Auto působí jako úplně jiný svět. Doporučuji všem milovníkům detailů.“</p>
-            <span>— Andrea L.</span>
+            <p>„Absolutní Topka mít vlastní nebe stále na cestách“</p>
+            <span>— Jana B.</span>
           </div>
         </div>
 

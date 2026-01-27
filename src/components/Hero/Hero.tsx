@@ -7,14 +7,18 @@ export default function Hero() {
         <span className={styles.kicker}>Optická vlákna • ČR &amp; EU</span>
         <h1>Noční Nebe</h1>
         <p className={styles.sub}>
-          Luxusní hvězdná obloha z optických vláken – pro stropy a interiéry aut.
+          Od roku 2018 vytváříme realistické hvězdné nebe do interiérů automobilů pomocí precizně instalovaných optických vláken.
+        </p>
+          
+        <p className={styles.sub}>
+          Každý projekt je navržen individuálně s důrazem na čistý design, dlouhou životnost a dokonalý vizuální efekt.
         </p>
         <div className={styles.actions}>
-          <a href="#" className={`button`}>
-            <span>Prohlédnout galerii</span>
+          <a href="/nase-prace/" className={`button`}>
+            <span>Naše práce</span>
           </a>
-          <a href="#" className={`button ghost`}>
-            <span>Domluvit konzultaci</span>
+          <a href="/kontakt/" className={`button ghost`}>
+            <span>Napište nám</span>
           </a>
         </div>
       </div>

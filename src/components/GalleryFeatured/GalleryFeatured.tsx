@@ -1,19 +1,72 @@
 "use client";
 
-import Image from "next/image";
-import { Gallery, Item } from "react-photoswipe-gallery";
 import styles from "./GalleryFeatured.module.css";
 import "photoswipe/style.css";
+import { useEffect, useState } from "react";
+
+type GalleryItem = {
+  type: "video";
+  src: string;
+  poster: string;
+};
+
+function VideoModal({
+  open,
+  onClose,
+  item,
+}: {
+  open: boolean;
+  onClose: () => void;
+  item: GalleryItem | null;
+}) {
+  // ESC close
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, onClose]);
+
+  if (!open || !item) return null;
+
+  return (
+    <div className={styles.videoModalOverlay} onClick={onClose} role="dialog" aria-modal="true">
+      <div className={styles.videoModal} onClick={(e) => e.stopPropagation()}>
+        <button className={styles.videoClose} onClick={onClose} aria-label="Close video">
+          ✕
+        </button>
+
+        <video
+          key={item.src}
+          className={styles.videoPlayer}
+          controls
+          playsInline
+          autoPlay
+          muted
+          preload="metadata"
+        >
+          <source src={item.src} type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  );
+}
 
 export default function GalleryFeatured() {
-  const items = [
-    { src: "/images/prototype1.jpg", text: "Hvězdný strop • sedan", w: 1920, h: 1080 },
-    { src: "/images/prototype2.jpg", text: "Hvězdný strop • SUV", w: 1920, h: 1080 },
-    { src: "/images/prototype3.jpg", text: "Optické světlo v TV stěně", w: 1920, h: 1080 },
-    { src: "/images/prototype4.jpg", text: "Barový pult s ambientním světlem", w: 1920, h: 1080 },
-    { src: "/images/prototype5.jpg", text: "Ložnice s hvězdnou oblohou", w: 1920, h: 1080 },
-    { src: "/images/prototype1.jpg", text: "Domácí kino • hvězdný strop", w: 1920, h: 1080 }
+  const [videoOpen, setVideoOpen] = useState(false);
+  const [activeVideo, setActiveVideo] = useState<GalleryItem | null>(null);
+
+  // ✅ IMPORTANT: these must exist in /public/videos/
+  const items: GalleryItem[] = [
+    { type: "video", src: "/images/videos/featured.mp4", poster: "/images/videos/featured.webp" },
+    { type: "video", src: "/images/videos/featured_1.mp4", poster: "/images/videos/featured_1.webp" }
+    
   ];
+
+  const openVideo = (item: GalleryItem) => {
+    setActiveVideo(item);
+    setVideoOpen(true);
+  };
 
   return (
     <section id="galleryFeatured" className="section">
@@ -22,34 +75,33 @@ export default function GalleryFeatured() {
         <h3>Ukázky našich realizací</h3>
         <p className={styles.intro}>V naší galerii najdete skutečné ukázky instalací hvězdných stropů...</p>
 
-        <Gallery>
-          <div className={styles.galleryGrid}>
-            {items.map((item, i) => (
-              <Item
-                key={i}
-                original={item.src}
-                thumbnail={item.src}
-                width={item.w}
-                height={item.h}
-              >
-                {({ ref, open }) => (
-                  <div ref={ref} onClick={open} className={styles.galleryItem}>
-                    <div className={styles.imageWrap}>
-                      <Image
-                        src={item.src}
-                        alt={item.text}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        className={styles.image}
-                      />
-                      <div className={styles.imageText}>{item.text}</div>
-                    </div>
-                  </div>
-                )}
-              </Item>
-            ))}
-          </div>
-        </Gallery>
+        <div className={styles.galleryGrid}>
+          {items.map((item, i) => (
+            <button key={i} type="button" className={styles.galleryItem} onClick={() => openVideo(item)}>
+              <div className={styles.videoWrap}>
+                <video
+                  className={styles.videoThumb}
+                  src={item.src}
+                  poster={item.poster}
+                  muted
+                  playsInline
+                  preload="metadata"
+                  loop
+                  onMouseEnter={(e) => e.currentTarget.play()}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.pause();
+                    e.currentTarget.currentTime = 0;
+                  }}
+                />
+                <div className={styles.playBadge}>
+                  <span className={styles.playIcon}></span>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        <VideoModal open={videoOpen} onClose={() => setVideoOpen(false)} item={activeVideo} />
       </div>
     </section>
   );

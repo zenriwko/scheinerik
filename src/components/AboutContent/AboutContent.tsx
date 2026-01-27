@@ -1,4 +1,5 @@
-import styles from './AboutContent.module.css';
+import Image from "next/image";
+import styles from "./AboutContent.module.css";
 
 export default function AboutContent() {
   return (
@@ -22,7 +23,14 @@ export default function AboutContent() {
         </div>
 
         <div className={styles.image}>
-          <img src="https://picsum.photos/1920/1080" alt="Showroom Noční Nebe" />
+          <Image
+            src="/images/gallery/nn_o_nas.webp"
+            alt="Showroom Noční Nebe"
+            width={1920}
+            height={1080}
+            className={styles.img}
+            priority={false}
+          />
         </div>
       </div>
     </section>

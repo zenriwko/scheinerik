@@ -4,7 +4,7 @@ export default function FixedButtons() {
   return (
     <div className={styles.fixedButtons}>
       {/* --- Contact Button --- */}
-      <a href="#contact" className={styles.fixedBtn} aria-label="Napište nám">
+      <a href="/kontakt/" className={styles.fixedBtn} aria-label="Napište nám">
         <span className={styles.iconWrap}>
           <svg
           className={styles.icon}
@@ -22,7 +22,7 @@ export default function FixedButtons() {
       </a>
 
       {/* --- Call Button --- */}
-      <a href="#call" className={styles.fixedBtn} aria-label="Zavolejte nám">
+      <a href="tel:+420737758530" className={styles.fixedBtn} aria-label="Zavolejte nám">
         <span className={styles.iconWrap}>
           <svg
           className={styles.icon}
@@ -37,7 +37,7 @@ export default function FixedButtons() {
       </a>
 
       {/* --- Instagram Button --- */}
-      <a href="#instagram" className={styles.fixedBtn} aria-label="Sledujte nás">
+      <a href="https://www.instagram.com/johnny_je_tady/" className={styles.fixedBtn} aria-label="Sledujte nás">
         <span className={styles.iconWrap}>
           <svg
           className={styles.icon}

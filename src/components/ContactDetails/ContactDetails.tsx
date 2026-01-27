@@ -12,7 +12,7 @@ export default function ContactDetails() {
             <strong>E-mail:</strong>{" "}
             <a href="mailto:polak.jon@seznam.cz">polak.jon@seznam.cz</a>
             <br />
-            <strong>Sídlo:</strong> Višňová 576/3, Milovice, 28924
+            <strong>Sídlo:</strong> Maňákova 811/10, 198 00 Praha 9 – Černý Most
           </p>
         </div>
 

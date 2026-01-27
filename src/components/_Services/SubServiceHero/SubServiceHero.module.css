@@ -2,17 +2,36 @@
   position: relative;
 }
 
+/* TYPOGRAPHY */
+.hero h1 {
+  font-size: 60px !important;
+}
+
+@media (max-width: 980px) {
+  .hero h1 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero h1 {
+    font-size: 24px;
+  }
+}
+
+/* LAYOUT */
 .heroInner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  display: flex;
+  align-items: stretch;
   gap: 3rem;
-  align-items: center;
 }
 
 .heroContent {
+  flex: 1;
   text-align: left;
 }
 
+/* PILL */
 .pill {
   display: inline-block;
   padding: 4px 12px;
@@ -26,12 +45,14 @@
   color: var(--secondary);
 }
 
+/* TEXT */
 .lead {
   margin: 1rem 0 1.4rem;
   color: var(--text-muted-strong);
   line-height: 1.7;
 }
 
+/* META */
 .metaList {
   list-style: none;
   padding: 0;
@@ -49,6 +70,7 @@
   font-size: 0.85rem;
 }
 
+/* ACTIONS */
 .heroActions {
   display: flex;
   flex-wrap: wrap;
@@ -58,8 +80,9 @@
 /* IMAGE */
 .heroImageWrapper {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
+  width: clamp(240px, 26vw, 420px); /* controls height indirectly */
+  aspect-ratio: 9 / 16;            /* MUST stay */
+  max-height: clamp(380px, 60vh, 560px);
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border-base);
@@ -68,7 +91,7 @@
 
 .heroImage {
   object-fit: cover;
-  transform: scale(1.03);
+  transform: scale(1);
   transition: transform 0.6s ease, filter 0.6s ease;
   filter: saturate(1.1) contrast(1.08);
 }
@@ -81,15 +104,18 @@
 /* RESPONSIVE */
 @media (max-width: 980px) {
   .heroInner {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 2.5rem;
   }
 
-  .heroContent {
+  .heroImageWrapper {
     order: 1;
+    width: 100%;
+    max-height: none;
+    aspect-ratio: 9 / 16;
   }
 
-  .heroImageWrapper {
+  .heroContent {
     order: 2;
   }
 }

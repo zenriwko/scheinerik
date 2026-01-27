@@ -1,3 +1,5 @@
+/* ProjectsGrid.module.css */
+
 .projects {
   position: relative;
 }
@@ -7,133 +9,203 @@
   text-align: center;
 }
 
-.header h2 {
-  font-size: clamp(2rem, 4vw, 2.6rem);
-  font-weight: 800;
-  background: linear-gradient(90deg, var(--main), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 0.6rem;
+/* ==============
+   Projects list
+   ============== */
+.projectsList {
+  display: grid;
+  gap: 3rem;
+  text-align: left;
 }
 
-.header p {
-  color: var(--text-muted-strong);
-  max-width: 600px;
-  margin: 0 auto 2rem;
+.projectBlock {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: 1.6rem;
+  overflow: hidden;
 }
+
+.projectName {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.divider {
+  height: 1px;
+  margin: 0.9rem 0 1.4rem;
+  background: linear-gradient(90deg, var(--main), var(--secondary));
+  opacity: 0.6;
+}
+
+/* ==============
+   Images grid
+   ============== */
+.imagesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+/* IMPORTANT:
+   Use button for accessibility and to avoid ref on div issues.
+   Keep the animated element (.thumbImg) stable for smooth PhotoSwipe transitions.
+*/
+.imageCard {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.25s ease;
+}
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  /* Smooth animations */
+  transition: transform 0.45s ease;
+  transform: none;
+  will-change: transform;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 35%, rgba(0, 0, 0, 0.75));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.imageCard:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 0 40px rgba(56, 232, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.imageCard:hover .thumbImg {
+  transform: scale(1.06);
+}
+
+.imageCard:hover .overlay {
+  opacity: 1;
+}
+
+/* Disable hover zoom on touch devices (prevents odd “mid-hover” thumb bounds) */
+@media (hover: none) {
+  .imageCard:hover {
+    transform: none;
+  }
+  .imageCard:hover .thumbImg {
+    transform: none;
+  }
+  .imageCard:hover .overlay {
+    opacity: 0;
+  }
+}
+
+/* =========================
+   FILTER BUTTONS
+   ========================= */
 
 .filters {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.8rem;
   flex-wrap: wrap;
-  margin-bottom: 3rem;
+  margin-bottom: 2.2rem;
 }
 
 .filterBtn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.85);
-  padding: 0.7rem 1.6rem;
-  border-radius: 50px;
-  font-size: 1rem;
+  position: relative;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.4s ease;
   backdrop-filter: blur(10px);
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.25s ease;
 }
 
 .filterBtn:hover {
-  background: linear-gradient(90deg, var(--main-soft), var(--secondary-soft));
+  background: linear-gradient(135deg, var(--main-soft), var(--secondary-soft));
   color: #fff;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
-              0 0 25px var(--main-soft);
   border-color: rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 0 14px rgba(56, 232, 255, 0.25),
+    0 0 28px rgba(56, 232, 255, 0.18);
+  transform: translateY(-2px);
 }
 
 .active {
-  background: linear-gradient(90deg, var(--main), var(--secondary));
+  background: linear-gradient(135deg, var(--main), var(--secondary));
   color: #000;
-  font-weight: 700;
-  box-shadow: 0 0 20px rgba(56, 232, 255, 0.3);
+  border-color: transparent;
+  box-shadow: 0 0 18px rgba(56, 232, 255, 0.35);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
-}
+/* =========================
+   Responsive
+   ========================= */
 
-.card {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 0 40px rgba(56, 232, 255, 0.15);
-}
-
-.imageWrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-}
-
-.imageWrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.card:hover img {
-  transform: scale(1.08);
-}
-
-/* Gradient overlay for cinematic depth */
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.8));
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-.card:hover .overlay {
-  opacity: 1;
-}
-
-/* Caption text */
-.caption {
-  position: absolute;
-  bottom: 1.2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-  opacity: 0;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-.card:hover .caption {
-  opacity: 1;
-  transform: translate(-50%, -10%);
-}
-
-@media (max-width: 768px) {
-  .filters {
-    gap: 0.6rem;
+@media (max-width: 980px) {
+  .imagesGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .filterBtn {
-    padding: 0.6rem 1.2rem;
+}
+
+@media (max-width: 767px) {
+  .imagesGrid {
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: 1fr;
+
+    grid-auto-flow: column;
+    grid-auto-columns: 82%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    gap: 0.8rem;
+    padding: 0.25rem 0.4rem 0.6rem;
+    margin: 0 -0.4rem;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+
+    touch-action: pan-x;
   }
-  .caption {
-    font-size: 1rem;
+
+  .imageCard {
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 420px) {
+  .imagesGrid {
+    grid-auto-columns: 92%;
   }
 }

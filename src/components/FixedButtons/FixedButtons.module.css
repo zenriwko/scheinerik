@@ -90,23 +90,6 @@
 /* --- Responsive --- */
 @media (max-width: 980px) {
   .fixedButtons {
-    bottom: 20px !important;
-    left: 50%;
-    transform: translateX(-50%);
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .fixedBtn {
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    justify-content: center;
-  }
-
-  .label {
-    display: none !important;
+  display:none;    
   }
 }

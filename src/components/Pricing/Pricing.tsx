@@ -27,7 +27,6 @@ export default function Pricing() {
 
       <p className={styles.note}>
         Uvedené ceny jsou bez DPH. <br />
-        Ceník aktuální do 31. 10. 2025.
       </p>
     </section>
   );

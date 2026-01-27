@@ -8,8 +8,7 @@ export default function HvezdnyStropPage() {
   return (
     <>
       <SubServiceHero
-        pill="Hlavní služba"
-        title="Hvězdný strop do automobilu"
+        title="Noční Obloha v Automobilu"
         subtitle="Optická vlákna ve stropnici vašeho vozu"
         lead={
           <>
@@ -18,11 +17,6 @@ export default function HvezdnyStropPage() {
             <strong> noční oblohy plné různě jasných hvězd</strong>.
           </>
         }
-        metaItems={[
-          "Ruční rozmístění hvězd",
-          "Možnost programovatelných efektů",
-          "Volitelné vytlumení střechy",
-        ]}
         primaryCta={{
           href: "/nase-prace",
           label: "Naše Práce",
@@ -33,7 +27,7 @@ export default function HvezdnyStropPage() {
           variant: "secondary",
         }}
         image={{
-          src: "/images/hvezdny-strop-auto.webp",
+          src: "/images/gallery/nn_roof_6.webp",
           alt: "Hvězdný strop instalovaný ve stropnici automobilu",
         }}
       />

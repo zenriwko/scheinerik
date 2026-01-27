@@ -112,7 +112,7 @@ export default function ContactForm() {
         </div>
 
         <div className={styles.field}>
-          <label htmlFor="location">Místo / Lokalita</label>
+          <label htmlFor="location">Místo / Lokalita (nepovinné)</label>
           <input
             id="location"
             type="text"
@@ -126,7 +126,7 @@ export default function ContactForm() {
 
       <div className={styles.row}>
         <div className={styles.field}>
-          <label htmlFor="serviceType">Typ služby</label>
+          <label htmlFor="service">Typ služby</label>
           <select
             id="service"
             name="service"
@@ -135,9 +135,9 @@ export default function ContactForm() {
             required
           >
             <option value="">Vyberte službu…</option>
-            <option value="auto">Hvězdný strop do auta</option>
-            <option value="interier">Hvězdný strop v interiéru</option>
-            <option value="nabytkove">Ambientní osvětlení nábytku</option>
+            <option value="auto">Strop Auta</option>
+            <option value="interier">Interiér Auta</option>
+            <option value="nabytkove">Nábytek</option>
             <option value="jiny">Jiný projekt</option>
           </select>
         </div>

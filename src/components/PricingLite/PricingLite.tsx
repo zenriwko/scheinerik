@@ -21,9 +21,9 @@ export default function PricingLite() {
             <p>Základní instalace pro osobní vůz s efektem hvězdné oblohy a možností změny barvy světla.</p>
           </div>
           <div className={styles.pricingCard}>
-            <h4>Optické osvětlení nábytku</h4>
-            <span className={styles.price}>od ? Kč</span>
-            <p>Dekorativní ambientní osvětlení nábytkových sestav, polic nebo vitrín podle rozsahu instalace.</p>
+            <h4>Noční nebe do dekoru auta</h4>
+            <span className={styles.price}>od 4 000 Kč</span>
+            <p>Dekorativní světelné akcenty z optických vláken pro interiérové prvky auta.</p>
           </div>
           <Link href="/cenik" className="button secondary">
             <span>Zobrazit ceník</span>

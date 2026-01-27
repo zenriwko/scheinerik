@@ -5,6 +5,7 @@ import StarsBackground from "@/components/StarsBackground";
 import FixedButtons from "@/components/FixedButtons/FixedButtons";
 import Navigation from "@/components/Navigation/Navigation";
 import Footer from "@/components/Footer/Footer";
+import CookieBanner from "@/components/%Cookies/CookieBanner";
 
 import type { AppProps } from "next/app";
 
@@ -15,6 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <div className="background-wrapper">
         <StarsBackground />
       </div>
+
+      {/* Cookies */}
+      {/*<CookieBanner />*/}
 
       {/* Floating fixed buttons */}
       <FixedButtons />

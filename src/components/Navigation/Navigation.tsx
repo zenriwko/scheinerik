@@ -95,7 +95,7 @@ export default function Navigation() {
             href="/kontakt"
             className={`button ghost ${isActive("/kontakt") ? "active" : ""}`}
           >
-            <span>Nezávazná poptávka</span>
+            <span>Kontakt</span>
           </Link>
         </div>
       </div>
@@ -155,7 +155,7 @@ export default function Navigation() {
               href="/kontakt"
               onClick={() => setMenuOpen(false)}
             >
-              <span>Nezávazná poptávka</span>
+              <span>Kontakt</span>
             </Link>
           </div>
         </div>
