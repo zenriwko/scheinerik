@@ -60,6 +60,7 @@ h2 {
 h3 {
   font-family: "Roboto Condensed", sans-serif;
   background: linear-gradient(90deg, var(--main), var(--secondary));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 500;
@@ -144,6 +145,24 @@ a:hover {
 section {
   padding: clamp(2.5rem, 8vw, 7rem) clamp(1rem, 4vw, 15%);
   border-bottom: 1px solid var(--separator);
+
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease 0.075s, transform 0.6s ease 0.075s;
+  will-change: opacity, transform;
+}
+
+section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* =======================

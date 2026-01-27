@@ -234,8 +234,8 @@
   .overlay a:hover {
     opacity: 1;
     background: linear-gradient(90deg, #5CC9BE 0%, #8EE7FF 100%);
+    background-clip: text;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     transform: scale(1.05);
   }
 
@@ -245,8 +245,8 @@
 
   .overlay .activeLink {
     background: linear-gradient(90deg, #5CC9BE 0%, #8EE7FF 100%);
+    background-clip: text;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     text-shadow: 0 0 10px rgba(92, 201, 190, 0.6);
   }
 
