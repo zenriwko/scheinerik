@@ -28,7 +28,7 @@ export default function OptickaVlaknaInterierAutaPage() {
           variant: "secondary",
         }}
         image={{
-          src: "/images/opticka-vlakna-interier-auta.webp",
+          src: "/images/nocni-nebe-interier.webp",
           alt: "Optická vlákna a hvězdné nebe v interiéru auta",
         }}
       />
