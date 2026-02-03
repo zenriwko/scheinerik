@@ -1,5 +1,5 @@
 // pages/sitemap.xml.ts
-import type { GetServerSideProps } from "next";
+export const runtime = "edge";
 
 const SITE_URL = "https://www.nocni-nebe.eu";
 
@@ -24,25 +24,22 @@ function generateSiteMap() {
 ${urls
   .map((path) => {
     const loc = `${SITE_URL}${path}`;
-    return `
-  <url>
+    return `  <url>
     <loc>${loc}</loc>
     <lastmod>${now}</lastmod>
   </url>`;
   })
-  .join("")}
+  .join("\n")}
 </urlset>`;
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export default function handler() {
   const xml = generateSiteMap();
-  res.setHeader("Content-Type", "application/xml");
-  res.write(xml);
-  res.end();
 
-  return { props: {} };
-};
-
-export default function SiteMap() {
-  return null;
+  return new Response(xml, {
+    headers: {
+      "content-type": "application/xml; charset=utf-8",
+      "cache-control": "public, max-age=3600",
+    },
+  });
 }

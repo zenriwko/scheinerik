@@ -1,20 +1,19 @@
 // pages/robots.txt.ts
-import type { GetServerSideProps } from "next";
+export const runtime = "edge";
 
 const SITE_URL = "https://www.nocni-nebe.eu";
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  res.setHeader("Content-Type", "text/plain");
-  res.write(`User-agent: *
+export default function handler() {
+  const body = `User-agent: *
 Allow: /
 
 Sitemap: ${SITE_URL}/sitemap.xml
-`);
-  res.end();
+`;
 
-  return { props: {} };
-};
-
-export default function Robots() {
-  return null;
+  return new Response(body, {
+    headers: {
+      "content-type": "text/plain; charset=utf-8",
+      "cache-control": "public, max-age=3600",
+    },
+  });
 }
