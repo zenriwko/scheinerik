@@ -1,5 +1,5 @@
 // pages/robots.txt.ts
-export const runtime = "edge";
+export const runtime = "experimental-edge";
 
 const SITE_URL = "https://www.nocni-nebe.eu";
 
