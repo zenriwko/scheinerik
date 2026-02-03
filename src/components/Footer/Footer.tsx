@@ -1,5 +1,6 @@
 import styles from "./Footer.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -23,6 +24,9 @@ export default function Footer() {
           </p>
           <p>
             Tvoříme noční nebe z optických vláken pro stropy a interiéry aut.
+          </p>
+          <p>
+            <Link href="/obchodni-podminky/">Obchodní Podmínky</Link> | <Link href="/ochrana-osobnich-udaju/">Ochrana Osobních Údajů</Link>
           </p>
         </div>
 
@@ -121,12 +125,22 @@ export default function Footer() {
         {/* NAVIGATION */}
         <div className={styles.footerNavigation}>
           <h4>Instalace optických vláken</h4>
-        <nav className={styles.footerNav} aria-label="Footer navigace">
-          <a href="/sluzby/automobily/hvezdny-strop">› Noční obloha v automobilu</a>
-          <a href="/sluzby/automobily/hvezdny-interier">› Noční nebe v dekoru auta</a>
-        </nav>
-        </div>
 
+          <nav className={styles.footerNav} aria-label="Footer navigace">
+            <Link
+              href="/sluzby/automobily/hvezdny-strop"
+            >
+              › Noční obloha v automobilu
+            </Link>
+
+            <Link
+              href="/sluzby/automobily/hvezdny-interier"
+            >
+              › Noční nebe v dekoru auta
+            </Link>
+          </nav>
+        </div>
+      
       </div>
     </footer>
   );

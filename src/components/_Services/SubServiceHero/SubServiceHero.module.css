@@ -4,7 +4,7 @@
 
 /* TYPOGRAPHY */
 .hero h1 {
-  font-size: 60px !important;
+  font-size: 60px;
 }
 
 @media (max-width: 980px) {
@@ -27,7 +27,7 @@
 }
 
 .heroContent {
-  flex: 1;
+  flex: 3;
   text-align: left;
 }
 
@@ -78,11 +78,13 @@
 }
 
 /* IMAGE */
+
 .heroImageWrapper {
+  flex: 2;
   position: relative;
-  width: clamp(240px, 26vw, 420px); /* controls height indirectly */
-  aspect-ratio: 9 / 16;            /* MUST stay */
+  aspect-ratio: 9 / 16;
   max-height: clamp(380px, 60vh, 560px);
+
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border-base);
@@ -111,7 +113,7 @@
   .heroImageWrapper {
     order: 1;
     width: 100%;
-    max-height: none;
+    max-height: 30vh;
     aspect-ratio: 9 / 16;
   }
 

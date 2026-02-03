@@ -1,16 +1,24 @@
+import SEO from "@/components/%SEO/SEO";
 import SubHero from "@/components/SubHero/SubHero";
-import FooterCTA from "@/components/FooterCTA/FooterCTA";
 
 export default function ObchodniPodminkyPage() {
   return (
-    <main>
-      <SubHero
-        kicker="Právní informace"
-        title="OBCHODNÍ PODMÍNKY"
-        subtitle="Podmínky poskytování služeb a realizace zakázek."
+    <>
+      <SEO
+        title="Obchodní podmínky"
+        description="Obchodní podmínky Noční Nebe: poptávka, vznik zakázky, ceny, platby, termíny realizace, záruka a odpovědnost."
+        path="/obchodni-podminky"
+        noindex
       />
 
-      <section>
+      <main>
+        <SubHero
+          kicker="Právní informace"
+          title="OBCHODNÍ PODMÍNKY"
+          subtitle="Podmínky poskytování služeb a realizace zakázek."
+        />
+
+        <section>
         <h2>1. Poskytovatel služeb</h2>
         <p>
           Poskytovatelem služeb je Jan Poláček, IČO: 05431603, se sídlem
@@ -75,6 +83,7 @@ export default function ObchodniPodminkyPage() {
           být průběžně aktualizovány.
         </p>
       </section>
-    </main>
+      </main>
+    </>
   );
 }

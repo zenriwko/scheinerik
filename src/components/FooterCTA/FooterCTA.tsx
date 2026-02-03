@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./FooterCTA.module.css";
 
 export default function FooterCTA() {
@@ -33,9 +34,12 @@ export default function FooterCTA() {
           </p>
 
           <div className={styles.buttons}>
-            <a href="/kontakt/" className={`button white`}>
+            <Link
+              href="/kontakt/"
+              className={`button white ${styles.noSelect}`}
+            >
               <span>Nezávazná poptávka</span>
-            </a>
+            </Link>
           </div>
         </div>
 

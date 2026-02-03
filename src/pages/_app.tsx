@@ -1,6 +1,7 @@
 import "./variables.css";
 import "./globals.css";
 
+import Head from "next/head";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -12,6 +13,9 @@ import Footer from "@/components/Footer/Footer";
 
 import type { AppProps } from "next/app";
 
+const SITE_NAME = "Noční Nebe";
+const SITE_URL = "https://www.nocni-nebe.eu";
+
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
@@ -19,7 +23,6 @@ export default function App({ Component, pageProps }: AppProps) {
     let observer: IntersectionObserver | null = null;
 
     const observeSections = () => {
-      // disconnect previous observer (important)
       if (observer) observer.disconnect();
 
       const sections = document.querySelectorAll("section");
@@ -29,7 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("is-visible");
-              observer?.unobserve(entry.target); // animate once
+              observer?.unobserve(entry.target);
             }
           });
         },
@@ -37,18 +40,14 @@ export default function App({ Component, pageProps }: AppProps) {
       );
 
       sections.forEach((section) => {
-        // reset state so it can animate on each page nav
         section.classList.remove("is-visible");
         observer!.observe(section);
       });
     };
 
-    // run on first load
     observeSections();
 
-    // run after every client-side route change
     const handleRouteDone = () => {
-      // wait one frame so the new page DOM is definitely mounted
       requestAnimationFrame(() => observeSections());
     };
 
@@ -62,6 +61,16 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <Head>
+        {/* Global defaults only (page-specific SEO is handled by <SEO />) */}
+        <meta property="og:site_name" content={SITE_NAME} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={`${SITE_URL}/og.jpg`} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={`${SITE_URL}/og.jpg`} />
+      </Head>
+
       <div className="background-wrapper">
         <StarsBackground />
       </div>

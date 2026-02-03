@@ -1,16 +1,24 @@
+import SEO from "@/components/%SEO/SEO";
 import SubHero from "@/components/SubHero/SubHero";
-import FooterCTA from "@/components/FooterCTA/FooterCTA";
 
 export default function OchranaOsobnichUdajuPage() {
   return (
-    <main>
-      <SubHero
-        kicker="Právní informace"
-        title="OCHRANA OSOBNÍCH ÚDAJŮ"
-        subtitle="Jaké údaje zpracováváme, proč a jak s nimi nakládáme."
+    <>
+      <SEO
+        title="Ochrana osobních údajů"
+        description="Zásady zpracování osobních údajů na webu Noční Nebe: jaké údaje sbíráme, proč, jak dlouho je uchováváme a jaká máte práva."
+        path="/ochrana-osobnich-udaju"
+        noindex
       />
 
-      <section>
+      <main>
+        <SubHero
+          kicker="Právní informace"
+          title="OCHRANA OSOBNÍCH ÚDAJŮ"
+          subtitle="Jaké údaje zpracováváme, proč a jak s nimi nakládáme."
+        />
+
+        <section>
         <h2>1. Správce osobních údajů</h2>
         <p>
           Správcem osobních údajů je Jan Poláček, IČO: 05431603, se sídlem
@@ -95,6 +103,7 @@ export default function OchranaOsobnichUdajuPage() {
           prostřednictvím kontaktního formuláře nebo e-mailem uvedeným na webu.
         </p>
       </section>
-    </main>
+      </main>
+    </>
   );
 }

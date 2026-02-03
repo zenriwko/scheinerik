@@ -1,12 +1,60 @@
+import SEO from "@/components/%SEO/SEO";
+import JsonLd from "@/components/%SEO/JsonLd";
+
 import SubServiceHero from "@/components/_Services/SubServiceHero/SubServiceHero";
 import SubServiceInfoSteps from "@/components/_Services/SubServiceInfoSteps/SubServiceInfoSteps";
 import SubServiceCardGrid from "@/components/_Services/SubServiceCardGrid/SubServiceCardGrid";
 import SubServiceTwoColBullet from "@/components/_Services/SubServiceTwoColBullet/SubServiceTwoColBullet";
 import FooterCTA from "@/components/FooterCTA/FooterCTA";
 
+const SITE_URL = "https://www.nocni-nebe.eu";
+
 export default function OptickaVlaknaInterierAutaPage() {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Domů", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Služby", item: `${SITE_URL}/sluzby` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Hvězdný interiér do auta",
+        item: `${SITE_URL}/sluzby/automobily/hvezdny-interier`,
+      },
+    ],
+  };
+
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Hvězdný interiér do auta",
+    serviceType: "Instalace optických vláken do interiéru automobilu",
+    description:
+      "Ručně instalované optické vlákno do stropnice, výplní, sloupků a detailů interiéru vozu pro realistické hvězdné nebe nebo jemné ambientní akcenty.",
+    provider: {
+      "@type": "Organization",
+      name: "Noční Nebe",
+      url: SITE_URL,
+      logo: `${SITE_URL}/images/nocni-nebe-logo.png`,
+    },
+    areaServed: "CZ",
+    url: `${SITE_URL}/sluzby/automobily/hvezdny-interier`,
+  };
+
   return (
     <>
+      <SEO
+        title="Hvězdný interiér do auta"
+        description="Hvězdný interiér do auta z optických vláken: stropnice, výplně, sloupky i designové detaily. Realistické hvězdné nebe nebo jemné ambientní akcenty na míru."
+        path="/sluzby/automobily/hvezdny-interier"
+        ogImage="/images/nocni-nebe-interier.webp"
+      />
+
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={serviceJsonLd} />
+
+      {/* rest stays the same */}
       <SubServiceHero
         title="Noční nebe v dekoru auta"
         subtitle="Hvězdné nebe a ambientní efekty do stropnice, výplní a detailů"
@@ -18,19 +66,9 @@ export default function OptickaVlaknaInterierAutaPage() {
             jak má výsledek působit ve dne i v noci.
           </>
         }
-        primaryCta={{
-          href: "/nase-prace",
-          label: "Naše Práce",
-        }}
-        secondaryCta={{
-          href: "/kontakt",
-          label: "Nezávazná poptávka",
-          variant: "secondary",
-        }}
-        image={{
-          src: "/images/nocni-nebe-interier.webp",
-          alt: "Optická vlákna a hvězdné nebe v interiéru auta",
-        }}
+        primaryCta={{ href: "/nase-prace", label: "Naše Práce" }}
+        secondaryCta={{ href: "/kontakt", label: "Nezávazná poptávka", variant: "secondary" }}
+        image={{ src: "/images/nocni-nebe-interier.webp", alt: "Optická vlákna a hvězdné nebe v interiéru auta" }}
       />
 
       <SubServiceInfoSteps
@@ -41,18 +79,9 @@ export default function OptickaVlaknaInterierAutaPage() {
           "Napojení na světelnou jednotku řešíme tak, aby bylo skryté, bezpečné a servisovatelné. Po dokončení vše otestujeme, nastavíme jas a režimy a vysvětlíme ovládání.",
         ]}
         steps={[
-          {
-            title: "Konzultace a návrh efektu",
-            text: "Pošlete fotky interiéru a představu. Doporučíme zónu instalace, hustotu hvězd, barvy a vhodné efekty podle typu vozu.",
-          },
-          {
-            title: "Příprava dílů a instalace vláken",
-            text: "Demontujeme / připravíme vybrané části (např. stropnici). Vytvoříme přesné body a ručně protáhneme stovky vláken pro přirozený, nerušivý vzhled.",
-          },
-          {
-            title: "Zapojení, test a předání",
-            text: "Skrytě umístíme světelnou jednotku, vše zapojíme, otestujeme a nastavíme režimy. Předáme vůz včetně instrukcí k ovládání.",
-          },
+          { title: "Konzultace a návrh efektu", text: "Pošlete fotky interiéru a představu. Doporučíme zónu instalace, hustotu hvězd, barvy a vhodné efekty podle typu vozu." },
+          { title: "Příprava dílů a instalace vláken", text: "Demontujeme / připravíme vybrané části (např. stropnici). Vytvoříme přesné body a ručně protáhneme stovky vláken pro přirozený, nerušivý vzhled." },
+          { title: "Zapojení, test a předání", text: "Skrytě umístíme světelnou jednotku, vše zapojíme, otestujeme a nastavíme režimy. Předáme vůz včetně instrukcí k ovládání." },
         ]}
       />
 
@@ -61,18 +90,9 @@ export default function OptickaVlaknaInterierAutaPage() {
         subtitle="Od čisté elegance po dynamické animace"
         intro="Základní instalaci lze rozšířit o programovatelnou jednotku, více režimů a výrazné dynamické efekty podle stylu interiéru."
         cards={[
-          {
-            title: "Jednobarevná varianta",
-            text: "Stálá barva a jas pro čistý, elegantní výsledek. Jednoduché ovládání – zapnout / vypnout bez dalších režimů.",
-          },
-          {
-            title: "Programovatelné hvězdné nebe",
-            text: "Animace, změna jasu a barevné režimy. Ovládání přes dálkový ovladač nebo telefon (dle zvolené jednotky) a možnost uložit vlastní nastavení.",
-          },
-          {
-            title: "Padající hvězdy / shooting stars",
-            text: "Speciální linie vláken vytváří efekt prolétajících hvězd. Lze upravit rychlost, intenzitu i frekvenci, aby efekt působil přirozeně.",
-          },
+          { title: "Jednobarevná varianta", text: "Stálá barva a jas pro čistý, elegantní výsledek. Jednoduché ovládání – zapnout / vypnout bez dalších režimů." },
+          { title: "Programovatelné hvězdné nebe", text: "Animace, změna jasu a barevné režimy. Ovládání přes dálkový ovladač nebo telefon (dle zvolené jednotky) a možnost uložit vlastní nastavení." },
+          { title: "Padající hvězdy / shooting stars", text: "Speciální linie vláken vytváří efekt prolétajících hvězd. Lze upravit rychlost, intenzitu i frekvenci, aby efekt působil přirozeně." },
         ]}
       />
 

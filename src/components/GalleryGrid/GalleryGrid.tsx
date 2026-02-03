@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import styles from "./GalleryGrid.module.css";
@@ -8,6 +8,10 @@ import "photoswipe/style.css";
 
 const TOTAL_IMAGES = 18;
 const IMAGES_PER_PAGE = 12;
+
+// Fade timings (ms) — keep these in sync with your CSS transition duration
+const FADE_OUT_MS = 220;
+const FADE_IN_DELAY_MS = 50;
 
 const galleryImages = [
   { src: "/images/gallery/nn_interior.webp", w: 1920, h: 1080 },
@@ -28,23 +32,46 @@ const galleryImages = [
   { src: "/images/gallery/NN_roof_in_progress.webp", w: 1080, h: 1920 },
   { src: "/images/gallery/NN_roof_in_progress_1.webp", w: 1080, h: 1920 },
   { src: "/images/gallery/nn_woman_bag.webp", w: 1080, h: 1920 },
-  { src: "/images/gallery/nn_woman_bag_1.webp", w: 1440, h: 1920 }
+  { src: "/images/gallery/nn_woman_bag_1.webp", w: 1440, h: 1920 },
 ];
 
 export default function GalleryGrid() {
   const [page, setPage] = useState(1);
+  const [isFading, setIsFading] = useState(false);
+
+  // <section> ref for smooth scrolling (fixes TS "never" issue)
+  const galleryRef = useRef<HTMLElement | null>(null);
 
   const totalPages = Math.ceil(TOTAL_IMAGES / IMAGES_PER_PAGE);
   const startIndex = (page - 1) * IMAGES_PER_PAGE;
   const endIndex = startIndex + IMAGES_PER_PAGE;
 
-  return (
-    <section className={styles.gallery}>
-      <div className={`container ${styles.wrap}`}>
+  const handlePageChange = (nextPage: number) => {
+    if (nextPage === page) return;
 
-        {/* Photoswipe wrapper holding ALL items */}
+    // Fade out first
+    setIsFading(true);
+
+    window.setTimeout(() => {
+      // Switch page while faded out
+      setPage(nextPage);
+
+      // Scroll to top of gallery
+      galleryRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+
+      // Fade back in shortly after DOM updates
+      window.setTimeout(() => setIsFading(false), FADE_IN_DELAY_MS);
+    }, FADE_OUT_MS);
+  };
+
+  return (
+    <section ref={galleryRef} className={styles.gallery}>
+      <div className={`container ${styles.wrap}`}>
         <Gallery>
-          <div className={styles.grid}>
+          <div className={`${styles.grid} ${isFading ? styles.fading : ""}`}>
             {galleryImages.map((img, i) => {
               const isVisible = i >= startIndex && i < endIndex;
 
@@ -57,21 +84,26 @@ export default function GalleryGrid() {
                   height={img.h}
                 >
                   {({ ref, open }) => (
-                    <div
-                      ref={ref}
+                    <a
+                      ref={ref} // ✅ callback ref, no casting
+                      href={img.src}
                       className={`${styles.card} ${!isVisible ? styles.hidden : ""}`}
-                      onClick={isVisible ? open : undefined}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (!isVisible) return;
+                        open(e); // ✅ your version expects the event
+                      }}
                     >
-                    <Image
-                      src={img.src}
-                      alt={`Galerie ${i + 1}`}
-                      width={img.w}
-                      height={img.h}
-                      loading="lazy"
-                      className={styles.image}
-                    />
+                      <Image
+                        src={img.src}
+                        alt={`Galerie ${i + 1}`}
+                        width={img.w}
+                        height={img.h}
+                        loading="lazy"
+                        className={styles.image}
+                      />
                       {isVisible && <span className={styles.number}>{i + 1}</span>}
-                    </div>
+                    </a>
                   )}
                 </Item>
               );
@@ -85,13 +117,13 @@ export default function GalleryGrid() {
             <button
               key={i}
               className={`${styles.pageBtn} ${page === i + 1 ? styles.active : ""}`}
-              onClick={() => setPage(i + 1)}
+              onClick={() => handlePageChange(i + 1)}
+              disabled={isFading}
             >
               {i + 1}
             </button>
           ))}
         </div>
-
       </div>
     </section>
   );
