@@ -5,7 +5,7 @@ import SubHero from "@/components/SubHero/SubHero";
 import ProjectsGrid from "@/components/ProjectsGrid/ProjectsGrid";
 import FooterCTA from "@/components/FooterCTA/FooterCTA";
 
-const SITE_URL = "https://www.nocni-nebe.eu";
+const SITE_URL = "https://www.nocninebe.eu";
 
 export default function NasePracePage() {
   const breadcrumbJsonLd = {

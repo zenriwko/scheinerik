@@ -6,7 +6,7 @@ import Pricing from "@/components/Pricing/Pricing";
 import PricingSection from "@/components/PricingSection/PricingSection";
 import FooterCTA from "@/components/FooterCTA/FooterCTA";
 
-const SITE_URL = "https://www.nocni-nebe.eu";
+const SITE_URL = "https://www.nocninebe.eu";
 
 export default function PricingPage() {
   const breadcrumbJsonLd = {

@@ -14,7 +14,7 @@ import Footer from "@/components/Footer/Footer";
 import type { AppProps } from "next/app";
 
 const SITE_NAME = "Noční Nebe";
-const SITE_URL = "https://www.nocni-nebe.eu";
+const SITE_URL = "https://www.nocninebe.eu";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();

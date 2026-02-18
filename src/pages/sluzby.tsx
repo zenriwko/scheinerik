@@ -6,7 +6,7 @@ import Services from "@/components/Services/Services";
 import WhyChooseUs from "@/components/WhyChooseUs/WhyChooseUs";
 import FooterCTA from "@/components/FooterCTA/FooterCTA";
 
-const SITE_URL = "https://www.nocni-nebe.eu";
+const SITE_URL = "https://www.nocninebe.eu";
 
 export default function ServicesPage() {
   const breadcrumbJsonLd = {

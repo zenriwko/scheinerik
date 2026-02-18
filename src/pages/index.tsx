@@ -9,7 +9,7 @@ import Timeline from "@/components/Timeline/Timeline";
 import FooterCTA from "@/components/FooterCTA/FooterCTA";
 import WhyChooseUs from "@/components/WhyChooseUs/WhyChooseUs";
 
-const SITE_URL = "https://www.nocni-nebe.eu";
+const SITE_URL = "https://www.nocninebe.eu";
 
 export default function HomePage() {
   const orgJsonLd = {

@@ -5,7 +5,7 @@ import SubHero from "@/components/SubHero/SubHero";
 import GalleryGrid from "@/components/GalleryGrid/GalleryGrid";
 import FooterCTA from "@/components/FooterCTA/FooterCTA";
 
-const SITE_URL = "https://www.nocni-nebe.eu";
+const SITE_URL = "https://www.nocninebe.eu";
 
 export default function GaleriePage() {
   const breadcrumbJsonLd = {
