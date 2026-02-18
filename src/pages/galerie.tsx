@@ -5,7 +5,7 @@ import SubHero from "@/components/SubHero/SubHero";
 import GalleryGrid from "@/components/GalleryGrid/GalleryGrid";
 import FooterCTA from "@/components/FooterCTA/FooterCTA";
 
-const SITE_URL = "https://www.nocninebe.eu";
+const SITE_URL = "https://nocninebe.eu";
 
 export default function GaleriePage() {
   const breadcrumbJsonLd = {
@@ -20,7 +20,7 @@ export default function GaleriePage() {
   const galleryPageJsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Galerie – Noční Nebe",
+    name: "Galerie - Noční Nebe",
     url: `${SITE_URL}/galerie`,
     description:
       "Galerie realizací Noční Nebe: hvězdné stropy a hvězdné interiéry z optických vláken v autech i rezidencích.",

@@ -48,7 +48,7 @@ export default function OptickaVlaknaInterierAutaPage() {
         title="Hvězdný interiér do auta"
         description="Hvězdný interiér do auta z optických vláken: stropnice, výplně, sloupky i designové detaily. Realistické hvězdné nebe nebo jemné ambientní akcenty na míru."
         path="/sluzby/automobily/hvezdny-interier"
-        ogImage="/images/nocni-nebe-interier.webp"
+        featuredImage="/images/nocni-nebe-interier.webp"
       />
 
       <JsonLd data={breadcrumbJsonLd} />

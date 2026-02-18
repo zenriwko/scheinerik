@@ -7,7 +7,7 @@ import SubServiceCardGrid from "@/components/_Services/SubServiceCardGrid/SubSer
 import SubServiceTwoColBullet from "@/components/_Services/SubServiceTwoColBullet/SubServiceTwoColBullet";
 import FooterCTA from "@/components/FooterCTA/FooterCTA";
 
-const SITE_URL = "https://www.nocni-nebe.eu";
+const SITE_URL = "https://nocni-nebe.eu";
 
 export default function HvezdnyStropPage() {
   const breadcrumbJsonLd = {
@@ -48,7 +48,7 @@ export default function HvezdnyStropPage() {
         title="Hvězdný strop do auta"
         description="Hvězdný strop do auta z optických vláken: realistická noční obloha ve stropnici, různé hustoty hvězd a volitelné efekty včetně programovatelných režimů."
         path="/sluzby/automobily/hvezdny-strop"
-        ogImage="/images/gallery/nn_roof_6.webp"
+        featuredImage="/images/gallery/nn_roof_6.webp"
       />
 
       <JsonLd data={breadcrumbJsonLd} />

@@ -7,7 +7,7 @@ import AboutPhilosophy from "@/components/AboutPhilosophy/AboutPhilosophy";
 import AboutHealth from "@/components/AboutHealth/AboutHealth";
 import FooterCTA from "@/components/FooterCTA/FooterCTA";
 
-const SITE_URL = "https://www.nocninebe.eu";
+const SITE_URL = "https://nocninebe.eu";
 
 export default function AboutPage() {
   const breadcrumbJsonLd = {

@@ -9,15 +9,19 @@ import Timeline from "@/components/Timeline/Timeline";
 import FooterCTA from "@/components/FooterCTA/FooterCTA";
 import WhyChooseUs from "@/components/WhyChooseUs/WhyChooseUs";
 
-const SITE_URL = "https://www.nocninebe.eu";
+const SITE_URL = "https://nocninebe.eu";
 
 export default function HomePage() {
   const orgJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "LocalBusiness",
     name: "Noční Nebe",
     url: SITE_URL,
     logo: `${SITE_URL}/images/nocni-nebe-logo.png`,
+    image: `${SITE_URL}/images/featuredImages/nocni-nebe-featured.webp`,
+    description:
+      "Prémiové hvězdné stropy a interiéry z optických vláken pro automobily i interiéry.",
+    areaServed: "Czech Republic",
     sameAs: [
       "https://www.instagram.com/johnny_je_tady/"
     ]
@@ -29,6 +33,7 @@ export default function HomePage() {
         title="Hvězdné stropy a hvězdné interiéry"
         description="Noční Nebe vytváří prémiové hvězdné stropy a realistické hvězdné interiéry z optických vláken. Luxusní design, precizní instalace a dlouhá životnost."
         path="/"
+        featuredImage="/images/featuredImages/nocni-nebe-featured.webp"
       />
 
       <JsonLd data={orgJsonLd} />
