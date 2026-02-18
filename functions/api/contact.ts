@@ -1,7 +1,7 @@
 export const onRequestPost = async ({ request, env }: any) => {
   try {
-    const data = await request.json();
-    console.log("Incoming form:", data);
+    const { name, email, phone, type, vehicle, message } =
+      await request.json();
 
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -12,18 +12,30 @@ export const onRequestPost = async ({ request, env }: any) => {
       body: JSON.stringify({
         from: "Website <info@nocninebe.eu>",
         to: "info@nocninebe.eu",
-        subject: "Test submission",
-        html: "<p>Test</p>",
+        subject: "Nová poptávka z webu",
+        reply_to: email,
+        html: `
+          <h2>Nová poptávka</h2>
+          <p><strong>Jméno:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Telefon:</strong> ${phone}</p>
+          <p><strong>Typ instalace:</strong> ${type}</p>
+          ${vehicle ? `<p><strong>Vozidlo:</strong> ${vehicle}</p>` : ""}
+          <p><strong>Zpráva:</strong><br/>${message}</p>
+        `,
       }),
     });
 
-    console.log("Resend status:", response.status);
+    if (!response.ok) {
+      return new Response(JSON.stringify({ success: false }), {
+        status: 500,
+      });
+    }
 
     return new Response(JSON.stringify({ success: true }), {
       headers: { "Content-Type": "application/json" },
     });
-  } catch (err) {
-    console.log("Error:", err);
+  } catch {
     return new Response(JSON.stringify({ success: false }), {
       status: 500,
     });
