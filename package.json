@@ -9,7 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@opennextjs/cloudflare": "^1.16.5",
     "next": "^16.1.6",
     "photoswipe": "^5.4.4",
     "react": "19.1.0",

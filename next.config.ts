@@ -1,27 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true,
-
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-
+  output: "export",
   images: {
     unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "picsum.photos",
-      },
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-    ],
   },
-
-  compress: false,
+  reactStrictMode: true,
 };
 
 export default nextConfig;
