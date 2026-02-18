@@ -16,6 +16,7 @@
 h1.title {
   font-family: "Roboto Condensed", sans-serif;
   background: linear-gradient(90deg, var(--main), var(--secondary));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 500;
@@ -31,7 +32,6 @@ h1.title {
 .text {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* 🔹 pushes highlights to bottom */
   height: 100%;
 }
 

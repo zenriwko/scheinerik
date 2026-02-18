@@ -1,9 +1,8 @@
 import SEO from "@/components/%SEO/SEO";
 import JsonLd from "@/components/%SEO/JsonLd";
-
 import ContactHero from "@/components/ContactHero/ContactHero";
 
-const SITE_URL = "https://www.nocni-nebe.eu";
+const SITE_URL = "https://www.nocninebe.eu";
 
 export default function ContactPage() {
   const breadcrumbJsonLd = {
@@ -18,7 +17,7 @@ export default function ContactPage() {
   const contactPageJsonLd = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    name: "Kontakt – Noční Nebe",
+    name: "Kontakt - Noční Nebe",
     url: `${SITE_URL}/kontakt`,
     about: {
       "@type": "Organization",

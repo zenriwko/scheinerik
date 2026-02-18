@@ -1,195 +1,148 @@
-import { useState, ChangeEvent, FormEvent } from "react";
+"use client";
+import { useState } from "react";
 import styles from "./ContactForm.module.css";
 
-interface FormData {
-  name: string;
-  email: string;
-  phone?: string;
-  location?: string;
-  service: string;
-  contactMethod: string;
-  message: string;
-}
-
 export default function ContactForm() {
-  const [form, setForm] = useState<FormData>({
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
-    location: "",
-    service: "",
-    contactMethod: "email",
+    type: "",
+    vehicle: "",
     message: "",
   });
 
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const [error, setError] = useState("");
-
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: FormEvent) => {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setStatus("sending");
-    setError("");
+    setLoading(true);
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
 
-      const data = await res.json();
-      if (!res.ok || !data.ok) throw new Error(data.error || "Send failed");
+    setLoading(false);
 
-      setStatus("success");
-
-      // Reset form
+    if (res.ok) {
+      setSuccess(true);
       setForm({
         name: "",
         email: "",
         phone: "",
-        location: "",
-        service: "",
-        contactMethod: "email",
+        type: "",
+        vehicle: "",
         message: "",
       });
-    } catch (err: any) {
-      setError(err.message);
-      setStatus("error");
+
+      setTimeout(() => setSuccess(false), 4000);
+    } else {
+      alert("Odeslání selhalo.");
     }
-  };
+  }
+
+  const isCar =
+    form.type === "Strop automobilu" ||
+    form.type === "Interiér automobilu";
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
+    <div className={styles.wrapper}>
+      <h2 className={styles.heading}>Nezávazná poptávka</h2>
 
-      {/* Name + Email */}
-      <div className={styles.row}>
-        <div className={styles.field}>
-          <label htmlFor="name">Jméno</label>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <input
+          id="name"
+          name="name"
+          autoComplete="name"
+          required
+          placeholder="Jméno"
+          value={form.name}
+          onChange={(e) =>
+            setForm({ ...form, name: e.target.value })
+          }
+        />
+
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autoComplete="email"
+          required
+          placeholder="Email"
+          value={form.email}
+          onChange={(e) =>
+            setForm({ ...form, email: e.target.value })
+          }
+        />
+
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          autoComplete="tel"
+          placeholder="Telefon"
+          value={form.phone}
+          onChange={(e) =>
+            setForm({ ...form, phone: e.target.value })
+          }
+        />
+
+        <select
+          id="type"
+          name="type"
+          required
+          value={form.type}
+          onChange={(e) =>
+            setForm({ ...form, type: e.target.value })
+          }
+        >
+          <option value="">Vyberte typ instalace</option>
+          <option value="Strop automobilu">Strop automobilu</option>
+          <option value="Interiér automobilu">Interiér automobilu</option>
+          <option value="Nábytek">Nábytek</option>
+          <option value="Předmět">Předmět</option>
+        </select>
+
+        {isCar && (
           <input
-            id="name"
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            required
-            placeholder="Vaše jméno"
+            id="vehicle"
+            name="vehicle"
+            autoComplete="off"
+            placeholder="Značka a model vozidla"
+            value={form.vehicle}
+            onChange={(e) =>
+              setForm({ ...form, vehicle: e.target.value })
+            }
           />
-        </div>
+        )}
 
-        <div className={styles.field}>
-          <label htmlFor="email">E-mail</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            required
-            placeholder="Váš e-mail"
-          />
-        </div>
-      </div>
-
-      {/* Phone + Location */}
-      <div className={styles.row}>
-        <div className={styles.field}>
-          <label htmlFor="phone">Telefon (nepovinné)</label>
-          <input
-            id="phone"
-            type="text"
-            name="phone"
-            value={form.phone}
-            onChange={handleChange}
-            placeholder="Např. +420 777 123 456"
-          />
-        </div>
-
-        <div className={styles.field}>
-          <label htmlFor="location">Místo / Lokalita (nepovinné)</label>
-          <input
-            id="location"
-            type="text"
-            name="location"
-            value={form.location}
-            onChange={handleChange}
-            placeholder="Např. Praha, Brno…"
-          />
-        </div>
-      </div>
-
-      <div className={styles.row}>
-        <div className={styles.field}>
-          <label htmlFor="service">Typ služby</label>
-          <select
-            id="service"
-            name="service"
-            value={form.service}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Vyberte službu…</option>
-            <option value="auto">Strop Auta</option>
-            <option value="interier">Interiér Auta</option>
-            <option value="nabytkove">Nábytek</option>
-            <option value="jiny">Jiný projekt</option>
-          </select>
-        </div>
-        
-        <div className={styles.field}>
-          <label htmlFor="contactMethod">Preferovaný kontakt</label>
-          <select
-            id="contactMethod"
-            name="contactMethod"
-            value={form.contactMethod}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Vyberte možnost…</option>
-            <option value="email">E-mail</option>
-            <option value="telefon">Telefon</option>
-            <option value="whatsapp">WhatsApp</option>
-          </select>
-        </div>
-      </div>
-        
-
-      {/* Message */}
-      <div className={styles.field}>
-        <label htmlFor="message">Zpráva</label>
         <textarea
           id="message"
           name="message"
-          rows={5}
-          value={form.message}
-          onChange={handleChange}
+          autoComplete="off"
           required
-          placeholder="Popište nám svůj projekt…"
+          placeholder="Zpráva"
+          value={form.message}
+          onChange={(e) =>
+            setForm({ ...form, message: e.target.value })
+          }
         />
-      </div>
 
-      <button
-        type="submit"
-        disabled={status === "sending"}
-        className={styles.button}
+        <button type="submit" disabled={loading}>
+          {loading ? "Odesílám..." : "Odeslat poptávku"}
+        </button>
+      </form>
+
+      <div
+        className={`${styles.success} ${
+          success ? styles.show : ""
+        }`}
       >
-        {status === "sending" ? "Odesílání…" : "Odeslat zprávu"}
-      </button>
-
-      {status === "success" && (
-        <p className={styles.success}>✅ Zpráva byla úspěšně odeslána!</p>
-      )}
-      {status === "error" && (
-        <p className={styles.error}>
-          ❌ {error || "Něco se nepovedlo. Zkuste to prosím znovu."}
-        </p>
-      )}
-    </form>
+        ✨ Vaše zpráva byla úspěšně odeslána.
+      </div>
+    </div>
   );
 }

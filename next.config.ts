@@ -3,11 +3,6 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
 
-  eslint: {
-    // ✅ Prevent ESLint errors from breaking Cloudflare builds
-    ignoreDuringBuilds: true,
-  },
-
   typescript: {
     // ✅ Prevent TypeScript warnings from blocking deploys
     ignoreBuildErrors: true,

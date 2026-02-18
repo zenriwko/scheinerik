@@ -23,7 +23,7 @@ export default function ContactHero() {
 
         <div className={styles.formCol}>
           <div className={styles.formCard}>
-            {/*<ContactForm />*/}
+              <ContactForm />
           </div>
         </div>
       </div>
