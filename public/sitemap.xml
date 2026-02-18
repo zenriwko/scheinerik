@@ -2,43 +2,57 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://www.nocninebe.eu/</loc>
+    <loc>https://nocninebe.eu/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://www.nocninebe.eu/sluzby</loc>
+    <loc>https://nocninebe.eu/sluzby</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.nocninebe.eu/sluzby/automobily/hvezdny-interier</loc>
+    <loc>https://nocninebe.eu/sluzby/automobily/hvezdny-interier</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.nocninebe.eu/sluzby/automobily/hvezdny-strop</loc>
+    <loc>https://nocninebe.eu/sluzby/automobily/hvezdny-strop</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.nocninebe.eu/sluzby/nabytek</loc>
+    <loc>https://nocninebe.eu/galerie</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.nocninebe.eu/galerie</loc>
+    <loc>https://nocninebe.eu/cenik</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.nocninebe.eu/cenik</loc>
+    <loc>https://nocninebe.eu/kontakt</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://wwwg.nocninebe.eu/kontakt</loc>
+    <loc>https://nocninebe.eu/o-nas</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://www.nocninebe.eu/o-nas</loc>
-  </url>
-
-  <url>
-    <loc>https://www.nocninebe.eu/nase-prace</loc>
+    <loc>https://nocninebe.eu/nase-prace</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
 </urlset>
