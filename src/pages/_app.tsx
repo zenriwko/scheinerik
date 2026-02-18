@@ -64,11 +64,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         {/* Global defaults only (page-specific SEO is handled by <SEO />) */}
         <meta property="og:site_name" content={SITE_NAME} />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={`${SITE_URL}/og.jpg`} />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content={`${SITE_URL}/og.jpg`} />
       </Head>
 
       <div className="background-wrapper">

@@ -2,7 +2,7 @@ import SEO from "@/components/%SEO/SEO";
 import JsonLd from "@/components/%SEO/JsonLd";
 import ContactHero from "@/components/ContactHero/ContactHero";
 
-const SITE_URL = "https://www.nocninebe.eu";
+const SITE_URL = "https://nocninebe.eu";
 
 export default function ContactPage() {
   const breadcrumbJsonLd = {
