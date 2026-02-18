@@ -37,7 +37,7 @@ export default function Footer() {
             <li>Maňákova 811/10, 198 00 Praha 9 – Černý Most</li>
             <br></br>
             <li><a href="tel:+420737758530">+420 737 758 530</a></li>
-            <li><a href="mailto:info@magickenebe.cz">polak.jon@seznam.cz</a></li>
+            <li><a href="mailto:info@nocninebe.eu">info@nocninebe.eu</a></li>
             <li><a href="#">Jan Poláček • IČO: 05431603</a></li>
           </ul>
         </div>

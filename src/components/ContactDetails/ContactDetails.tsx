@@ -10,7 +10,7 @@ export default function ContactDetails() {
             <a href="tel:+420737758530">+420 737 758 530</a>
             <br />
             <strong>E-mail:</strong>{" "}
-            <a href="mailto:polak.jon@seznam.cz">polak.jon@seznam.cz</a>
+            <a href="mailto:info@nocninebe.eu">info@nocninebe.eu</a>
             <br />
             <strong>Sídlo:</strong> Maňákova 811/10, 198 00 Praha 9 – Černý Most
           </p>
