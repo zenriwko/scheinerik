@@ -1,5 +1,4 @@
 import styles from "./ServicesCategory.module.css";
-import Image from "next/image";
 
 interface ServiceCategoryProps {
   title: string;
@@ -32,10 +31,9 @@ export default function ServiceCategory({
         </div>
 
         <div className={styles.imageBlock}>
-          <Image
+          <img
             src={image}
             alt={title}
-            fill
             style={{ objectFit: "cover" }}
             sizes="(max-width: 900px) 100vw, 50vw"
           />

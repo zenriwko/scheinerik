@@ -30,7 +30,7 @@
   </url>
 
   <url>
-    <loc>https://www.nocninebe.eu/kontakt</loc>
+    <loc>https://wwwg.nocninebe.eu/kontakt</loc>
   </url>
 
   <url>

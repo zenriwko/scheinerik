@@ -19,12 +19,10 @@ export default function Services() {
           {/* CARD 1 — STARLIGHT ROOF */}
           <article className={styles.card}>
             <div className={styles.imageWrapper}>
-              <Image
+              <img
                 src="/images/hvezdny-strop-auto.webp"
                 alt="Instalace optických vláken do stropu automobilu"
-                fill
                 className={styles.image}
-                priority
               />
             </div>
 
@@ -59,12 +57,10 @@ export default function Services() {
           {/* CARD 2 — INTERIOR PANELS */}
           <article className={styles.card}>
             <div className={styles.imageWrapper}>
-              <Image
+              <img
                 src="/images/nocni-nebe-interier.webp"
                 alt="Optická vlákna v interiéru automobilu"
-                fill
                 className={styles.image}
-                priority
               />
             </div>
 
