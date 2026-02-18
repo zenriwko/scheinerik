@@ -4,12 +4,11 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 
   typescript: {
-    // ✅ Prevent TypeScript warnings from blocking deploys
     ignoreBuildErrors: true,
   },
 
   images: {
-    // ✅ Allow external image sources (for e.g. picsum.photos placeholders)
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -22,11 +21,7 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  // ✅ Disable server compression to avoid Cloudflare double-gzip
   compress: false,
-
-  // ✅ Ensure correct basePath when deployed under custom domain or subdir
-  output: "standalone",
 };
 
 export default nextConfig;
