@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./AboutContent.module.css";
 
 export default function AboutContent() {
@@ -23,13 +22,12 @@ export default function AboutContent() {
         </div>
 
         <div className={styles.image}>
-          <Image
-            src="/images/gallery/nn_o_nas.webp"
+          <img
+            src="/images/gallery/nn_roof_10.webp"
             alt="Showroom Noční Nebe"
             width={1920}
             height={1080}
             className={styles.img}
-            priority={false}
           />
         </div>
       </div>

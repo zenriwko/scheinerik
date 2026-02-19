@@ -19,7 +19,7 @@ export default function Services() {
           <article className={styles.card}>
             <div className={styles.imageWrapper}>
               <img
-                src="/images/hvezdny-strop-auto.webp"
+                src="/images/gallery/nn_roof_8.webp"
                 alt="Instalace optických vláken do stropu automobilu"
                 className={styles.image}
               />
@@ -57,7 +57,7 @@ export default function Services() {
           <article className={styles.card}>
             <div className={styles.imageWrapper}>
               <img
-                src="/images/nocni-nebe-interier.webp"
+                src="/images/gallery/nn_interior_1.webp"
                 alt="Optická vlákna v interiéru automobilu"
                 className={styles.image}
               />

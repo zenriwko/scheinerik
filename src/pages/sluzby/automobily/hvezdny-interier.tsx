@@ -7,7 +7,7 @@ import SubServiceCardGrid from "@/components/_Services/SubServiceCardGrid/SubSer
 import SubServiceTwoColBullet from "@/components/_Services/SubServiceTwoColBullet/SubServiceTwoColBullet";
 import FooterCTA from "@/components/FooterCTA/FooterCTA";
 
-const SITE_URL = "https://www.nocni-nebe.eu";
+const SITE_URL = "https://nocninebe.eu";
 
 export default function OptickaVlaknaInterierAutaPage() {
   const breadcrumbJsonLd = {
@@ -68,7 +68,7 @@ export default function OptickaVlaknaInterierAutaPage() {
         }
         primaryCta={{ href: "/nase-prace", label: "Naše Práce" }}
         secondaryCta={{ href: "/kontakt", label: "Nezávazná poptávka", variant: "secondary" }}
-        image={{ src: "/images/nocni-nebe-interier.webp", alt: "Optická vlákna a hvězdné nebe v interiéru auta" }}
+        image={{ src: "/images/gallery/nn_interior.webp", alt: "Optická vlákna a hvězdné nebe v interiéru auta" }}
       />
 
       <SubServiceInfoSteps

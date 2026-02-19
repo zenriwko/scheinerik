@@ -15,7 +15,6 @@ const FADE_IN_DELAY_MS = 50;
 
 const galleryImages = [
   { src: "/images/gallery/nn_interior.webp", w: 1920, h: 1080 },
-  { src: "/images/gallery/nn_o_nas.webp", w: 1080, h: 1920 },
   { src: "/images/gallery/nn_interior_1.webp", w: 1080, h: 1920 },
   { src: "/images/gallery/nn_duck.webp", w: 1080, h: 1920 },
   { src: "/images/gallery/nn_duck2.webp", w: 1080, h: 1920 },

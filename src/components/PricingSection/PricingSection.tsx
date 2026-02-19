@@ -11,7 +11,7 @@ export default function PricingSection() {
         <div className={styles.extra}>
           <h2 className={styles.sectionTitle}>Doplňkové služby</h2>
           <p className={styles.subheading}>
-            Služby od: <span>@autocalounictvi_pipi</span>
+            Služby od: <span><a target="_blank" href="https://www.instagram.com/autocalounictvi_pipi/">@autocalounictvi_pipi</a></span>
           </p>
           <ul className={styles.list}>
             <li><span>Čalounění stropu</span><b>3 300 – 3 500 Kč</b></li>

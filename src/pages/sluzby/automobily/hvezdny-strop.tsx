@@ -7,7 +7,7 @@ import SubServiceCardGrid from "@/components/_Services/SubServiceCardGrid/SubSer
 import SubServiceTwoColBullet from "@/components/_Services/SubServiceTwoColBullet/SubServiceTwoColBullet";
 import FooterCTA from "@/components/FooterCTA/FooterCTA";
 
-const SITE_URL = "https://nocni-nebe.eu";
+const SITE_URL = "https://nocninebe.eu";
 
 export default function HvezdnyStropPage() {
   const breadcrumbJsonLd = {

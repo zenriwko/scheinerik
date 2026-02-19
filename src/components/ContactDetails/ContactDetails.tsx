@@ -12,7 +12,8 @@ export default function ContactDetails() {
             <strong>E-mail:</strong>{" "}
             <a href="mailto:info@nocninebe.eu">info@nocninebe.eu</a>
             <br />
-            <strong>Sídlo:</strong> Maňákova 811/10, 198 00 Praha 9 – Černý Most
+            <b>Provozovna (dílna):</b>{" "}
+            <a target="_blank" href="">M. Koněva 168/22, 288 02 Nymburk 2</a>
           </p>
         </div>
 
@@ -20,13 +21,7 @@ export default function ContactDetails() {
           <h2>Otevírací doba</h2>
           <ul className={styles.hours}>
             <li>
-              <span>Pondělí – Pátek:</span> 9:00 – 18:00
-            </li>
-            <li>
-              <span>Sobota:</span> dle dohody
-            </li>
-            <li>
-              <span>Neděle:</span> zavřeno
+              Otevírací doba není pevně stanovena. Vše probíhá dle předchozí dohody.
             </li>
           </ul>
         </div>
