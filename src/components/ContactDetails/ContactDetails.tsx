@@ -13,7 +13,7 @@ export default function ContactDetails() {
             <a href="mailto:info@nocninebe.eu">info@nocninebe.eu</a>
             <br />
             <b>Provozovna (dílna):</b>{" "}
-            <a target="_blank" href="">M. Koněva 168/22, 288 02 Nymburk 2</a>
+            <a target="_blank" href="https://www.google.com/maps/place/No%C4%8Dn%C3%AD+Nebe/@50.1904256,15.048888,17z/data=!3m1!4b1!4m6!3m5!1s0x470bf900677a9a19:0xe15525dead222b7b!8m2!3d50.1904256!4d15.048888!16s%2Fg%2F11wwt_hzv_?hl=en-PH&entry=ttu&g_ep=EgoyMDI2MDIxNi4wIKXMDSoASAFQAw%3D%3D">M. Koněva 168/22, 288 02 Nymburk 2</a>
           </p>
         </div>
 
