@@ -2,21 +2,16 @@ import { useEffect } from "react";
 
 export default function StarsBackground() {
   useEffect(() => {
-    const reduce =
-      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
-
-    const farCanvas = document.getElementById("stars-far") as HTMLCanvasElement | null;
-    const midCanvas = document.getElementById("stars-mid") as HTMLCanvasElement | null;
-    const nearCanvas = document.getElementById("stars-near") as HTMLCanvasElement | null;
-    const cometsCanvas = document.getElementById("comets") as HTMLCanvasElement | null;
+    const farCanvas = document.getElementById("stars-far") as HTMLCanvasElement;
+    const midCanvas = document.getElementById("stars-mid") as HTMLCanvasElement;
+    const nearCanvas = document.getElementById("stars-near") as HTMLCanvasElement;
+    const cometsCanvas = document.getElementById("comets") as HTMLCanvasElement;
 
     if (!farCanvas || !midCanvas || !nearCanvas || !cometsCanvas) return;
 
-    const cometCtx = cometsCanvas.getContext("2d");
-    if (!cometCtx) return;
-
+    const cometCtx = cometsCanvas.getContext("2d")!;
     let W = window.innerWidth;
-    let H = document.documentElement.clientHeight; // prevents mobile jump
+    let H = document.documentElement.clientHeight;
     let isMobile = W < 980;
     let DPR = Math.min(isMobile ? 1 : 2, window.devicePixelRatio || 1);
 
@@ -28,6 +23,10 @@ export default function StarsBackground() {
 
     const SCROLL_EASE = 0.08;
     const SCROLL_MULT = isMobile ? 0.06 : 0.18;
+
+    const rnd = (a: number, b: number) => Math.random() * (b - a) + a;
+
+    // ---------------- STAR SYSTEM ----------------
 
     type Star = {
       x: number;
@@ -42,79 +41,68 @@ export default function StarsBackground() {
     type Layer = {
       canvas: HTMLCanvasElement;
       ctx: CanvasRenderingContext2D;
-      countDesktop: number;
-      countMobile: number;
-      sizeDesktop: [number, number];
-      sizeMobile: [number, number];
-      parallaxDesktop: number;
-      parallaxMobile: number;
-      twDesktop: [number, number];
-      twMobile: [number, number];
+      baseCount: number;
+      size: [number, number];
+      parallax: number;
+      tw: [number, number];
       stars: Star[];
     };
 
-    const rnd = (a: number, b: number) => Math.random() * (b - a) + a;
-
     const randomStarColor = (): [number, number, number] => {
       const p = Math.random();
-
-      if (p < 0.15) {
-        // Blue (hot stars)
-        return [170 + rnd(0, 40), 200 + rnd(0, 40), 255];
-      } else if (p < 0.75) {
-        // White
-        const v = 230 + rnd(0, 25);
-        return [v, v, 255];
-      } else if (p < 0.92) {
-        // Warm yellow
-        return [255, 220 + rnd(0, 20), 170 + rnd(0, 20)];
-      } else {
-        // Red giant (rare)
-        return [255, 160 + rnd(0, 20), 150 + rnd(0, 20)];
-      }
+      if (p < 0.15) return [180, 210, 255];
+      if (p < 0.75) return [255, 255, 255];
+      if (p < 0.92) return [255, 230, 180];
+      return [255, 170, 160];
     };
+
+    let quality = 1; // starts full
+    const QUALITY_REDUCTION = 0.6; // reduce to 60% if FPS drops
 
     const LAYERS: Layer[] = [
       {
         canvas: farCanvas,
         ctx: farCanvas.getContext("2d")!,
-        countDesktop: 500,
-        countMobile: 220,
-        sizeDesktop: [0.3, 0.8],
-        sizeMobile: [0.25, 0.7],
-        parallaxDesktop: 0.15,
-        parallaxMobile: 0.05,
-        twDesktop: [0.001, 0.003],
-        twMobile: [0.0006, 0.0015],
+        baseCount: isMobile ? 200 : 500,
+        size: [0.3, 0.9],
+        parallax: 0.15,
+        tw: [0.001, 0.003],
         stars: [],
       },
       {
         canvas: midCanvas,
         ctx: midCanvas.getContext("2d")!,
-        countDesktop: 350,
-        countMobile: 150,
-        sizeDesktop: [0.5, 1.2],
-        sizeMobile: [0.4, 1.0],
-        parallaxDesktop: 0.3,
-        parallaxMobile: 0.1,
-        twDesktop: [0.002, 0.004],
-        twMobile: [0.001, 0.002],
+        baseCount: isMobile ? 155 : 400,
+        size: [0.5, 1.3],
+        parallax: 0.3,
+        tw: [0.002, 0.004],
         stars: [],
       },
       {
         canvas: nearCanvas,
         ctx: nearCanvas.getContext("2d")!,
-        countDesktop: 250,
-        countMobile: 100,
-        sizeDesktop: [0.7, 1.6],
-        sizeMobile: [0.6, 1.3],
-        parallaxDesktop: 0.45,
-        parallaxMobile: 0.18,
-        twDesktop: [0.003, 0.006],
-        twMobile: [0.0015, 0.003],
+        baseCount: isMobile ? 90 : 300,
+        size: [0.7, 1.7],
+        parallax: 0.45,
+        tw: [0.003, 0.006],
         stars: [],
       },
     ];
+
+    const seedStars = () => {
+      LAYERS.forEach((layer) => {
+        const count = Math.floor(layer.baseCount * quality);
+        layer.stars = Array.from({ length: count }, () => ({
+          x: rnd(0, W),
+          y: rnd(0, H),
+          r: rnd(...layer.size),
+          a: rnd(0, Math.PI * 2),
+          tw: rnd(...layer.tw),
+          base: rnd(0.3, 0.7),
+          color: randomStarColor(),
+        }));
+      });
+    };
 
     const resize = () => {
       W = window.innerWidth;
@@ -123,28 +111,94 @@ export default function StarsBackground() {
       DPR = Math.min(isMobile ? 1 : 2, window.devicePixelRatio || 1);
 
       [farCanvas, midCanvas, nearCanvas, cometsCanvas].forEach((c) => {
-        c.width = Math.floor(W * DPR);
-        c.height = Math.floor(H * DPR);
+        c.width = W * DPR;
+        c.height = H * DPR;
         const ctx = c.getContext("2d")!;
         ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
       });
 
-      LAYERS.forEach((layer) => {
-        const count = isMobile ? layer.countMobile : layer.countDesktop;
-        const size = isMobile ? layer.sizeMobile : layer.sizeDesktop;
-        const tw = isMobile ? layer.twMobile : layer.twDesktop;
+      seedStars();
+    };
 
-        layer.stars = Array.from({ length: count }, () => ({
-          x: rnd(0, W),
-          y: rnd(0, H),
-          r: rnd(...size),
-          a: rnd(0, Math.PI * 2),
-          tw: rnd(...tw),
-          base: rnd(0.2, 0.6),
-          color: randomStarColor(),
-        }));
+    // ---------------- COMETS (ALWAYS WORK) ----------------
+
+    type Comet = {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      born: number;
+      duration: number;
+      len: number;
+    };
+
+    const comets: Comet[] = [];
+
+    const spawnComet = () => {
+      const speed = isMobile ? rnd(1.6, 2.6) : rnd(3.5, 6);
+      const side = Math.floor(Math.random() * 4);
+
+      let x = 0, y = 0, vx = 0, vy = 0;
+
+      switch (side) {
+        case 0: x = rnd(0, W); y = 0; vx = rnd(-1, 1) * speed; vy = rnd(0.8, 1.2) * speed; break;
+        case 1: x = W; y = rnd(0, H); vx = -rnd(0.8, 1.2) * speed; vy = rnd(-1, 1) * speed; break;
+        case 2: x = rnd(0, W); y = H; vx = rnd(-1, 1) * speed; vy = -rnd(0.8, 1.2) * speed; break;
+        case 3: x = 0; y = rnd(0, H); vx = rnd(0.8, 1.2) * speed; vy = rnd(-1, 1) * speed; break;
+      }
+
+      comets.push({
+        x,
+        y,
+        vx,
+        vy,
+        born: performance.now(),
+        duration: isMobile ? 2200 : 2600,
+        len: isMobile ? 90 : 220,
       });
     };
+
+    const drawComets = (scrollOffsetY: number) => {
+      cometCtx.clearRect(0, 0, W, H);
+      const now = performance.now();
+
+      for (let i = comets.length - 1; i >= 0; i--) {
+        const c = comets[i];
+        const life = 1 - (now - c.born) / c.duration;
+        if (life <= 0) { comets.splice(i, 1); continue; }
+
+        c.x += c.vx;
+        c.y += c.vy;
+
+        const x = c.x;
+        const y = c.y + scrollOffsetY * 0.3;
+
+        const grad = cometCtx.createLinearGradient(
+          x,
+          y,
+          x - c.vx * c.len * life,
+          y - c.vy * c.len * life
+        );
+
+        grad.addColorStop(0, `rgba(255,255,255,${life})`);
+        grad.addColorStop(1, `rgba(255,255,255,0)`);
+
+        cometCtx.lineWidth = isMobile ? 1.5 : 2.8;
+        cometCtx.beginPath();
+        cometCtx.moveTo(x, y);
+        cometCtx.lineTo(
+          x - c.vx * c.len * life,
+          y - c.vy * c.len * life
+        );
+        cometCtx.strokeStyle = grad;
+        cometCtx.stroke();
+      }
+    };
+
+    // ---------------- FPS MONITOR ----------------
+
+    let frameCount = 0;
+    let fpsStart = performance.now();
 
     const render = (t: number) => {
       if (!alive) return;
@@ -152,48 +206,47 @@ export default function StarsBackground() {
       const dt = t - last || 16;
       last = t;
 
+      frameCount++;
+      if (t - fpsStart >= 2000) {
+        const fps = frameCount / 2;
+        frameCount = 0;
+        fpsStart = t;
+
+        if (fps < 60 && quality === 1) {
+          quality = QUALITY_REDUCTION;
+          seedStars();
+        }
+      }
+
       scrollPos += (window.scrollY - scrollPos) * SCROLL_EASE;
-      const scrollOffsetY = reduce ? 0 : -scrollPos * SCROLL_MULT;
+      const scrollOffsetY = -scrollPos * SCROLL_MULT;
 
       LAYERS.forEach((layer) => {
         const ctx = layer.ctx;
         ctx.clearRect(0, 0, W, H);
 
-        const parallax = isMobile
-          ? layer.parallaxMobile
-          : layer.parallaxDesktop;
-
         for (const s of layer.stars) {
-          if (!reduce) {
-            s.a += s.tw * dt;
-            if (s.a > Math.PI * 2) s.a -= Math.PI * 2;
-          }
+          s.a += s.tw * dt;
+          if (s.a > Math.PI * 2) s.a -= Math.PI * 2;
 
           const alpha = s.base * (0.6 + 0.4 * Math.sin(s.a));
-
-          const px = isMobile
-            ? s.x
-            : s.x + (mx - 0.5) * 60 * parallax;
-
-          const py = s.y + scrollOffsetY * parallax;
+          const px = isMobile ? s.x : s.x + (mx - 0.5) * 60 * layer.parallax;
+          const py = s.y + scrollOffsetY * layer.parallax;
           const wy = ((py % H) + H) % H;
 
           ctx.beginPath();
           ctx.arc(px, wy, s.r, 0, Math.PI * 2);
 
           const [r, g, b] = s.color;
-          ctx.fillStyle = `rgba(${r},${g},${b},${isMobile ? alpha * 0.8 : alpha})`;
+          ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
           ctx.fill();
         }
       });
 
-      if (isMobile) {
-        setTimeout(() => {
-          raf = requestAnimationFrame(render);
-        }, 32);
-      } else {
-        raf = requestAnimationFrame(render);
-      }
+      if (Math.random() < (isMobile ? 0.0003 : 0.0003)) spawnComet();
+      drawComets(scrollOffsetY);
+
+      raf = requestAnimationFrame(render);
     };
 
     const onMouse = (e: MouseEvent) => {
@@ -204,8 +257,8 @@ export default function StarsBackground() {
     resize();
     raf = requestAnimationFrame(render);
 
-    window.addEventListener("resize", resize, { passive: true });
-    window.addEventListener("mousemove", onMouse, { passive: true });
+    window.addEventListener("resize", resize);
+    window.addEventListener("mousemove", onMouse);
 
     return () => {
       alive = false;
