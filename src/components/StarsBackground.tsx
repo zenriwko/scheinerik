@@ -135,7 +135,7 @@ export default function StarsBackground() {
     const comets: Comet[] = [];
 
     const spawnComet = () => {
-      const speed = isMobile ? rnd(1.6, 2.6) : rnd(3.5, 6);
+      const speed = isMobile ? rnd(1, 3) : rnd(3, 4.5);
       const side = Math.floor(Math.random() * 4);
 
       let x = 0, y = 0, vx = 0, vy = 0;
