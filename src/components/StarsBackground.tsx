@@ -162,7 +162,7 @@ export default function StarsBackground() {
           ctx.beginPath();
           ctx.arc(px, wy, s.r, 0, Math.PI * 2);
           const [r, g, b] = s.color;
-          ctx.fillStyle = `rgba(${r},${g},${b},${isMobile ? alpha * 0.85 : alpha})`;
+          ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
           ctx.fill();
         }
       });
