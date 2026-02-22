@@ -14,7 +14,7 @@ export default function StarsBackground() {
     let H = document.documentElement.clientHeight;
     let isMobile = W < 980;
     let DPR = Math.min(isMobile ? 1 : 2, window.devicePixelRatio || 1);
-    let lastWidth = window.innerWidth;
+    let lastWidth = 0;
 
     let mx = 0.5;
     let scrollPos = window.scrollY;
@@ -23,7 +23,6 @@ export default function StarsBackground() {
     let alive = true;
 
     const SCROLL_EASE = 0.08;
-    const SCROLL_MULT = isMobile ? 0.06 : 0.18;
 
     const rnd = (a: number, b: number) => Math.random() * (b - a) + a;
 
@@ -67,7 +66,7 @@ export default function StarsBackground() {
         baseCount: isMobile ? 200 : 500,
         size: [0.3, 0.9],
         parallax: 0.15,
-        tw: [0.001, 0.003],
+        tw: [0.0005, 0.0015],
         stars: [],
       },
       {
@@ -76,7 +75,7 @@ export default function StarsBackground() {
         baseCount: isMobile ? 155 : 400,
         size: [0.5, 1.3],
         parallax: 0.3,
-        tw: [0.002, 0.004],
+        tw: [0.001, 0.002],
         stars: [],
       },
       {
@@ -85,7 +84,7 @@ export default function StarsBackground() {
         baseCount: isMobile ? 90 : 300,
         size: [0.7, 1.7],
         parallax: 0.45,
-        tw: [0.003, 0.006],
+        tw: [0.0015, 0.003],
         stars: [],
       },
     ];
@@ -113,7 +112,11 @@ export default function StarsBackground() {
       lastWidth = newWidth;
 
       W = window.innerWidth;
-      H = window.visualViewport?.height || window.innerHeight;
+      H = window.innerHeight;
+
+if (!H || H < 100) {
+  H = document.documentElement.clientHeight;
+}
       isMobile = W < 980;
       DPR = Math.min(isMobile ? 1 : 2, window.devicePixelRatio || 1);
 
@@ -226,7 +229,8 @@ export default function StarsBackground() {
       }
 
       scrollPos += (window.scrollY - scrollPos) * SCROLL_EASE;
-      const scrollOffsetY = -scrollPos * SCROLL_MULT;
+      const scrollMult = isMobile ? 0.06 : 0.18;
+      const scrollOffsetY = -scrollPos * scrollMult;
 
       LAYERS.forEach((layer) => {
         const ctx = layer.ctx;
