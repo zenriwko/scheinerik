@@ -14,6 +14,7 @@ export default function StarsBackground() {
     let H = document.documentElement.clientHeight;
     let isMobile = W < 980;
     let DPR = Math.min(isMobile ? 1 : 2, window.devicePixelRatio || 1);
+    let lastWidth = window.innerWidth;
 
     let mx = 0.5;
     let scrollPos = window.scrollY;
@@ -105,8 +106,14 @@ export default function StarsBackground() {
     };
 
     const resize = () => {
+      const newWidth = window.innerWidth;
+
+      if (isMobile && newWidth === lastWidth) return;
+
+      lastWidth = newWidth;
+
       W = window.innerWidth;
-      H = document.documentElement.clientHeight;
+      H = window.visualViewport?.height || window.innerHeight;
       isMobile = W < 980;
       DPR = Math.min(isMobile ? 1 : 2, window.devicePixelRatio || 1);
 
@@ -116,7 +123,7 @@ export default function StarsBackground() {
         const ctx = c.getContext("2d")!;
         ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
       });
-
+    
       seedStars();
     };
 
@@ -135,7 +142,7 @@ export default function StarsBackground() {
     const comets: Comet[] = [];
 
     const spawnComet = () => {
-      const speed = isMobile ? rnd(1, 3) : rnd(3, 4.5);
+      const speed = isMobile ? rnd(1, 3) : rnd(3, 4);
       const side = Math.floor(Math.random() * 4);
 
       let x = 0, y = 0, vx = 0, vy = 0;
