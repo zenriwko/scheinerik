@@ -15,13 +15,26 @@ export default function HomePage() {
   const orgJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": `${SITE_URL}#organization`,
     name: "Noční Nebe",
     url: SITE_URL,
     logo: `${SITE_URL}/images/nocni-nebe-logo.png`,
     image: `${SITE_URL}/images/featuredImages/nocni-nebe-featured.webp`,
     description:
-      "Prémiové hvězdné stropy a interiéry z optických vláken pro automobily i interiéry.",
-    areaServed: "Czech Republic",
+      "Noční Nebe se specializuje na návrh a instalaci prémiových hvězdných stropů a interiérů z optických vláken pro domácnosti i automobily v České republice.",
+    telephone: "+420737758530",
+    email: "info@nocninebe.eu",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "M. Koněva 168/22",
+      addressLocality: "Nymburk",
+      postalCode: "288 02",
+      addressCountry: "CZ"
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Czech Republic"
+    },
     sameAs: [
       "https://www.instagram.com/johnny_je_tady/"
     ]

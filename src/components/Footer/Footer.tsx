@@ -143,6 +143,21 @@ export default function Footer() {
         </div>
       
       </div>
+
+      {/* BOTTOM CREDIT BAR */}
+      <div className={styles.footerBottom}>
+        <p>
+          Návrh a vývoj webu:{" "}
+          <a
+            href="https://nextdigitalagency.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            NEXT Digital Agency
+          </a>
+        </p>
+      </div>
+
     </footer>
   );
 }
