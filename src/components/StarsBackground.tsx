@@ -16,7 +16,7 @@ export default function StarsBackground() {
     if (!cometCtx) return;
 
     let W = window.innerWidth;
-    let H = window.innerHeight;
+    let H = document.documentElement.clientHeight; // prevents mobile jump
     let isMobile = W < 980;
     let DPR = Math.min(isMobile ? 1 : 2, window.devicePixelRatio || 1);
 
@@ -26,8 +26,8 @@ export default function StarsBackground() {
     let raf = 0;
     let alive = true;
 
-    const SCROLL_EASE = 0.10;
-    const SCROLL_MULT = isMobile ? 0.08 : 0.18;
+    const SCROLL_EASE = 0.08;
+    const SCROLL_MULT = isMobile ? 0.06 : 0.18;
 
     type Star = {
       x: number;
@@ -35,7 +35,7 @@ export default function StarsBackground() {
       r: number;
       a: number;
       tw: number;
-      b: number;
+      base: number;
       color: [number, number, number];
     };
 
@@ -55,51 +55,70 @@ export default function StarsBackground() {
 
     const rnd = (a: number, b: number) => Math.random() * (b - a) + a;
 
+    const randomStarColor = (): [number, number, number] => {
+      const p = Math.random();
+
+      if (p < 0.15) {
+        // Blue (hot stars)
+        return [170 + rnd(0, 40), 200 + rnd(0, 40), 255];
+      } else if (p < 0.75) {
+        // White
+        const v = 230 + rnd(0, 25);
+        return [v, v, 255];
+      } else if (p < 0.92) {
+        // Warm yellow
+        return [255, 220 + rnd(0, 20), 170 + rnd(0, 20)];
+      } else {
+        // Red giant (rare)
+        return [255, 160 + rnd(0, 20), 150 + rnd(0, 20)];
+      }
+    };
+
     const LAYERS: Layer[] = [
       {
         canvas: farCanvas,
         ctx: farCanvas.getContext("2d")!,
-        countDesktop: 600,
-        countMobile: 400,
-        sizeDesktop: [0.30, 0.80],
-        sizeMobile: [0.30, 0.80],
-        parallaxDesktop: 0.18,
-        parallaxMobile: 0.06,
-        twDesktop: [0.008, 0.0020],
-        twMobile: [0.0008, 0.0020],
+        countDesktop: 500,
+        countMobile: 220,
+        sizeDesktop: [0.3, 0.8],
+        sizeMobile: [0.25, 0.7],
+        parallaxDesktop: 0.15,
+        parallaxMobile: 0.05,
+        twDesktop: [0.001, 0.003],
+        twMobile: [0.0006, 0.0015],
         stars: [],
       },
       {
         canvas: midCanvas,
         ctx: midCanvas.getContext("2d")!,
-        countDesktop: 450,
-        countMobile: 350,
-        sizeDesktop: [0.45, 1.15],
-        sizeMobile: [0.45, 1.15],
-        parallaxDesktop: 0.30,
-        parallaxMobile: 0.10,
-        twDesktop: [0.0010, 0.0025],
-        twMobile: [0.0010, 0.0025],
+        countDesktop: 350,
+        countMobile: 150,
+        sizeDesktop: [0.5, 1.2],
+        sizeMobile: [0.4, 1.0],
+        parallaxDesktop: 0.3,
+        parallaxMobile: 0.1,
+        twDesktop: [0.002, 0.004],
+        twMobile: [0.001, 0.002],
         stars: [],
       },
       {
         canvas: nearCanvas,
         ctx: nearCanvas.getContext("2d")!,
-        countDesktop: 300,
-        countMobile: 250,
-        sizeDesktop: [0.60, 1.45],
-        sizeMobile: [0.60, 1.45],
+        countDesktop: 250,
+        countMobile: 100,
+        sizeDesktop: [0.7, 1.6],
+        sizeMobile: [0.6, 1.3],
         parallaxDesktop: 0.45,
-        parallaxMobile: 0.16,
-        twDesktop: [0.0012, 0.0030],
-        twMobile: [0.0012, 0.0030],
+        parallaxMobile: 0.18,
+        twDesktop: [0.003, 0.006],
+        twMobile: [0.0015, 0.003],
         stars: [],
       },
     ];
 
     const resize = () => {
       W = window.innerWidth;
-      H = window.innerHeight;
+      H = document.documentElement.clientHeight;
       isMobile = W < 980;
       DPR = Math.min(isMobile ? 1 : 2, window.devicePixelRatio || 1);
 
@@ -121,7 +140,7 @@ export default function StarsBackground() {
           r: rnd(...size),
           a: rnd(0, Math.PI * 2),
           tw: rnd(...tw),
-          b: rnd(0.2, 0.55),
+          base: rnd(0.2, 0.6),
           color: randomStarColor(),
         }));
       });
@@ -150,7 +169,7 @@ export default function StarsBackground() {
             if (s.a > Math.PI * 2) s.a -= Math.PI * 2;
           }
 
-          const alpha = s.b * (0.6 + 0.4 * Math.sin(s.a));
+          const alpha = s.base * (0.6 + 0.4 * Math.sin(s.a));
 
           const px = isMobile
             ? s.x
@@ -161,8 +180,9 @@ export default function StarsBackground() {
 
           ctx.beginPath();
           ctx.arc(px, wy, s.r, 0, Math.PI * 2);
+
           const [r, g, b] = s.color;
-          ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
+          ctx.fillStyle = `rgba(${r},${g},${b},${isMobile ? alpha * 0.8 : alpha})`;
           ctx.fill();
         }
       });
@@ -180,27 +200,6 @@ export default function StarsBackground() {
       if (isMobile) return;
       mx = e.clientX / W;
     };
-
-
-    const randomStarColor = (): [number, number, number] => {
-      const p = Math.random();
-
-      if (p < 0.15) {
-        // Blue stars (hot)
-        return [170 + rnd(0, 40), 200 + rnd(0, 40), 255];
-      } else if (p < 0.75) {
-        // White / neutral
-        const v = 230 + rnd(0, 25);
-        return [v, v, 255];
-      } else if (p < 0.92) {
-        // Warm yellow
-        return [255, 220 + rnd(0, 20), 170 + rnd(0, 20)];
-      } else {
-        // Red giants (rare)
-        return [255, 160 + rnd(0, 20), 150 + rnd(0, 20)];
-      }
-    };
-
 
     resize();
     raf = requestAnimationFrame(render);
