@@ -36,6 +36,7 @@ export default function StarsBackground() {
       a: number;
       tw: number;
       b: number;
+      color: [number, number, number];
     };
 
     type Layer = {
@@ -58,39 +59,39 @@ export default function StarsBackground() {
       {
         canvas: farCanvas,
         ctx: farCanvas.getContext("2d")!,
-        countDesktop: 300,
-        countMobile: 125,
+        countDesktop: 600,
+        countMobile: 300,
         sizeDesktop: [0.30, 0.80],
         sizeMobile: [0.30, 0.80],
         parallaxDesktop: 0.18,
         parallaxMobile: 0.06,
-        twDesktop: [0.0015, 0.0035],
+        twDesktop: [0.008, 0.0020],
         twMobile: [0.0008, 0.0020],
         stars: [],
       },
       {
         canvas: midCanvas,
         ctx: midCanvas.getContext("2d")!,
-        countDesktop: 260,
-        countMobile: 100,
+        countDesktop: 450,
+        countMobile: 250,
         sizeDesktop: [0.45, 1.15],
         sizeMobile: [0.45, 1.15],
         parallaxDesktop: 0.30,
         parallaxMobile: 0.10,
-        twDesktop: [0.0020, 0.0045],
+        twDesktop: [0.0010, 0.0025],
         twMobile: [0.0010, 0.0025],
         stars: [],
       },
       {
         canvas: nearCanvas,
         ctx: nearCanvas.getContext("2d")!,
-        countDesktop: 220,
-        countMobile: 80,
+        countDesktop: 300,
+        countMobile: 150,
         sizeDesktop: [0.60, 1.45],
         sizeMobile: [0.60, 1.45],
         parallaxDesktop: 0.45,
         parallaxMobile: 0.16,
-        twDesktop: [0.0025, 0.0060],
+        twDesktop: [0.0012, 0.0030],
         twMobile: [0.0012, 0.0030],
         stars: [],
       },
@@ -121,6 +122,7 @@ export default function StarsBackground() {
           a: rnd(0, Math.PI * 2),
           tw: rnd(...tw),
           b: rnd(0.2, 0.55),
+          color: randomStarColor(),
         }));
       });
     };
@@ -159,7 +161,8 @@ export default function StarsBackground() {
 
           ctx.beginPath();
           ctx.arc(px, wy, s.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255,255,255,${isMobile ? alpha * 0.75 : alpha})`;
+          const [r, g, b] = s.color;
+          ctx.fillStyle = `rgba(${r},${g},${b},${isMobile ? alpha * 0.85 : alpha})`;
           ctx.fill();
         }
       });
@@ -177,6 +180,27 @@ export default function StarsBackground() {
       if (isMobile) return;
       mx = e.clientX / W;
     };
+
+
+    const randomStarColor = (): [number, number, number] => {
+      const p = Math.random();
+
+      if (p < 0.15) {
+        // Blue stars (hot)
+        return [170 + rnd(0, 40), 200 + rnd(0, 40), 255];
+      } else if (p < 0.75) {
+        // White / neutral
+        const v = 230 + rnd(0, 25);
+        return [v, v, 255];
+      } else if (p < 0.92) {
+        // Warm yellow
+        return [255, 220 + rnd(0, 20), 170 + rnd(0, 20)];
+      } else {
+        // Red giants (rare)
+        return [255, 160 + rnd(0, 20), 150 + rnd(0, 20)];
+      }
+    };
+
 
     resize();
     raf = requestAnimationFrame(render);
