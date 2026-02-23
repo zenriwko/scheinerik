@@ -149,7 +149,7 @@ export default function Footer() {
         <p>
           Návrh a vývoj webu:{" "}
           <a
-            href="https://nextdigitalagency.com/"
+            href="https://nextdigitalagency.cz/"
             target="_blank"
             rel="noopener noreferrer"
           >
