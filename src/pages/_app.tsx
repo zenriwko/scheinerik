@@ -6,15 +6,14 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 import StarsBackground from "@/components/StarsBackground";
-import FixedButtons from "@/components/FixedButtons/FixedButtons";
 import Navigation from "@/components/Navigation/Navigation";
 import Footer from "@/components/Footer/Footer";
 // import CookieBanner from "@/components/%Cookies/CookieBanner";
 
 import type { AppProps } from "next/app";
 
-const SITE_NAME = "Noční Nebe";
-const SITE_URL = "https://nocninebe.eu";
+const SITE_NAME = "Scheinerik Development";
+const SITE_URL = "https://scheinerik.dev";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -72,7 +71,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
       {/* <CookieBanner /> */}
 
-      <FixedButtons />
       <Navigation />
 
       <main>
