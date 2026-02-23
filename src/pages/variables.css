@@ -1,55 +1,61 @@
 :root {
   /* ---------- Core Background & Layout ---------- */
-  --bg: linear-gradient(0deg, #05080E 80%, #000000 100%);
-  --card: #1C2333;
-  --heading: #ffffff;
-  --text: #EAEAEA;
-  --muted: #cccccc;
-  --line: #9CA3AF;
-  --separator: rgba(255, 255, 255, 0.1);
-  --radius: 16px;
-  --space: clamp(16px, 1.7vw, 28px);
+  --bg: linear-gradient(180deg, #0C0F14 0%, #07090D 100%);
+  --bg-soft: #10141C;
+  --card: #141922;
+  --card-hover: #171D28;
 
-  /* ---------- Bra nd Colours ---------- */
-  --main: #7986cb;               /* calm lavender-blue */
-  --secondary: #38e8ff;          /* nebula cyan */
-  --main-soft: rgba(121, 134, 203, 0.2);
-  --secondary-soft: rgba(56, 232, 255, 0.2);
-  --main-glow: rgba(121, 134, 203, 0.7);
-  --secondary-glow: rgba(56, 232, 255, 0.7);
+  --heading: #F5F7FA;
+  --text: #C8D0DA;
+  --muted: #8A94A6;
+  --line: #2A3140;
+  --separator: rgba(255, 255, 255, 0.06);
 
-  /* ---------- CTA Gradients ---------- */
-  --main-cta: linear-gradient(180deg, #000 87%, var(--main) 100%);
-  --main-cta-hover: linear-gradient(190deg, #000 60%, var(--main) 100%);
-  --secondary-cta: linear-gradient(180deg, #000 87%, var(--secondary) 100%);
-  --secondary-cta-hover: linear-gradient(170deg, #000 60%, var(--secondary) 100%);
+  --radius: 18px;
+  --space: clamp(16px, 1.6vw, 28px);
+
+  /* ---------- Brand Identity ---------- */
+  --main: #FF7A18;              /* electric ember */
+  --secondary: #6C63FF;         /* deep royal violet */
+  
+  --main-soft: rgba(255, 122, 24, 0.15);
+  --secondary-soft: rgba(108, 99, 255, 0.15);
+
+  --main-glow: rgba(255, 122, 24, 0.6);
+  --secondary-glow: rgba(108, 99, 255, 0.6);
+
+  /* ---------- Premium CTA Gradients ---------- */
+  --main-cta: linear-gradient(135deg, #FF7A18 0%, #FFB347 100%);
+  --main-cta-hover: linear-gradient(135deg, #FF8F3A 0%, #FFC76B 100%);
+
+  --secondary-cta: linear-gradient(135deg, #6C63FF 0%, #8B85FF 100%);
+  --secondary-cta-hover: linear-gradient(135deg, #7A72FF 0%, #A29DFF 100%);
 
   /* ---------- Text States ---------- */
-  --text-strong: #ffffff;
+  --text-strong: #FFFFFF;
   --text-muted-strong: rgba(255, 255, 255, 0.75);
-  --placeholder: rgba(255, 255, 255, 0.4);
+  --placeholder: rgba(255, 255, 255, 0.35);
 
   /* ---------- Form Backgrounds ---------- */
-  --bg-form: rgba(0, 0, 0, 0.5);
-  --bg-input: rgba(255, 255, 255, 0.06);
-  --bg-input-focus: rgba(56, 232, 255, 0.08);
+  --bg-form: rgba(255, 255, 255, 0.02);
+  --bg-input: rgba(255, 255, 255, 0.04);
+  --bg-input-focus: rgba(255, 122, 24, 0.08);
 
   /* ---------- Borders ---------- */
-  --border-base: rgba(56, 232, 255, 0.12);
-  --border-hover: rgba(56, 232, 255, 0.25);
+  --border-base: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 122, 24, 0.35);
   --border-input: rgba(255, 255, 255, 0.12);
 
-  /* ---------- Shadows & Glows ---------- */
-  --shadow-inset-light: rgba(255, 255, 255, 0.02);
-  --shadow-form-cyan: rgba(56, 232, 255, 0.08);
-  --shadow-hover-lavender: rgba(168, 139, 255, 0.05);
-  --shadow-hover-cyan: rgba(56, 232, 255, 0.15);
-  --shadow-input: rgba(255, 255, 255, 0.03);
-  --shadow-focus: rgba(56, 232, 255, 0.2);
-  --shadow-button: rgba(56, 232, 255, 0.25);
-  --shadow-button-hover: rgba(56, 232, 255, 0.4);
+  /* ---------- Shadows & Depth ---------- */
+  --shadow-soft: rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.45);
+  --shadow-hover-main: 0 0 40px rgba(255, 122, 24, 0.25);
+  --shadow-hover-secondary: 0 0 40px rgba(108, 99, 255, 0.25);
+  --shadow-button: 0 10px 30px rgba(255, 122, 24, 0.35);
+  --shadow-button-hover: 0 14px 40px rgba(255, 122, 24, 0.5);
 
   /* ---------- Status Colours ---------- */
-  --success: #38e8ff;
-  --error: #ff6b6b;
+  --success: #2ED47A;
+  --error: #FF4D4F;
+  --warning: #FFB020;
 }
