@@ -1,7 +1,7 @@
 import Head from "next/head";
 
-const SITE_URL = "https://nocninebe.eu";
-const SITE_NAME = "Noční Nebe";
+const SITE_URL = "https://scheinerik.dev";
+const SITE_NAME = "scheinerik";
 
 type SEOProps = {
   title: string;
