@@ -20,11 +20,11 @@ export default function Navigation() {
         <Link
           href="/"
           className={styles.logoWrapper}
-          aria-label="Magické Nebe - domů"
+          aria-label=""
         >
           <Image
-            src="/images/nocni-nebe-logo.png"
-            alt="Magické Nebe logo"
+            src=""
+            alt=""
             fill
             sizes="120px"
             style={{ objectFit: "contain" }}

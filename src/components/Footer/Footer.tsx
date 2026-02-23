@@ -9,10 +9,10 @@ export default function Footer() {
 
         {/* LOGO + DESCRIPTION */}
         <div className={styles.footerLogo}>
-          <a href="/" className={styles.logoWrapper} aria-label="Magické Nebe - domů">
+          <a href="/" className={styles.logoWrapper} aria-label="">
             <Image
-              src="/images/nocni-nebe-logo.png"
-              alt="Magické Nebe logo"
+              src=""
+              alt=""
               fill
               sizes="120px"
               style={{ objectFit: "contain" }}
@@ -20,10 +20,10 @@ export default function Footer() {
             />
           </a>
           <p>
-            © Noční Nebe<br></br><br></br>
+            © scheinerik.dev<br></br><br></br>
           </p>
           <p>
-            Tvoříme noční nebe z optických vláken pro stropy a interiéry aut.
+            Creating ecommerce websites.
           </p>
           <p>
             <Link href="/obchodni-podminky/">Obchodní Podmínky</Link> | <Link href="/ochrana-osobnich-udaju/">Ochrana Osobních Údajů</Link>
@@ -142,20 +142,6 @@ export default function Footer() {
           </nav>
         </div>
       
-      </div>
-
-      {/* BOTTOM CREDIT BAR */}
-      <div className={styles.footerBottom}>
-        <p>
-          Návrh a vývoj webu:{" "}
-          <a
-            href="https://nextdigitalagency.cz/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            NEXT Digital Agency
-          </a>
-        </p>
       </div>
 
     </footer>
