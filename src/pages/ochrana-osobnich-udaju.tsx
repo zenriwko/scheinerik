@@ -6,7 +6,7 @@ export default function OchranaOsobnichUdajuPage() {
     <>
       <SEO
         title="Ochrana osobních údajů"
-        description="Zásady zpracování osobních údajů na webu Noční Nebe: jaké údaje sbíráme, proč, jak dlouho je uchováváme a jaká máte práva."
+        description=""
         path="/ochrana-osobnich-udaju"
         noindex
       />
@@ -21,8 +21,7 @@ export default function OchranaOsobnichUdajuPage() {
         <section>
         <h2>1. Správce osobních údajů</h2>
         <p>
-          Správcem osobních údajů je Jan Poláček, IČO: 05431603, se sídlem
-          Maňákova 811/10, 198 00 Praha 9 – Černý Most (dále jen „správce“).
+          
         </p>
 
         <h2>2. Jaké osobní údaje zpracováváme</h2>
