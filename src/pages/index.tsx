@@ -9,55 +9,53 @@ import Timeline from "@/components/Timeline/Timeline";
 import FooterCTA from "@/components/FooterCTA/FooterCTA";
 import WhyChooseUs from "@/components/WhyChooseUs/WhyChooseUs";
 
-const SITE_URL = "https://nocninebe.eu";
+const SITE_URL = "https://scheinerik.dev";
 
 export default function HomePage() {
   const orgJsonLd = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": `${SITE_URL}#organization`,
-    name: "Noční Nebe",
-    url: SITE_URL,
-    logo: `${SITE_URL}/images/nocni-nebe-logo.png`,
-    image: `${SITE_URL}/images/featuredImages/nocni-nebe-featured.webp`,
+    "@type": "Person",
+    "@id": "https://scheinerik.dev/#person",
+    name: "Erik Scheinpflug",
+    url: "https://scheinerik.dev",
+    image: "https://scheinerik.dev/og-image.jpg",
     description:
-      "Noční Nebe se specializuje na návrh a instalaci prémiových hvězdných stropů a interiérů z optických vláken pro domácnosti i automobily v České republice.",
-    telephone: "+420737758530",
-    email: "info@nocninebe.eu",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "M. Koněva 168/22",
-      addressLocality: "Nymburk",
-      postalCode: "288 02",
-      addressCountry: "CZ"
+      "Erik Scheinpflug is an ecommerce website developer specialising in high-performance ecommerce platforms, conversion-focused design, and scalable web development solutions.",
+    jobTitle: "Ecommerce Website Developer",
+    worksFor: {
+      "@type": "Organization",
+      name: "Independent"
     },
-    areaServed: {
-      "@type": "Country",
-      name: "Czech Republic"
+    hasOccupation: {
+      "@type": "Occupation",
+      name: "Ecommerce Developer",
+      occupationLocation: {
+        "@type": "Country",
+        name: "Global"
+      }
     },
-    sameAs: [
-      "https://www.instagram.com/johnny_je_tady/"
-    ]
+    knowsAbout: [
+      "Ecommerce Website Development",
+      "Shopify Development",
+      "WooCommerce Development",
+      "Custom Ecommerce Solutions",
+      "Conversion Rate Optimisation",
+      "Technical SEO",
+      "Web Performance Optimisation"
+    ],
+    sameAs: []
   };
 
   return (
     <>
       <SEO
-        title="Hvězdné stropy a hvězdné interiéry"
-        description="Noční Nebe vytváří prémiové hvězdné stropy a realistické hvězdné interiéry z optických vláken. Luxusní design, precizní instalace a dlouhá životnost."
+        title=""
+        description=""
         path="/"
-        featuredImage="/images/featuredImages/nocni-nebe-featured.webp"
+        featuredImage=""
       />
 
       <JsonLd data={orgJsonLd} />
-
-      <Hero />
-      <Services />
-      <WhyChooseUs />
-      <GalleryFeatured />
-      <Timeline />
-      <PricingLite />
-      <FooterCTA />
     </>
   );
 }
