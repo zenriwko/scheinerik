@@ -52,7 +52,7 @@ export default function Navigation() {
                 href="/sluzby"
                 className={isActive("/sluzby") ? styles.activeLink : ""}
               >
-                Služby
+                2
               </Link>
             </li>
             <li>
@@ -60,23 +60,23 @@ export default function Navigation() {
                 href="/galerie"
                 className={isActive("/galerie") ? styles.activeLink : ""}
               >
-                Galerie
+                3
               </Link>
             </li>
             <li>
               <Link
-                href="/nase-prace"
-                className={isActive("/nase-prace") ? styles.activeLink : ""}
+                href="/"
+                className={isActive("/") ? styles.activeLink : ""}
               >
-                Naše Práce
+                4
               </Link>
             </li>
             <li>
               <Link
-                href="/o-nas"
-                className={isActive("/o-nas") ? styles.activeLink : ""}
+                href="/"
+                className={isActive("/") ? styles.activeLink : ""}
               >
-                O Nás
+                5
               </Link>
             </li>
           </ul>
