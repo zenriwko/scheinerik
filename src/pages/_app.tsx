@@ -5,7 +5,7 @@ import Head from "next/head";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
-import StarsBackground from "@/components/StarsBackground";
+import NodeNetworkBackground from "@/components/NodeNetworkBackground";
 import Navigation from "@/components/Navigation/Navigation";
 import Footer from "@/components/Footer/Footer";
 // import CookieBanner from "@/components/%Cookies/CookieBanner";
@@ -66,7 +66,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
 
       <div className="background-wrapper">
-        <StarsBackground />
+        <NodeNetworkBackground />
       </div>
 
       {/* <CookieBanner /> */}

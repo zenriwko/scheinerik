@@ -23,8 +23,8 @@ export default function Navigation() {
           aria-label=""
         >
           <Image
-            src=""
-            alt=""
+            src="/images/scheinerik-logo.png"
+            alt="scheinerik logo"
             fill
             sizes="120px"
             style={{ objectFit: "contain" }}
@@ -49,34 +49,10 @@ export default function Navigation() {
           <ul>
             <li>
               <Link
-                href="/sluzby"
+                href="/"
                 className={isActive("/sluzby") ? styles.activeLink : ""}
               >
                 2
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/galerie"
-                className={isActive("/galerie") ? styles.activeLink : ""}
-              >
-                3
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/"
-                className={isActive("/") ? styles.activeLink : ""}
-              >
-                4
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/"
-                className={isActive("/") ? styles.activeLink : ""}
-              >
-                5
               </Link>
             </li>
           </ul>
