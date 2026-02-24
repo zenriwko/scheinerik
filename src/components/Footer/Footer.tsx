@@ -11,8 +11,8 @@ export default function Footer() {
         <div className={styles.footerLogo}>
           <a href="/" className={styles.logoWrapper} aria-label="">
             <Image
-              src=""
-              alt=""
+              src="/images/scheinerik-logo.png"
+              alt="scheinerik logo"
               fill
               sizes="120px"
               style={{ objectFit: "contain" }}
@@ -48,7 +48,7 @@ export default function Footer() {
           <h4>Sledujte nás</h4>
           {/* Google Review Banner */}
           <a
-            href="https://search.google.com/local/writereview?placeid=ChIJGZp6ZwD5C0cReysird4lVeE"
+            href=""
             target="_blank"
             rel="noopener noreferrer"
             className={styles.googleReview}
@@ -65,7 +65,7 @@ export default function Footer() {
 
             {/* Instagram */}
             <a
-              href="https://www.instagram.com/johnny_je_tady/"
+              href=""
               target="_blank"
               rel="noopener noreferrer"
               className={styles.socialItem}
@@ -125,19 +125,19 @@ export default function Footer() {
 
         {/* NAVIGATION */}
         <div className={styles.footerNavigation}>
-          <h4>Instalace optických vláken</h4>
+          <h4>Website Development</h4>
 
           <nav className={styles.footerNav} aria-label="Footer navigace">
             <Link
-              href="/sluzby/automobily/hvezdny-strop"
+              href=""
             >
-              › Noční obloha v automobilu
+              › Local Business
             </Link>
 
             <Link
-              href="/sluzby/automobily/hvezdny-interier"
+              href=""
             >
-              › Noční nebe v dekoru auta
+              › eCommerce
             </Link>
           </nav>
         </div>

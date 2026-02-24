@@ -1,11 +1,6 @@
 // components/NodeNetworkBackground.tsx
-// FINAL EPIC VERSION
-// Changes:
-// - Ultimate Black Hole (Level 11) now sucks MUCH slower & more cinematic (15 seconds)
-// - Level 11 instantly auto-absorbs ANY dot inside its huge radius (no need to hold mouse)
-// - When Level 11 spawns, the whole website slowly scales down with smooth transition (no sudden jump)
-// - Bigger, more dramatic explosion at the end
-// - Level 10 still auto-absorbs when holding mouse
+// FIXED: Level 1 Black Hole now auto-absorbs instantly (no hold needed)
+// Level 2 = Ultimate Black Hole (full website slow suck + shake + explosion + reload)
 
 'use client';
 
@@ -19,7 +14,7 @@ interface Particle {
   radius: number;
   targetRadius: number;
   color: string;
-  level: number;
+  level: number;           // 0 = normal, 1 = black hole, 2 = ultimate
 }
 
 interface SpawnRipple {
@@ -62,20 +57,19 @@ const NodeNetworkBackground: React.FC = () => {
     RIPPLE_FADE: 0.032,
     MERGE_THRESHOLD: 2,
     BASE_MERGE_RADIUS: 15,
-    MAX_LEVEL: 11,
+    MAX_LEVEL: 2,
     BLACK_HOLE_PULL_RADIUS: 9999,
-    BLACK_HOLE_GROW_SPEED: 0.008,
+    BLACK_HOLE_GROW_SPEED: 0.012,
     BLACK_HOLE_MAX_STRENGTH: 2.4,
     ENERGY_PULSE_DURATION: 1000,
-    AUTO_ABSORB_RADIUS_LEVEL10: 85,
-    AUTO_ABSORB_RADIUS_ULTIMATE: 9999,   // full screen for level 11
-    ULTIMATE_SUCK_DURATION: 15000,       // 15 seconds — much slower & epic
+    AUTO_ABSORB_RADIUS_LEVEL1: 140,      // ← Increased for better visibility
+    ULTIMATE_SUCK_DURATION: 15000,
   };
 
   const levelColors = [
-    '#FF3300', '#FFD700', '#00FF7F', '#00F0FF', '#FF00FF',
-    '#FF2A00', '#BFFF00', '#8A00FF', '#FF0099', '#00FFEE',
-    '#AA0000', '#000000',
+    '#FF7A18',     // 0 Normal
+    '#AA0000',     // 1 Black Hole
+    '#000000',     // 2 Ultimate Black Hole
   ];
 
   const getTargetParticleCount = (width: number, height: number): number => {
@@ -86,19 +80,17 @@ const NodeNetworkBackground: React.FC = () => {
   };
 
   const createParticle = (x: number, y: number, isSpawned = false, level = 0): Particle => {
-    const isUltimate = level === CONFIG.MAX_LEVEL;
-    const targetRadius = level === 0 
-      ? Math.random() * 1.1 + 0.75 
-      : level < 11 ? 2.4 + level * 1.18 : 46;
+    const isUltimate = level === 2;
+    const targetRadius = level === 0 ? Math.random() * 1.1 + 0.75 : level === 1 ? 11 : 46;
 
     const initialRadius = isSpawned || level > 0 
-      ? targetRadius * (level === 0 ? 4.2 : level < 11 ? 6.8 + level * 0.75 : 11) 
+      ? targetRadius * (level === 0 ? 4.2 : level === 1 ? 5.5 : 11) 
       : targetRadius;
 
     return {
       x, y,
-      vx: isSpawned || level > 0 ? (Math.random() - 0.5) * (isUltimate ? 0.06 : 0.85 - level * 0.07) : (Math.random() - 0.5) * 0.6,
-      vy: isSpawned || level > 0 ? (Math.random() - 0.5) * (isUltimate ? 0.06 : 0.85 - level * 0.07) : (Math.random() - 0.5) * 0.6,
+      vx: isSpawned || level > 0 ? (Math.random() - 0.5) * (isUltimate ? 0.06 : 0.85 - level * 0.1) : (Math.random() - 0.5) * 0.6,
+      vy: isSpawned || level > 0 ? (Math.random() - 0.5) * (isUltimate ? 0.06 : 0.85 - level * 0.1) : (Math.random() - 0.5) * 0.6,
       radius: initialRadius,
       targetRadius,
       color: levelColors[level],
@@ -139,29 +131,27 @@ const NodeNetworkBackground: React.FC = () => {
     }
   };
 
-  const getMaxLevel = (particles: Particle[]): number => {
-    return particles.reduce((max, p) => Math.max(max, p.level), 0);
-  };
-
   const findDotsNearMouse = (particles: Particle[], mx: number, my: number, radius: number, level: number): Particle[] => {
     return particles.filter((p) => p.level === level && (p.x - mx) ** 2 + (p.y - my) ** 2 < radius * radius);
   };
 
-  const autoAbsorbByLevel10 = () => {
+  // Auto-absorb for Level 1 Black Hole (no hold needed)
+  const autoAbsorbByLevel1 = () => {
     const particles = particlesRef.current;
-    const level10s = particles.filter(p => p.level === 10);
+    const blackHoles = particles.filter(p => p.level === 1);
 
-    level10s.forEach(bh => {
+    blackHoles.forEach(bh => {
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
-        if (p.level === 10) continue;
+        if (p.level === 1) continue;
 
         const dx = p.x - bh.x;
         const dy = p.y - bh.y;
-        if (dx * dx + dy * dy < CONFIG.AUTO_ABSORB_RADIUS_LEVEL10 ** 2) {
-          ripplesRef.current.push({ x: bh.x, y: bh.y, radius: 18, alpha: 0.65, color: '#FF4400', speed: 2.8 });
+        if (dx * dx + dy * dy < CONFIG.AUTO_ABSORB_RADIUS_LEVEL1 ** 2) {
+          // Visual feedback
+          ripplesRef.current.push({ x: bh.x, y: bh.y, radius: 28, alpha: 0.75, color: '#FF4400', speed: 3.5 });
           particles.splice(i, 1);
-          bh.targetRadius = Math.min(bh.targetRadius + 0.8, 48);
+          bh.targetRadius = Math.min(bh.targetRadius + 1.5, 55);
         }
       }
     });
@@ -174,10 +164,10 @@ const NodeNetworkBackground: React.FC = () => {
     const my = mouseRef.current.y;
     if (mx < 0 || my < 0) return;
 
-    const maxLevel = getMaxLevel(particles);
+    const maxLevel = particles.reduce((max, p) => Math.max(max, p.level), 0);
     const effectiveRadius = maxLevel >= 1 ? 20 * maxLevel : CONFIG.BASE_MERGE_RADIUS;
 
-    for (let lvl = CONFIG.MAX_LEVEL - 1; lvl >= 0; lvl--) {
+    for (let lvl = 1; lvl >= 0; lvl--) {
       const nearby = findDotsNearMouse(particles, mx, my, effectiveRadius, lvl);
       if (nearby.length >= CONFIG.MERGE_THRESHOLD) {
         const cluster = nearby.slice(0, CONFIG.MERGE_THRESHOLD);
@@ -193,31 +183,30 @@ const NodeNetworkBackground: React.FC = () => {
         const special = createParticle(centerX, centerY, false, nextLevel);
         particlesRef.current.push(special);
 
-        const baseRadius = nextLevel === CONFIG.MAX_LEVEL ? 95 : 18 + nextLevel * 6;
-        ripplesRef.current.push({ x: centerX, y: centerY, radius: baseRadius * 0.3, alpha: 0.95, color: special.color, speed: 3.2 });
-        ripplesRef.current.push({ x: centerX, y: centerY, radius: baseRadius * 0.6, alpha: 0.75, color: special.color, speed: 2.6 });
-        ripplesRef.current.push({ x: centerX, y: centerY, radius: baseRadius,     alpha: 0.55, color: special.color, speed: 2.0 });
+        const baseRadius = nextLevel === 2 ? 110 : 28;
+        ripplesRef.current.push({ x: centerX, y: centerY, radius: baseRadius * 0.3, alpha: 0.95, color: special.color, speed: 3.8 });
+        ripplesRef.current.push({ x: centerX, y: centerY, radius: baseRadius * 0.65, alpha: 0.75, color: special.color, speed: 2.9 });
+        ripplesRef.current.push({ x: centerX, y: centerY, radius: baseRadius,     alpha: 0.55, color: special.color, speed: 2.2 });
 
         lastMergeTimeRef.current = Date.now();
 
-        if (nextLevel === CONFIG.MAX_LEVEL) {
+        if (nextLevel === 2) {
           blackHoleActiveRef.current = true;
           blackHoleStrengthRef.current = 0;
           document.body.classList.add('ultimate-black-hole', 'ultimate-black-hole-shake');
 
           if (ultimateTimerRef.current) clearTimeout(ultimateTimerRef.current);
           ultimateTimerRef.current = setTimeout(() => {
-            // Epic explosion
             const cx = canvasRef.current!.width / (window.devicePixelRatio || 1) / 2;
             const cy = canvasRef.current!.height / (window.devicePixelRatio || 1) / 2;
-            for (let i = 0; i < 25; i++) {
+            for (let i = 0; i < 30; i++) {
               ripplesRef.current.push({
-                x: cx + (Math.random() - 0.5) * 600,
-                y: cy + (Math.random() - 0.5) * 600,
-                radius: 100 + Math.random() * 220,
+                x: cx + (Math.random() - 0.5) * 700,
+                y: cy + (Math.random() - 0.5) * 700,
+                radius: 120 + Math.random() * 280,
                 alpha: 0.95,
                 color: '#FFAA00',
-                speed: 7 + Math.random() * 6,
+                speed: 8 + Math.random() * 7,
               });
             }
             document.body.classList.remove('ultimate-black-hole', 'ultimate-black-hole-shake');
@@ -297,7 +286,7 @@ const NodeNetworkBackground: React.FC = () => {
         }
       }
 
-      const damping = p.level === CONFIG.MAX_LEVEL ? 0.82 : p.level > 5 ? 0.89 : CONFIG.DAMPING;
+      const damping = p.level === 2 ? 0.82 : p.level === 1 ? 0.88 : CONFIG.DAMPING;
       p.vx *= damping;
       p.vy *= damping;
 
@@ -349,8 +338,8 @@ const NodeNetworkBackground: React.FC = () => {
     const isEnergyPulse = Date.now() - lastMergeTimeRef.current < CONFIG.ENERGY_PULSE_DURATION;
 
     particles.forEach((p) => {
-      const isBlackHole = p.level >= 10;
-      const baseGlow = isBlackHole ? 170 : p.level === 2 ? 48 : p.level > 0 ? 28 + p.level * 2 : CONFIG.GLOW_BLUR;
+      const isBlackHole = p.level >= 1;
+      const baseGlow = isBlackHole ? 170 : CONFIG.GLOW_BLUR;
       const glow = isEnergyPulse ? baseGlow * 1.6 : baseGlow;
 
       ctx.save();
@@ -361,15 +350,15 @@ const NodeNetworkBackground: React.FC = () => {
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       ctx.fill();
 
-      ctx.shadowBlur = isBlackHole ? 48 : p.level === 2 ? 18 : p.level > 0 ? 9 : 4;
+      ctx.shadowBlur = isBlackHole ? 48 : 4;
       ctx.fillStyle = isBlackHole ? 'rgba(0,0,0,0.98)' : 'rgba(255,255,255,0.88)';
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius * (isBlackHole ? 0.88 : p.level === 2 ? 0.72 : p.level > 0 ? 0.58 : 0.48), 0, Math.PI * 2);
+      ctx.arc(p.x, p.y, p.radius * (isBlackHole ? 0.88 : 0.48), 0, Math.PI * 2);
       ctx.fill();
 
       if (isBlackHole) {
         ctx.shadowBlur = 130;
-        ctx.strokeStyle = p.level === 11 ? 'rgba(255,80,80,0.65)' : 'rgba(255, 180, 80, 0.55)';
+        ctx.strokeStyle = p.level === 2 ? 'rgba(255,60,60,0.65)' : 'rgba(255, 180, 80, 0.55)';
         ctx.lineWidth = 32;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius * 2.6, 0, Math.PI * 2);
@@ -450,7 +439,7 @@ const NodeNetworkBackground: React.FC = () => {
 
     updateParticles(particles, width, height);
     regenerateParticles(particles, width, height);
-    autoAbsorbByLevel10();
+    autoAbsorbByLevel1();           // ← Fixed & now working
 
     if (isHoldingRef.current) {
       tryMergeNearMouse();

@@ -8,6 +8,21 @@
   scrollbar-width: thin;
   scrollbar-color: #ffffff #000;
 }
+/* Black hole */
+.ultimate-black-hole {
+  transition: transform 15s cubic-bezier(0.23, 0.01, 0.32, 1) !important;
+  transform: scale(0.76) translate(0px, 0px) !important;
+}
+
+.ultimate-black-hole-shake {
+  animation: ultimateShake 0.6s infinite alternate;
+}
+
+@keyframes ultimateShake {
+  0%   { transform: translate(4px, 4px) rotate(1.5deg); }
+  50%  { transform: translate(-5px, -4px) rotate(-1.5deg); }
+  100% { transform: translate(4px, 5px) rotate(1.5deg); }
+}
 
 html,
 body {
