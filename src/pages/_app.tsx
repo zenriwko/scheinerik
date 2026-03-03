@@ -5,6 +5,8 @@ import Head from "next/head";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
+import { geistSans, geistMono } from '@/lib/fonts';
+
 import NodeNetworkBackground from "@/components/NodeNetworkBackground";
 import Navigation from "@/components/Navigation/Navigation";
 import Footer from "@/components/Footer/Footer";
@@ -60,6 +62,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <div className={`${geistSans.variable} ${geistMono.variable}`}>
+        
       <Head>
         {/* Global defaults only (page-specific SEO is handled by <SEO />) */}
         <meta property="og:site_name" content={SITE_NAME} />
@@ -78,6 +82,8 @@ export default function App({ Component, pageProps }: AppProps) {
       </main>
 
       <Footer />
+
+      </div>
     </>
   );
 }

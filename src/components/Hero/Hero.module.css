@@ -1,45 +1,62 @@
 .hero {
-  position: relative;
+  min-height: calc(100vh-70px);
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: calc(80vh - 100px);
-  margin: 0 auto;
+  justify-content: center;
+  padding: clamp(8rem, 12vw, 12rem) clamp(1.5rem, 5vw, 4rem);
 }
 
-.heroWrap {
-  display: grid;
+.container {
+  width: 100%;
+  max-width: 1100px;
   text-align: center;
 }
 
 .kicker {
-  padding-bottom: 15px;
-  color: var(--muted);
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 1.2rem;
+  border-radius: var(--radius);
+  color: var(--main);
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.78rem;
+  letter-spacing: 0.06em;
 }
 
-.sub {
-  color: var(--text);
-  padding-bottom: 20px;
+.textWrapper {
+  max-width: 780px;
+  margin: 0 auto 3.5rem;
 }
 
-.actions {
+.ctaGroup {
   display: flex;
-  gap: 12px;
-  justify-content: center;
   flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
 }
 
-@media(max-width:980px) {
+/* ────────────────────────────────────────────────
+   Responsive layout only
+──────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
   .hero {
-      height: calc(80vh - 70px);
+    padding: clamp(6rem, 10vw, 9rem) clamp(1.25rem, 4vw, 3rem);
   }
+
+  .ctaGroup {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .button,
+  .button.secondary {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
   .kicker {
-    padding-bottom: 10px;
-  }
-  .sub {
-    padding-bottom: 15px;
+    padding: 0.35rem 1rem;
   }
 }

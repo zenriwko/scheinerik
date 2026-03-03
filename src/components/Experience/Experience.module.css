@@ -1,0 +1,131 @@
+.experience {
+
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.header {
+  text-align: center;
+  margin: 0 auto 2rem;
+}
+
+.kicker {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  padding: 0.5rem 1.4rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.125em;
+  text-transform: uppercase;
+  color: var(--main);
+  background: var(--main-soft);
+  border-radius: var(--radius, 12px);
+  border: 1px solid rgba(20, 184, 166, 0.2);
+}
+
+.header h2 {
+  font-size: clamp(2.6rem, 6.5vw, 4.5rem);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+}
+
+.lead {
+  font-size: 1.25rem;
+  line-height: 1.65;
+  color: var(--text-muted-strong);
+}
+
+/* Single clean card */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border-base);
+  border-radius: var(--radius, 20px);
+  padding: 2.75rem 3rem;
+  box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.25);
+  max-width: 920px;
+  margin: 0 auto;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  border-color: var(--main);
+  box-shadow: 0 30px 80px -15px var(--main-glow);
+}
+
+.meta {
+  margin-bottom: 2rem;
+}
+
+.role {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--heading);
+  margin-bottom: 0.6rem;
+}
+
+.companyInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.2rem;
+  color: var(--main);
+  font-weight: 600;
+}
+
+.period {
+  color: var(--muted);
+}
+
+.location {
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.description {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem 0;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--text-muted-strong);
+}
+
+.description li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1.1rem;
+}
+
+.description li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--main);
+  font-weight: 700;
+}
+
+.description li:last-child {
+  margin-bottom: 0;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .card {
+    padding: 2rem 1.75rem;
+  }
+  .role {
+    font-size: 1.45rem;
+  }
+  .description {
+    font-size: 1.1rem;
+  }
+}

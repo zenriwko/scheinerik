@@ -69,7 +69,7 @@ export default function Navigation() {
 
           <Link
             href="/kontakt"
-            className={`button ghost ${isActive("/kontakt") ? "active" : ""}`}
+            className={`button secondary ${isActive("/kontakt") ? "active" : ""}`}
           >
             <span>Kontakt</span>
           </Link>

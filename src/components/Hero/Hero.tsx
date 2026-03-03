@@ -3,16 +3,34 @@ import styles from './Hero.module.css';
 export default function Hero() {
   return (
     <section className={styles.hero}>
-      <div className={`container ${styles.heroWrap}`}>
-        <span className={styles.kicker}>eCommerce website development &amp;</span>
-        <h1>Erik Scheinpflug</h1>
-        <p className={styles.sub}>
-          Vytvářím moderní webové aplikace v Reactu a Next.js zaměřené na výkon, škálovatelnost a dlouhodobou udržitelnost kódu.
-        </p>
+      <div className={styles.container}>
+        <span className={styles.kicker}>
+          eCommerce websites & modern web applications
+        </span>
 
-        <p className={styles.sub}>
-          Každý projekt je navržen strategicky – s důrazem na čistou architekturu, optimalizaci rychlosti a maximální technickou kvalitu.
-        </p>
+        <h1>Erik Scheinpflug</h1>
+
+        <div className={styles.textWrapper}>
+          <p>
+            I build modern web applications with React and Next.js, focused on performance, 
+            scalability, and long-term code maintainability.
+          </p>
+
+          <p>
+            Every project is designed strategically — with emphasis on clean architecture, 
+            speed optimization, and maximum technical quality.
+          </p>
+        </div>
+
+        <div className={styles.ctaGroup}>
+          <a href="#contact" className="button">
+            Book a consultation
+          </a>
+
+          <a href="/projects" className="button secondary">
+            View my work
+          </a>
+        </div>
       </div>
     </section>
   );

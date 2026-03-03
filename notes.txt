@@ -1,0 +1,21 @@
+// example usage in page.tsx
+export default function Home() {
+  return (
+    <>
+      <Navbar />
+
+      <Hero />
+      <div>
+        <About />
+        <TechStack />
+        <Services />
+        <Projects />
+        <Experience />
+        <Testimonials />
+        <Contact />
+      </div>
+
+      <Footer />
+    </>
+  )
+}

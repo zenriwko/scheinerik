@@ -2,6 +2,12 @@ import SEO from "@/components/%SEO/SEO";
 import JsonLd from "@/components/%SEO/JsonLd";
 
 import Hero from "@/components/Hero/Hero";
+import About from "@/components/About/About";
+import TechStack from "@/components/TechStack/TechStack";
+import Services from '@/components/Services/Services';
+import Experience from "@/components/Experience/Experience";
+import Projects from "@/components/Projects/Projects";
+import Contact from "@/components/Contact/Contact";
 
 const SITE_URL = "https://scheinerik.dev";
 
@@ -49,7 +55,13 @@ export default function HomePage() {
         featuredImage=""
       />
 
-      
+      <Hero />
+      <About />
+      <TechStack />
+      <Services />
+      <Experience />
+      <Projects />
+      <Contact />
 
       <JsonLd data={orgJsonLd} />
     </>

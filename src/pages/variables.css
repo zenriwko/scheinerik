@@ -1,56 +1,45 @@
 :root {
-  /* Core */
-  --bg-start: #0C0F14;
-  --bg-end:   #07090D;
+  /* ───── Core Background ───── */
+  --bg-start: #0a0f1c;
+  --bg-end:   #05070f;
   --bg: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
-  --bg-soft: #10141C;
-  --card: #141922;
-  --card-hover: #171D28;
+  --bg-soft: #0f1625;
+  --card: #111827;
+  --card-hover: #1a2337;
 
-  --heading: #F5F7FA;
-  --text: #C8D0DA;
-  --muted: #8A94A6;
-  --line: #2A3140;
-  --separator: rgba(255, 255, 255, 0.06);
+  /* ───── Text & UI ───── */
+  --heading: #f8fafc;
+  --text: #cbd5e1;
+  --muted: #94a3b8;
+  --separator: rgba(148, 163, 184, 0.1);
 
-  --radius: 18px;
-  --space: clamp(1rem, 1.6vw, 1.75rem); /* slightly safer mobile/desktop */
+  /* ───── Brand – Friendly & Trustworthy ───── */
+  --main: #14b8a6;                    /* Teal – most trusted modern dev color */
+  --secondary: #6366f1;               /* Indigo – smart & creative */
+  --accent: #10b981;                  /* Emerald – success & reliability */
 
-  /* Brand */
-  --main: #FF7A18;
-  --secondary: #6C63FF;
-  --main-soft: rgba(255, 122, 24, 0.15);
-  --secondary-soft: rgba(108, 99, 255, 0.15);
-  --main-glow: rgba(255, 122, 24, 0.45);     /* lowered a bit */
-  --secondary-glow: rgba(108, 99, 255, 0.45);
+  --main-soft: rgba(20, 184, 166, 0.12);
+  --secondary-soft: rgba(99, 102, 241, 0.12);
+  --main-glow: rgba(20, 184, 166, 0.35);
+  --secondary-glow: rgba(99, 102, 241, 0.35);
 
-  /* CTA gradients */
-  --main-cta: linear-gradient(135deg, #FF7A18 0%, #FFB347 100%);
-  --main-cta-hover: linear-gradient(135deg, #FF8F3A 0%, #FFC76B 100%);
-  --secondary-cta: linear-gradient(135deg, #6C63FF 0%, #8B85FF 100%);
-  --secondary-cta-hover: linear-gradient(135deg, #7A72FF 0%, #A29DFF 100%);
+  /* ───── CTA Gradients (smooth & premium) ───── */
+  --main-cta: linear-gradient(135deg, #14b8a6 0%, #22d3ee 100%);
+  --main-cta-hover: linear-gradient(135deg, #22d3ee 0%, #67e8f9 100%);
+  --secondary-cta: linear-gradient(135deg, #6366f1 0%, #a5b4fc 100%);
+  --secondary-cta-hover: linear-gradient(135deg, #818cf8 0%, #c4b5fd 100%);
 
-  /* Rest unchanged — looks good */
-  --text-strong: #FFFFFF;
-  --text-muted-strong: rgba(255, 255, 255, 0.75);
-  --placeholder: rgba(255, 255, 255, 0.35);
+  /* ───── Other ───── */
+  --text-strong: #ffffff;
+  --text-muted-strong: rgba(203, 213, 225, 0.85);
+  --border-base: rgba(148, 163, 184, 0.12);
+  --border-hover: rgba(20, 184, 166, 0.4);
 
-  --bg-form: rgba(255, 255, 255, 0.02);
-  --bg-input: rgba(255, 255, 255, 0.04);
-  --bg-input-focus: rgba(255, 122, 24, 0.08);
+  --shadow-button: 0 12px 32px rgba(20, 184, 166, 0.25);
+  --shadow-button-hover: 0 20px 48px rgba(20, 184, 166, 0.35);
+  --shadow-hover-main: 0 0 35px rgba(20, 184, 166, 0.25);
 
-  --border-base: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 122, 24, 0.35);
-  --border-input: rgba(255, 255, 255, 0.12);
-
-  --shadow-soft: rgba(0, 0, 0, 0.35);
-  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.45);
-  --shadow-hover-main: 0 0 40px rgba(255, 122, 24, 0.22);
-  --shadow-hover-secondary: 0 0 40px rgba(108, 99, 255, 0.22);
-  --shadow-button: 0 10px 30px rgba(255, 122, 24, 0.35);
-  --shadow-button-hover: 0 14px 40px rgba(255, 122, 24, 0.5);
-
-  --success: #2ED47A;
-  --error: #FF4D4F;
-  --warning: #FFB020;
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
 }
