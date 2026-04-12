@@ -55,6 +55,14 @@ export default function Navigation() {
                 2
               </Link>
             </li>
+            <li>
+              <Link
+                href="/projects/property-listing"
+                className={isActive("/projects/property-listing") ? styles.activeLink : ""}
+              >
+                Property Listing
+              </Link>
+            </li>
           </ul>
         </nav>
 
@@ -114,6 +122,15 @@ export default function Navigation() {
                 onClick={() => setMenuOpen(false)}
               >
                 O Nás
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/projects/property-listing"
+                className={isActive("/projects/property-listing") ? styles.activeLink : ""}
+                onClick={() => setMenuOpen(false)}
+              >
+                Property Listing
               </Link>
             </li>
           </ul>
