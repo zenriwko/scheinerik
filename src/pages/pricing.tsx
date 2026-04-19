@@ -11,7 +11,7 @@ const plans = [
   {
     name: 'Static Website',
     price: '$250',
-    priceNote: 'base price',
+    priceNote: '/month',
     description:
       'A custom, branded website built for speed and search engine visibility — ideal for portfolios, landing pages, and growing businesses.',
     features: [
@@ -24,7 +24,7 @@ const plans = [
       'Google Analytics & Tag Manager setup',
       '3 rounds of revision included',
       'Source code & full ownership on delivery',
-      '14 days post-launch bug-fix support',
+      'Ongoing updates — content, features, and improvements every month',
     ],
     cta: 'Get Started',
     ctaHref: '#contact',
@@ -33,7 +33,7 @@ const plans = [
   {
     name: 'eCommerce',
     price: 'From $300',
-    priceNote: 'scales with inventory & features',
+    priceNote: '/month — scales with scope',
     description:
       'A full online store with catalog, checkout, and payments. Final price depends on the number of products and integrations needed.',
     features: [
@@ -46,12 +46,11 @@ const plans = [
       'Discount codes & promotional rules',
       'Automated order notification emails',
       '5 rounds of revision included',
-      '30 days post-launch support',
+      'Ongoing updates — new products, features, and improvements monthly',
     ],
     cta: 'Get Started',
     ctaHref: '#contact',
-    featured: true,
-    badge: 'Most Popular',
+    featured: false,
   },
   {
     name: 'Custom Project',
@@ -105,8 +104,8 @@ const guarantees = [
   },
   {
     Icon: HeartHandshake,
-    title: 'Post-launch support',
-    desc: 'Bug fixes and small adjustments included for 14–30 days after going live, depending on the plan.',
+    title: 'Always improving',
+    desc: 'Your site is never "done". Every month brings updates, improvements, and new features as your business grows.',
   },
 ];
 
@@ -139,8 +138,8 @@ const faqs = [
     a: "The base price covers the core scope listed in each plan — design, development, SEO basics, and handover. Add-ons like extra pages beyond the included count, advanced animations, multi-language support, or specific third-party integrations are quoted as line items before work starts.",
   },
   {
-    q: 'Are there ongoing costs after launch?',
-    a: "My fee is a one-time project cost. After launch you'll need hosting ($5–20/month on Vercel, Netlify, or your own server) and a domain (~$15/year). I'll help you set both up and walk you through managing them independently.",
+    q: 'What does the monthly fee cover?',
+    a: "The monthly fee covers your website in full — hosting, ongoing development, and continuous improvements. Every month your site gets updated: new content, feature additions, design tweaks, performance tuning, and anything else that keeps it sharp. You're not paying for a finished product that sits still — you're paying for a website that keeps getting better.",
   },
   {
     q: 'How long does a typical project take?',
@@ -168,8 +167,8 @@ export default function PricingPage() {
   return (
     <>
       <SEO
-        title="Web Development Pricing – From $250"
-        description="Transparent pricing for custom websites and web apps. Static sites from $250, eCommerce from $300. Fixed price agreed before work starts — no hidden fees."
+        title="Web Development Pricing – From $250/month"
+        description="Monthly plans for custom websites and web apps. Static sites from $250/month, eCommerce from $300/month. Ongoing updates included — your site keeps improving every month."
         path="/pricing"
       />
 
@@ -191,8 +190,8 @@ export default function PricingPage() {
               <span className={styles.gradient}>pricing.</span>
             </h1>
             <p className={styles.heroLead}>
-              Fixed base prices, no hidden fees. Every project is custom-built — so the final
-              number reflects your exact requirements, not a bloated package.
+              Monthly plans, no hidden fees. Your website is custom-built and continuously
+              updated — it grows with your business, not just sits there after launch.
             </p>
             <div className={styles.heroActions}>
               <a href="#plans" className="button">
@@ -247,7 +246,7 @@ export default function PricingPage() {
           </div>
 
           <p className={styles.plansNote}>
-            All prices are starting points. Final cost depends on scope, complexity, and timeline.
+            All prices are monthly and include ongoing updates. Final rate depends on scope and complexity.
             Not sure which fits? <a href="#contact" className="link-underline">Drop me a message</a> and we&apos;ll figure it out.
           </p>
         </div>
