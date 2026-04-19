@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /demo/roofing
+Disallow: /demo/remodeling
+Disallow: /demo/cleaning
 
 Sitemap: https://scheinerik.dev/sitemap.xml

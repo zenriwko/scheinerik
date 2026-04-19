@@ -4,7 +4,7 @@ import styles from './About.module.css';
 
 export default function About() {
   return (
-    <section className={styles.about}>
+    <section className={styles.about} id="about">
       <div className={styles.container}>
         <div className={styles.grid}>
           {/* Left column – text */}
@@ -28,7 +28,7 @@ export default function About() {
                 I care deeply about <strong>developer experience</strong>, <strong>performance</strong>, and <strong>long-term code quality</strong>. Whether it's shipping fast prototypes or building production-grade systems that scale to thousands of users, I enjoy solving real problems with elegant solutions.
               </p>
               <p>
-                Currently based in Manila, I work remotely with clients and teams worldwide — from startups to established products — helping turn ideas into reliable, user-loved software.
+                I work remotely with clients and teams worldwide — from startups to established products — helping turn ideas into reliable, user-loved software.
               </p>
             </div>
 

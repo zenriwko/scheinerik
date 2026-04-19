@@ -5,6 +5,7 @@ import Hero from "@/components/Hero/Hero";
 import About from "@/components/About/About";
 import TechStack from "@/components/TechStack/TechStack";
 import Services from '@/components/Services/Services';
+import Pricing from '@/components/Pricing/Pricing';
 import Experience from "@/components/Experience/Experience";
 import Projects from "@/components/Projects/Projects";
 import Contact from "@/components/Contact/Contact";
@@ -43,22 +44,26 @@ export default function HomePage() {
       "Technical SEO",
       "Web Performance Optimisation"
     ],
-    sameAs: []
+    sameAs: [
+      'https://github.com/zenriwko',
+      'https://www.linkedin.com/in/erik-scheinpflug-5335b8305/',
+    ]
   };
 
   return (
     <>
       <SEO
-        title=""
-        description=""
+        title="Erik Scheinpflug – Next.js Developer & SEO"
+        description="Next.js developer building fast, SEO-optimised websites and web applications. Based in Czech Republic, available to clients worldwide. Static sites from $250."
         path="/"
-        featuredImage=""
+        featuredImage="/og-image.png"
       />
 
       <Hero />
       <About />
       <TechStack />
       <Services />
+      <Pricing />
       <Experience />
       <Projects />
       <Contact />

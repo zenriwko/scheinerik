@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 const SITE_URL = "https://scheinerik.dev";
-const SITE_NAME = "scheinerik";
+const SITE_NAME = "scheinerik.dev";
 
 type SEOProps = {
   title: string;
@@ -22,7 +22,7 @@ export default function SEO({
   const fullTitle = `${title} | ${SITE_NAME}`;
 
   // Use featured image if provided, otherwise fallback
-  const imagePath = featuredImage ?? "/og.jpg";
+  const imagePath = featuredImage ?? "/og-image.png";
 
   // If image already absolute, keep it
   const ogImage = imagePath.startsWith("http")

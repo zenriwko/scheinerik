@@ -15,6 +15,10 @@ export default function Experience() {
 
         <motion.div
           className={styles.card}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
         >
           <div className={styles.meta}>
             <h3 className={styles.role}>Full-Stack &amp; SEO Lead Developer</h3>

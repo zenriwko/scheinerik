@@ -17,11 +17,7 @@ export default function Navigation() {
       <div className={`container ${styles.inner}`}>
 
         {/* Logo */}
-        <Link
-          href="/"
-          className={styles.logoWrapper}
-          aria-label=""
-        >
+        <Link href="/" className={styles.logoWrapper} aria-label="Home">
           <Image
             src="/images/scheinerik-logo.png"
             alt="scheinerik logo"
@@ -45,41 +41,58 @@ export default function Navigation() {
         </button>
 
         {/* Desktop navigation */}
-        <nav className={styles.navigation} aria-label="Hlavní navigace">
+        <nav className={styles.navigation} aria-label="Main navigation">
           <ul>
             <li>
               <Link
-                href="/"
-                className={isActive("/sluzby") ? styles.activeLink : ""}
+                href="/services"
+                className={isActive("/services") ? styles.activeLink : ""}
               >
-                2
+                Services
               </Link>
             </li>
             <li>
               <Link
-                href="/projects/property-listing"
-                className={isActive("/projects/property-listing") ? styles.activeLink : ""}
+                href="/pricing"
+                className={isActive("/pricing") ? styles.activeLink : ""}
               >
-                Property Listing
+                Pricing
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/projects"
+                className={isActive("/projects") ? styles.activeLink : ""}
+              >
+                Projects
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/demo"
+                className={isActive("/demo") ? styles.activeLink : ""}
+              >
+                Demos
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/about"
+                className={isActive("/about") ? styles.activeLink : ""}
+              >
+                About
               </Link>
             </li>
           </ul>
         </nav>
 
-        {/* Desktop CTA buttons */}
+        {/* Desktop CTA */}
         <div className={styles.ctaInline}>
           <Link
-            href="/cenik"
-            className={`button ${isActive("/cenik") ? "active" : ""}`}
+            href="/contact"
+            className={`button${isActive("/contact") ? " active" : ""}`}
           >
-            <span>Ceník</span>
-          </Link>
-
-          <Link
-            href="/kontakt"
-            className={`button secondary ${isActive("/kontakt") ? "active" : ""}`}
-          >
-            <span>Kontakt</span>
+            <span>Contact</span>
           </Link>
         </div>
       </div>
@@ -90,65 +103,54 @@ export default function Navigation() {
           <ul>
             <li>
               <Link
-                href="/sluzby"
-                className={isActive("/sluzby") ? styles.activeLink : ""}
+                href="/services"
+                className={isActive("/services") ? styles.activeLink : ""}
                 onClick={() => setMenuOpen(false)}
               >
-                Služby
+                Services
               </Link>
             </li>
             <li>
               <Link
-                href="/galerie"
-                className={isActive("/galerie") ? styles.activeLink : ""}
+                href="/pricing"
+                className={isActive("/pricing") ? styles.activeLink : ""}
                 onClick={() => setMenuOpen(false)}
               >
-                Galerie
+                Pricing
               </Link>
             </li>
             <li>
               <Link
-                href="/nase-prace"
-                className={isActive("/nase-prace") ? styles.activeLink : ""}
+                href="/projects"
+                className={isActive("/projects") ? styles.activeLink : ""}
                 onClick={() => setMenuOpen(false)}
               >
-                Naše Práce
+                Projects
               </Link>
             </li>
             <li>
               <Link
-                href="/o-nas"
-                className={isActive("/o-nas") ? styles.activeLink : ""}
+                href="/demo"
+                className={isActive("/demo") ? styles.activeLink : ""}
                 onClick={() => setMenuOpen(false)}
               >
-                O Nás
+                Demos
               </Link>
             </li>
             <li>
               <Link
-                href="/projects/property-listing"
-                className={isActive("/projects/property-listing") ? styles.activeLink : ""}
+                href="/about"
+                className={isActive("/about") ? styles.activeLink : ""}
                 onClick={() => setMenuOpen(false)}
               >
-                Property Listing
+                About
               </Link>
             </li>
           </ul>
 
           <div className={styles.overlayCTA}>
-            <Link
-              className="button"
-              href="/cenik"
-              onClick={() => setMenuOpen(false)}
-            >
-              <span>Ceník</span>
-            </Link>
-            <Link
-              className="button ghost"
-              href="/kontakt"
-              onClick={() => setMenuOpen(false)}
-            >
-              <span>Kontakt</span>
+            <Link className="button" href="/contact" onClick={() => setMenuOpen(false)}>
+              <span>Contact</span>
             </Link>
           </div>
         </div>

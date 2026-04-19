@@ -53,6 +53,41 @@ export default function Projects() {
             </div>
           </div>
         </motion.a>
+
+        <motion.a
+          href="https://bahayfind.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.cardLink}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ scale: 1.02 }}
+        >
+          <div className={styles.card}>
+            <div className={styles.imageWrapper}>
+              <Image
+                src="/images/projects/bahayfind-project.webp"
+                alt="BahayFind – Philippine property listing platform"
+                fill
+                sizes="(max-width: 768px) 100vw, 100vw"
+                quality={85}
+                className={styles.image}
+              />
+              <div className={styles.hoverOverlay}>
+                <ArrowUpRight size={36} className={styles.externalIcon} />
+              </div>
+            </div>
+
+            <div className={styles.textContent}>
+              <h3 className={styles.title}>BahayFind</h3>
+              <p className={styles.description}>
+                Philippine real estate platform with agent dashboards, Mapbox-powered location search, payment-gated featured listings, and a multi-role auth system — built on Next.js and Supabase.
+              </p>
+            </div>
+          </div>
+        </motion.a>
       </div>
     </section>
   );

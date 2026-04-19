@@ -1,15 +1,14 @@
 
 
 .container {
-
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
 }
 
 .header {
   text-align: center;
-
-  margin: 0 auto 3rem;
+  max-width: 680px;
+  margin: 0 auto 3.5rem;
 }
 
 .kicker {
@@ -39,7 +38,11 @@
   text-decoration: none;
   color: inherit;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0 auto 2.5rem;
+}
+
+.cardLink:last-child {
+  margin-bottom: 0;
 }
 
 /* ── Card ── */

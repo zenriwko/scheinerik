@@ -1,0 +1,472 @@
+/* ────────────────────────────────────────────────
+   Shared helpers
+──────────────────────────────────────────────── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.kicker {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.45rem 1.2rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--main);
+  background: var(--main-soft);
+  border-radius: 999px;
+}
+
+.gradient {
+  background: linear-gradient(90deg, var(--main) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sectionHeader {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 4rem;
+}
+
+.sectionHeader h2 {
+  margin-bottom: 1rem;
+}
+
+.sectionLead {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--text-muted-strong);
+  margin: 0;
+}
+
+.sep {
+  height: 1px;
+  background: var(--separator);
+}
+
+/* ────────────────────────────────────────────────
+   Hero
+──────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.heroBg {
+  position: absolute;
+  top: -25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 600px;
+  background: radial-gradient(
+    ellipse 55% 50% at 50% 50%,
+    rgba(99, 102, 241, 0.09) 0%,
+    rgba(20, 184, 166, 0.07) 45%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+}
+
+.heroTitle {
+  font-size: clamp(2.75rem, 7.5vw, 5.25rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: var(--heading);
+  margin-bottom: 1.5rem;
+}
+
+.heroLead {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  color: var(--text-muted-strong);
+  line-height: 1.7;
+}
+
+.heroActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ────────────────────────────────────────────────
+   Services grid
+──────────────────────────────────────────────── */
+.services {}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+/* ── Service card ── */
+.serviceCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding: 2.5rem 2.25rem;
+  background: var(--card);
+  border: 1px solid var(--border-base);
+  border-radius: 1.5rem;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px -15px var(--main-glow);
+  border-color: var(--border-hover);
+}
+
+/* Icon + title row */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  background: var(--main-soft);
+  color: var(--main);
+  border-radius: 14px;
+  transition: background 0.3s ease;
+}
+
+.serviceCard:hover .iconWrap {
+  background: rgba(20, 184, 166, 0.2);
+}
+
+.cardTitle {
+  /* Global h3 provides gradient text; override size only */
+  font-size: 1.3rem !important;
+  margin-bottom: 0 !important;
+  line-height: 1.3;
+}
+
+/* Description */
+.cardDesc {
+  font-size: 0.985rem;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Tech pills */
+.techRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.775rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  color: var(--main);
+  background: var(--main-soft);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Use cases */
+.useCases {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.useCases li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.935rem;
+  color: var(--text-muted-strong);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.arrowIcon {
+  color: var(--main);
+  flex-shrink: 0;
+}
+
+/* Card CTA link */
+.cardCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--main);
+  text-decoration: none;
+  transition: gap 0.25s ease, color 0.25s ease;
+}
+
+.cardCta:hover {
+  gap: 0.65rem;
+  color: var(--heading);
+}
+
+/* ────────────────────────────────────────────────
+   Why work with me
+──────────────────────────────────────────────── */
+.reasons {}
+
+.reasonsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.reasonCard {
+  padding: 2rem 1.75rem;
+  background: var(--card);
+  border: 1px solid var(--border-base);
+  border-radius: 1.25rem;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reasonCard:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px -12px var(--main-glow);
+}
+
+.reasonIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--main-soft);
+  color: var(--main);
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+  transition: background 0.3s ease;
+}
+
+.reasonCard:hover .reasonIcon {
+  background: rgba(20, 184, 166, 0.2);
+}
+
+.reasonTitle {
+  font-size: 1.025rem;
+  font-weight: 700;
+  color: var(--heading);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.reasonDesc {
+  font-size: 0.925rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ────────────────────────────────────────────────
+   CTA strip
+──────────────────────────────────────────────── */
+.ctaStrip {}
+
+.ctaBox {
+  padding: 4rem 3rem;
+  background: linear-gradient(135deg, #0f1e30 0%, #0a1520 100%);
+  border: 1px solid rgba(20, 184, 166, 0.25);
+  border-radius: 2rem;
+  text-align: center;
+  box-shadow: 0 0 60px -25px var(--main-glow), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.ctaEyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--main);
+  margin-bottom: 1.25rem;
+}
+
+.ctaHeading {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--heading);
+  margin-bottom: 1.25rem;
+}
+
+.ctaLead {
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--text-muted-strong);
+  max-width: 520px;
+  margin: 0 auto 2.25rem;
+}
+
+.ctaActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ────────────────────────────────────────────────
+   FAQ
+──────────────────────────────────────────────── */
+.faq {}
+
+.faqList {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  border-bottom: 1px solid var(--separator);
+}
+
+.faqItem:first-child {
+  border-top: 1px solid var(--separator);
+}
+
+.faqQuestion {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1.075rem;
+  font-weight: 600;
+  color: var(--heading);
+  line-height: 1.4;
+  transition: color 0.22s ease;
+}
+
+.faqQuestion:hover {
+  color: var(--main);
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--muted);
+  transition: transform 0.32s ease, color 0.22s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  color: var(--main);
+}
+
+.faqAnswer {
+  padding: 0 0 1.5rem;
+  font-size: 1.025rem;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ────────────────────────────────────────────────
+   Responsive
+──────────────────────────────────────────────── */
+@media (max-width: 980px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .reasonsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ctaBox {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroTitle {
+    font-size: clamp(2.1rem, 8.5vw, 3rem);
+  }
+
+  .heroActions {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .sectionHeader {
+    margin-bottom: 2.5rem;
+  }
+
+  .reasonsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceCard {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+
+  .ctaBox {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .ctaActions {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .faqQuestion {
+    font-size: 0.975rem;
+    padding: 1.25rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .serviceCard {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .reasonCard {
+    padding: 1.5rem 1.25rem;
+  }
+}

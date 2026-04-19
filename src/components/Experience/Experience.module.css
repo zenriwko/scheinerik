@@ -5,13 +5,14 @@
 }
 
 .container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
 }
 
 .header {
   text-align: center;
-  margin: 0 auto 2rem;
+  max-width: 680px;
+  margin: 0 auto 3.5rem;
 }
 
 .kicker {
@@ -117,7 +118,6 @@
   margin-bottom: 0;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .card {
     padding: 2rem 1.75rem;
@@ -127,5 +127,24 @@
   }
   .description {
     font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 1.5rem 1.25rem;
+  }
+  .role {
+    font-size: 1.25rem;
+  }
+  .companyInfo {
+    font-size: 1rem;
+    flex-wrap: wrap;
+  }
+  .description {
+    font-size: 1rem;
+  }
+  .description li {
+    padding-left: 1.5rem;
   }
 }

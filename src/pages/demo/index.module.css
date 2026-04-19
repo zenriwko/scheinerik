@@ -1,0 +1,139 @@
+/* Demo index — gallery page (uses portfolio layout) */
+
+.hero {
+  padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vw, 4.5rem);
+  position: relative;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 30% 50%, rgba(20, 184, 166, 0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.heroContent { max-width: 680px; }
+
+.kicker {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #14b8a6;
+  margin-bottom: 1rem;
+}
+
+.heroTitle {
+  font-size: clamp(2.4rem, 6vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #f8fafc;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+
+.heroLead {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: #94a3b8;
+  line-height: 1.7;
+  max-width: 540px;
+  margin-bottom: 0;
+}
+
+/* ── Grid section ── */
+
+.gridSection {
+  padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.card {
+  background: #0f1723;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.cardVisual {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardLetter {
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  opacity: 0.55;
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+.cardBody {
+  padding: 1.75rem;
+}
+
+.cardType {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #475569;
+  margin-bottom: 0.5rem;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f8fafc;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+.cardDesc {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.cardCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+
+.cardCta:hover { gap: 0.65rem; }
+
+/* ── Bottom note ── */
+
+.bottomNote {
+  text-align: center;
+  color: #475569;
+  font-size: 0.95rem;
+}

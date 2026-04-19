@@ -5,7 +5,7 @@ export default function Hero() {
     <section className={styles.hero}>
       <div className={styles.container}>
         <span className={styles.kicker}>
-          eCommerce websites & modern web applications
+          Full-Stack Developer · Next.js · SEO
         </span>
 
         <h1>Erik Scheinpflug</h1>

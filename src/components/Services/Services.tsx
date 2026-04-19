@@ -15,7 +15,7 @@ const strategySvg = `<svg height="200px" width="200px" xmlns="http://www.w3.org/
 
 export default function Services() {
   return (
-    <section className={styles.services}>
+    <section className={styles.services} id="services">
       <div className={styles.container}>
         <div className={styles.header}>
           <span className={styles.kicker}>What I Build</span>

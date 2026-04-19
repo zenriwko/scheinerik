@@ -2,8 +2,17 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
+import { Mail, MapPin, Github, Linkedin } from 'lucide-react';
 import styles from './Footer.module.css';
+
+const navLinks = [
+  { label: 'Services',  href: '/services' },
+  { label: 'Pricing',   href: '/pricing' },
+  { label: 'Projects',  href: '/projects' },
+  { label: 'Demos',     href: '/demo' },
+  { label: 'About',     href: '/about' },
+  { label: 'Contact',   href: '/contact' },
+];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,14 +20,16 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
+
+        {/* ── Main columns ── */}
         <div className={styles.grid}>
 
-          {/* LOGO + BIO */}
+          {/* Brand */}
           <div className={styles.brand}>
-            <Link href="/" className={styles.logoWrapper}>
+            <Link href="/" className={styles.logoWrapper} aria-label="Home">
               <Image
                 src="/images/scheinerik-logo.png"
-                alt="ScheinErik.dev"
+                alt="scheinerik.dev"
                 fill
                 sizes="140px"
                 style={{ objectFit: 'contain' }}
@@ -26,58 +37,79 @@ export default function Footer() {
               />
             </Link>
             <p className={styles.bio}>
-              Full-Stack & SEO Developer<br />
-              Building fast, beautiful and conversion-focused digital experiences.
+              Full-stack developer focused on performance,
+              clean code, and sites that actually convert.
             </p>
+            <div className={styles.socials}>
+              <a
+                href="https://github.com/zenriwko"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className={styles.socialIcon}
+              >
+                <Github size={18} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/erik-scheinpflug-5335b8305/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className={styles.socialIcon}
+              >
+                <Linkedin size={18} />
+              </a>
+              <a
+                href="mailto:hello@scheinerik.dev"
+                aria-label="Email"
+                className={styles.socialIcon}
+              >
+                <Mail size={18} />
+              </a>
+            </div>
           </div>
 
-          {/* NAVIGATION */}
-          <div className={styles.nav}>
-            <h4>Navigation</h4>
-            <nav>
-              <Link href="#projects">Projects</Link>
-              <Link href="#experience">Experience</Link>
-              <Link href="#about">About</Link>
-              <Link href="#contact">Contact</Link>
+          {/* Navigation */}
+          <div className={styles.col}>
+            <h4 className={styles.colHeading}>Navigation</h4>
+            <nav className={styles.navLinks}>
+              {navLinks.map(({ label, href }) => (
+                <Link key={href} href={href}>{label}</Link>
+              ))}
             </nav>
           </div>
 
-          {/* CONTACT */}
-          <div className={styles.contact}>
-            <h4>Contact</h4>
-            <div className={styles.contactInfo}>
-              <a href="mailto:erik@scheinpflug.dev">
-                <Mail size={20} /> erik@scheinpflug.dev
+          {/* Contact */}
+          <div className={styles.col}>
+            <h4 className={styles.colHeading}>Contact</h4>
+            <div className={styles.contactList}>
+              <a href="mailto:hello@scheinerik.dev" className={styles.contactRow}>
+                <Mail size={15} />
+                hello@scheinerik.dev
               </a>
-              <div>
-                <MapPin size={20} /> Mladá Boleslav, Czech Republic
+              <div className={styles.contactRow}>
+                <MapPin size={15} />
+                Czech Republic
               </div>
             </div>
+            <div className={styles.availability}>
+              <span className={styles.availDot} />
+              Available for new projects
+            </div>
           </div>
 
-          {/* SOCIAL + LEGAL */}
-          <div className={styles.socialLegal}>
-            <div className={styles.social}>
-              <a
-                href="https://instagram.com/yourprofile"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-              >
-                <Instagram size={24} />
-              </a>
-            </div>
-
-            <div className={styles.legal}>
-              <Link href="/obchodni-podminky">Obchodní podmínky</Link>
-              <Link href="/ochrana-osobnich-udaju">Ochrana osobních údajů</Link>
-            </div>
-
-            <p className={styles.copyright}>
-              © {currentYear} scheinerik.dev • All rights reserved
-            </p>
-          </div>
         </div>
+
+        {/* ── Bottom bar ── */}
+        <div className={styles.bottom}>
+          <span className={styles.copyright}>
+            © {currentYear} scheinerik.dev — All rights reserved
+          </span>
+          <span className={styles.stack}>
+            Built with Next.js &amp; deployed on Vercel
+          </span>
+        </div>
+
       </div>
     </footer>
   );

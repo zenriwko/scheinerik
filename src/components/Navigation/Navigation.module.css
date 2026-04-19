@@ -7,10 +7,11 @@
   z-index: 40;
   display: flex;
   align-items: center;
-  backdrop-filter: saturate(1.2) blur(10px);
+  backdrop-filter: saturate(1.1) blur(6px);
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.05));
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   transition: background 0.4s ease;
+  will-change: transform;
 }
 .nav {padding: 0 clamp(1rem, 4vw, 15%);}
 
@@ -37,23 +38,30 @@
 /* === NAVIGATION === */
 .nav ul {
   display: flex;
+  align-items: center;
   gap: 1rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+/* Reset global li { margin-bottom / font-size } that bleeds from globals.css */
+.nav ul li {
+  margin-bottom: 0;
+  font-size: inherit;
+}
+
 /* === NAV LINKS === */
 .navigation :global(a) {
   position: relative;
   display: inline-block;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
-  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+  letter-spacing: 0.01em;
   padding: 22px 12px;
   text-decoration: none;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 /* Hover: soft gradient text + subtle glow */
@@ -271,5 +279,24 @@
   .navigation,
   .ctaInline {
     display: none;
+  }
+}
+
+/* Very small phones — tighten overlay menu */
+@media (max-width: 400px) {
+  .overlay ul {
+    gap: 1.3rem;
+  }
+
+  .overlay a {
+    font-size: 1.3rem;
+  }
+
+  .overlayCTA {
+    margin-top: 2rem;
+  }
+
+  .hamburger {
+    right: 20px;
   }
 }

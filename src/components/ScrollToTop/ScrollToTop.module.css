@@ -1,0 +1,35 @@
+.btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 99;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--main);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  animation: fadeIn 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  border-color: var(--main);
+  box-shadow: 0 0 20px -4px var(--main-glow), 0 12px 32px -8px rgba(0, 0, 0, 0.4);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--main);
+  outline-offset: 4px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

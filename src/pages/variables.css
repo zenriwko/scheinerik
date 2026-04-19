@@ -31,9 +31,11 @@
 
   /* ───── Other ───── */
   --text-strong: #ffffff;
-  --text-muted-strong: rgba(203, 213, 225, 0.85);
+  --text-muted-strong: #cbd5e1;
   --border-base: rgba(148, 163, 184, 0.12);
   --border-hover: rgba(20, 184, 166, 0.4);
+
+  --radius: 12px;
 
   --shadow-button: 0 12px 32px rgba(20, 184, 166, 0.25);
   --shadow-button-hover: 0 20px 48px rgba(20, 184, 166, 0.35);
