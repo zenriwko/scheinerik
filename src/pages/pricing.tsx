@@ -218,8 +218,6 @@ export default function PricingPage() {
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               >
-                {plan.badge && <span className={styles.badge}>{plan.badge}</span>}
-
                 <div className={styles.cardHead}>
                   <h3 className={styles.planName}>{plan.name}</h3>
                   <span className={styles.price}>{plan.price}</span>
