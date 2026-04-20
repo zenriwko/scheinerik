@@ -13,7 +13,7 @@ const checkIcon = (
 const plans = [
   {
     name: 'Static Website',
-    price: '$250',
+    price: '$199',
     priceNote: 'base price',
     description: 'A custom, branded website built for speed and search engine visibility — ideal for portfolios, landing pages, and small businesses.',
     features: [
