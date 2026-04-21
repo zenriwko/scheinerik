@@ -60,7 +60,7 @@ export default function Footer() {
                 <Linkedin size={18} />
               </a>
               <a
-                href="mailto:hello@scheinerik.dev"
+                href="mailto:scheinerik@gmail.com"
                 aria-label="Email"
                 className={styles.socialIcon}
               >
@@ -83,9 +83,9 @@ export default function Footer() {
           <div className={styles.col}>
             <h4 className={styles.colHeading}>Contact</h4>
             <div className={styles.contactList}>
-              <a href="mailto:hello@scheinerik.dev" className={styles.contactRow}>
+              <a href="mailto:scheinerik@gmail.com" className={styles.contactRow}>
                 <Mail size={15} />
-                hello@scheinerik.dev
+                scheinerik@gmail.com
               </a>
               <div className={styles.contactRow}>
                 <MapPin size={15} />

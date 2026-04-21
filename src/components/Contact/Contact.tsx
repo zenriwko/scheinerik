@@ -54,8 +54,8 @@ export default function Contact() {
               <Mail size={28} />
               <div>
                 <p className={styles.label}>Email</p>
-                <a href="mailto:hello@scheinerik.dev" className={styles.value}>
-                  hello@scheinerik.dev
+                <a href="mailto:scheinerik@gmail.com" className={styles.value}>
+                  scheinerik@gmail.com
                 </a>
               </div>
             </div>
