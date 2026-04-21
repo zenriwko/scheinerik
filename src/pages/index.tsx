@@ -54,7 +54,7 @@ export default function HomePage() {
     <>
       <SEO
         title="Erik Scheinpflug – Next.js Developer & SEO"
-        description="Next.js developer building fast, SEO-optimised websites and web applications. Based in Czech Republic, available to clients worldwide. Static sites from $250."
+        description="Next.js developer building fast, SEO-optimised websites and web applications. Based in Czech Republic, available to clients worldwide. Static sites from $199."
         path="/"
         featuredImage="/og-image.png"
       />

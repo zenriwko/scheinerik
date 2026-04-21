@@ -10,7 +10,7 @@ import styles from './pricing.module.css';
 const plans = [
   {
     name: 'Static Website',
-    price: '$250',
+    price: '$199',
     priceNote: '/month',
     description:
       'A custom, branded website built for speed and search engine visibility — ideal for portfolios, landing pages, and growing businesses.',
@@ -167,8 +167,8 @@ export default function PricingPage() {
   return (
     <>
       <SEO
-        title="Web Development Pricing – From $250/month"
-        description="Monthly plans for custom websites and web apps. Static sites from $250/month, eCommerce from $300/month. Ongoing updates included — your site keeps improving every month."
+        title="Web Development Pricing – From $199/month"
+        description="Monthly plans for custom websites and web apps. Static sites from $199/month, eCommerce from $300/month. Ongoing updates included — your site keeps improving every month."
         path="/pricing"
       />
 
