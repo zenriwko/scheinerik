@@ -10,21 +10,21 @@ import SEO from '@/components/%SEO/SEO';
 import Contact from '@/components/Contact/Contact';
 import styles from './services.module.css';
 
-// ─── Services data ───────────────────────────────────────────────────────────
+// --- Services data ---
 
 const services = [
   {
     id: 'nextjs-react',
     Icon: Layers,
-    title: 'Next.js & React Applications',
+    title: 'Next.js and React Applications',
     description:
-      'Full-stack modern web applications built with Next.js and React — from high-converting marketing sites to complex, data-driven SaaS dashboards. I work with the App Router, React Server Components, TypeScript, and production-grade deployment pipelines to ship code that is fast, maintainable, and built to scale.',
+      'Full-stack modern web apps built with Next.js and React. From high-converting marketing sites to complex SaaS dashboards, I use the App Router, React Server Components, TypeScript, and solid deployment pipelines to ship code that is fast, maintainable, and ready to grow.',
     tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Prisma', 'Supabase', 'PostgreSQL', 'Vercel'],
     useCases: [
-      'SaaS applications & user dashboards',
-      'Corporate & marketing websites',
-      'Internal tools & admin portals',
-      'Blogs, content & documentation platforms',
+      'SaaS applications and user dashboards',
+      'Corporate and marketing websites',
+      'Internal tools and admin portals',
+      'Blogs, content, and documentation platforms',
     ],
   },
   {
@@ -32,100 +32,100 @@ const services = [
     Icon: ShoppingCart,
     title: 'eCommerce Solutions',
     description:
-      'Custom online stores engineered to convert — whether it\'s a Shopify-powered storefront, a WooCommerce setup, or a fully headless custom store. I focus on the details that directly impact revenue: fast load times, a clean checkout flow, polished mobile UX, and rock-solid payment integration from day one.',
+      'Custom online stores built to convert. Shopify, WooCommerce, or a fully custom store: I focus on the things that drive revenue. Fast load times, a smooth checkout, great mobile UX, and solid payment integration from day one.',
     tech: ['Next.js', 'Shopify', 'WooCommerce', 'Stripe', 'PayPal', 'Supabase', 'Cloudflare'],
     useCases: [
-      'Physical & digital product stores',
-      'Subscription & membership platforms',
-      'B2B ordering & wholesale portals',
+      'Physical and digital product stores',
+      'Subscription and membership platforms',
+      'B2B ordering and wholesale portals',
       'Headless commerce with custom UI',
     ],
   },
   {
     id: 'integrations',
     Icon: Puzzle,
-    title: 'Custom Integrations & APIs',
+    title: 'Custom Integrations and APIs',
     description:
-      'Connect your product to any external service — CRMs, payment gateways, analytics platforms, email tools, data pipelines, and beyond. I build clean, type-safe API layers that are straightforward to test, maintain, and extend as your requirements grow.',
+      'Connect your product to any external service. CRMs, payment gateways, analytics, email tools, data pipelines, and more. I build clean, type-safe API layers that are easy to test, maintain, and grow with your needs.',
     tech: ['REST', 'GraphQL', 'tRPC', 'Stripe', 'Supabase', 'Airtable', 'Resend', 'Webhooks'],
     useCases: [
-      'CRM & ERP connections',
-      'Payment & billing automation',
-      'Email & notification pipelines',
-      'Data sync & third-party API bridges',
+      'CRM and ERP connections',
+      'Payment and billing automation',
+      'Email and notification pipelines',
+      'Data sync and third-party API bridges',
     ],
   },
   {
     id: 'performance',
     Icon: Gauge,
-    title: 'Performance & Technical Optimisation',
+    title: 'Performance and Technical Optimization',
     description:
-      'Slow sites lose rankings and customers. I audit your codebase, identify the bottlenecks, and fix them — from image handling and JavaScript bundles to server response times, caching strategy, and Core Web Vitals across every page type.',
+      'Slow sites lose rankings and customers. I audit your codebase, find the bottlenecks, and fix them. That includes image handling, JavaScript bundles, server response times, caching, and Core Web Vitals on every page.',
     tech: ['Lighthouse', 'WebPageTest', 'Next.js Image', 'CDN', 'Bundle Analysis', 'Caching'],
     useCases: [
-      'Core Web Vitals & Lighthouse improvements',
-      'Full-site speed audits & remediation',
-      'Image & asset pipeline optimisation',
+      'Core Web Vitals and Lighthouse improvements',
+      'Full-site speed audits and fixes',
+      'Image and asset pipeline optimization',
       'SSR migration from legacy SPAs',
     ],
   },
   {
     id: 'seo',
     Icon: Search,
-    title: 'SEO Optimisation',
+    title: 'SEO Optimization',
     description:
-      'Technical SEO that earns rankings — not keyword stuffing, but the foundational work that search engines actually reward: structured data, semantic HTML, server-side rendering for full crawlability, properly optimised meta, clean URL architecture, and fast page delivery.',
+      'Technical SEO that earns real rankings. Not keyword stuffing. The foundational work search engines actually reward: structured data, semantic HTML, server-side rendering, clean URLs, optimized meta tags, and fast page delivery.',
     tech: ['Schema.org', 'Next.js SSR/SSG', 'Google Search Console', 'Sitemap', 'robots.txt', 'OpenGraph'],
     useCases: [
-      'Technical SEO audits & fixes',
-      'New builds optimised from day one',
-      'eCommerce product & category SEO',
+      'Technical SEO audits and fixes',
+      'New builds optimized from day one',
+      'eCommerce product and category SEO',
       'Site migrations without ranking drops',
     ],
   },
   {
     id: 'consulting',
     Icon: Lightbulb,
-    title: 'Consulting & Strategy',
+    title: 'Consulting and Strategy',
     description:
-      'Before you commit to a build, it\'s worth talking to someone who\'s shipped it before. I offer technical consultations, architecture reviews, stack decisions, and migration planning — giving you a clear, honest path forward before a single line of code is written.',
+      'Before you commit to a build, talk to someone who has shipped it before. I offer technical consultations, architecture reviews, stack decisions, and migration planning. You get a clear, honest path forward before any code is written.',
     tech: ['Architecture Planning', 'Code Reviews', 'Stack Evaluation', 'Documentation', 'Roadmapping'],
     useCases: [
-      'Architecture & tech stack decisions',
+      'Architecture and tech stack decisions',
       'Legacy-to-modern migration planning',
-      'Pre-build scoping & roadmapping',
-      'Code reviews & technical audits',
+      'Pre-build scoping and roadmapping',
+      'Code reviews and technical audits',
     ],
   },
 ];
 
-// ─── Why work with me ────────────────────────────────────────────────────────
+// --- Why work with me ---
 
 const reasons = [
   {
     Icon: MessageCircle,
     title: 'Direct line to the developer',
-    desc: 'No account managers, no junior devs. You work directly with me from brief to delivery — faster feedback, fewer misunderstandings.',
+    desc: 'No account managers, no junior devs. You work directly with me from start to finish. Faster feedback and fewer misunderstandings.',
   },
   {
     Icon: Zap,
     title: 'Performance is the baseline',
-    desc: 'Every project targets Lighthouse 95+. Speed isn\'t a checkbox or an upsell — it\'s baked into how I build by default.',
+    desc: 'Every project targets Lighthouse 95+. Speed is not a checkbox or an upsell. It is built into how I work by default.',
   },
   {
     Icon: TrendingUp,
     title: 'SEO from the first commit',
-    desc: 'Structured data, semantic HTML, and server-side rendering are part of the process on every project — not an add-on after the fact.',
+    desc: 'Structured data, semantic HTML, and server-side rendering are part of every project. Not an add-on after the fact.',
   },
   {
     Icon: Code2,
     title: 'Clean, readable code',
-    desc: 'The handover is clean enough for you or your team to maintain, extend, or revisit years later. No spaghetti, no dead code.',
+    desc: 'The handover is clean enough for you or your team to maintain, update, or revisit years later. No messy code, no dead ends.',
   },
   {
     Icon: BadgeCheck,
     title: 'Fixed price, no surprises',
-    desc: 'You agree a price before work starts. If scope changes, I flag it and re-quote before continuing. No unexpected invoices.',
+    desc: 'You agree on a price before work starts. If scope changes, I will flag it and re-quote before continuing. No surprise invoices.',
   },
   {
     Icon: Shield,
@@ -134,36 +134,36 @@ const reasons = [
   },
 ];
 
-// ─── FAQ ─────────────────────────────────────────────────────────────────────
+// --- FAQ ---
 
 const faqs = [
   {
     q: 'What technologies do you primarily work with?',
-    a: 'My primary stack is Next.js, React, TypeScript, Tailwind CSS, Supabase/PostgreSQL, and Prisma — deployed on Vercel or Cloudflare. For clients who need it I also work with WordPress and WooCommerce. On codebase projects I adapt to what\'s already in place rather than forcing a rewrite.',
+    a: 'My main stack is Next.js, React, TypeScript, Tailwind CSS, Supabase, PostgreSQL, and Prisma, deployed on Vercel or Cloudflare. I also work with WordPress and WooCommerce when needed. On existing codebases, I adapt to what is already there rather than forcing a rewrite.',
   },
   {
     q: 'Do you handle design as well as development?',
-    a: "I build to a design or design brief you provide. If you don't have a designer, I can work from a reference site or mood board — my projects have a consistent visual direction informed by strong layout and typography principles. For projects needing a full brand identity or complex UI system, I'll recommend collaborating with a specialist designer.",
+    a: "I build from a design or design brief you provide. If you do not have a designer, I can work from a reference site or mood board. My projects have a consistent visual direction with strong layouts and typography. For full brand identities or complex UI systems, I will recommend a specialist designer.",
   },
   {
     q: 'Can you work on an existing codebase?',
-    a: "Yes. I regularly step into existing projects for performance improvements, new features, or full rewrites. I'll start with a codebase audit to understand what's there before quoting or starting work — no assumptions.",
+    a: "Yes. I regularly work on existing projects for performance improvements, new features, or full rewrites. I start with a codebase review to understand what is there before quoting. No assumptions.",
   },
   {
     q: 'Do you offer ongoing maintenance after launch?',
-    a: "Yes. Some clients prefer a monthly retainer for regular updates, feature additions, and maintenance. Others prefer a clean handover and manage things themselves. Both are fine — I'll document the codebase clearly either way so you're never stuck.",
+    a: "Yes. Some clients prefer a monthly retainer for updates, new features, and maintenance. Others prefer a clean handover and manage things on their own. Both work. I will document the codebase clearly either way so you are never stuck.",
   },
   {
     q: 'What size projects do you typically take on?',
-    a: "I work across a wide range — from a $250 single-page site to multi-month custom SaaS builds. The common thread is focused projects where quality matters. If your project genuinely needs a full agency team, I'll tell you that honestly rather than over-promise and under-deliver.",
+    a: "I work on all sizes, from a single-page site to multi-month custom SaaS builds. The common thread is focused projects where quality matters. If your project genuinely needs a full agency, I will tell you honestly rather than overpromise.",
   },
   {
     q: 'Do you work with clients in Tampa, FL and the US?',
-    a: "Yes — I work fully remote and serve clients in Tampa, FL, across the US, and internationally. I'm comfortable with US time zones, communicate in English, and accept payments in USD. Being remote means you get a senior developer without the local agency markup.",
+    a: "Yes. I work fully remote and serve clients in Tampa, FL, across the US, and internationally. I am comfortable with US time zones, communicate in English, and accept payments in USD. Being remote means you get a senior developer without the local agency markup.",
   },
 ];
 
-// ─── Component ───────────────────────────────────────────────────────────────
+// --- Component ---
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -180,12 +180,12 @@ export default function ServicesPage() {
   return (
     <>
       <SEO
-        title="Website Development Services Tampa FL – Next.js & eCommerce"
-        description="Custom website development services in Tampa, FL — Next.js, eCommerce, performance optimisation, and technical SEO. Fast, clean, and built to rank from day one."
+        title="Website Development Services Tampa FL – Next.js and eCommerce"
+        description="Custom website development services in Tampa, FL. Next.js, eCommerce, performance optimization, and technical SEO. Fast, clean, and built to rank from day one."
         path="/services"
       />
 
-      {/* ── Hero ──────────────────────────────────────────── */}
+      {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg} aria-hidden="true" />
         <div className={styles.container}>
@@ -203,7 +203,7 @@ export default function ServicesPage() {
               <span className={styles.gradient}>built to convert.</span>
             </h1>
             <p className={styles.heroLead}>
-              Serving businesses in Tampa, FL and across the US. Clean code, Lighthouse 95+, SEO from day one — no templates, no bloat, just a site that works as hard as your business.
+              Serving businesses in Tampa, FL and across the US. Clean code, Lighthouse 95+, SEO from day one. No templates, no bloat. Just a site that works as hard as your business.
             </p>
             <div className={styles.heroActions}>
               <a href="#contact" className="button">
@@ -217,14 +217,14 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── Services ──────────────────────────────────────── */}
+      {/* Services */}
       <section className={styles.services} id="services-list">
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <span className={styles.kicker}>What I build</span>
             <h2>Six areas of expertise</h2>
             <p className={styles.sectionLead}>
-              Every service below is something I deliver end-to-end — design to deployment,
+              Every service below is something I deliver end-to-end, from design to deployment,
               with no handoffs to someone less experienced.
             </p>
           </div>
@@ -241,7 +241,6 @@ export default function ServicesPage() {
                 viewport={{ once: true, margin: '-60px' }}
                 variants={cardVariants}
               >
-                {/* Icon + Title */}
                 <div className={styles.cardHeader}>
                   <div className={styles.iconWrap}>
                     <svc.Icon size={26} />
@@ -249,10 +248,8 @@ export default function ServicesPage() {
                   <h3 className={styles.cardTitle}>{svc.title}</h3>
                 </div>
 
-                {/* Description */}
                 <p className={styles.cardDesc}>{svc.description}</p>
 
-                {/* Tech pills */}
                 <div className={styles.techRow}>
                   {svc.tech.map((t) => (
                     <span key={t} className={styles.pill}>{t}</span>
@@ -261,7 +258,6 @@ export default function ServicesPage() {
 
                 <div className={styles.sep} />
 
-                {/* Use cases */}
                 <ul className={styles.useCases}>
                   {svc.useCases.map((uc) => (
                     <li key={uc}>
@@ -271,7 +267,6 @@ export default function ServicesPage() {
                   ))}
                 </ul>
 
-                {/* Card CTA */}
                 <a href="#contact" className={styles.cardCta}>
                   Discuss this project <ArrowRight size={15} />
                 </a>
@@ -281,7 +276,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── Why work with me ──────────────────────────────── */}
+      {/* Why work with me */}
       <section className={styles.reasons}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
@@ -314,7 +309,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── CTA strip ─────────────────────────────────────── */}
+      {/* CTA strip */}
       <section className={styles.ctaStrip}>
         <div className={styles.container}>
           <motion.div
@@ -331,7 +326,7 @@ export default function ServicesPage() {
               <span className={styles.gradient}>Let&apos;s build it.</span>
             </h2>
             <p className={styles.ctaLead}>
-              Tell me what you&apos;re trying to build. I&apos;ll come back with a clear proposal, timeline, and fixed price — no obligation.
+              Tell me what you&apos;re trying to build. I will get back to you with a clear proposal, timeline, and fixed price. No obligation.
             </p>
             <div className={styles.ctaActions}>
               <a href="#contact" className="button">
@@ -345,7 +340,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── FAQ ───────────────────────────────────────────── */}
+      {/* FAQ */}
       <section className={styles.faq}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
@@ -389,7 +384,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── Contact ───────────────────────────────────────── */}
+      {/* Contact */}
       <Contact />
     </>
   );

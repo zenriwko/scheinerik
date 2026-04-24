@@ -32,11 +32,11 @@ export default function Hero() {
 
         <motion.div className={styles.textWrapper} variants={item}>
           <p>
-            I build fast, custom websites and web apps for businesses in Tampa, FL and across the US — using Next.js and React, focused on performance, SEO, and long-term results.
+            I build fast, custom websites and web apps for businesses in Tampa, FL and across the US. I use Next.js and React, with a focus on performance, SEO, and long-term results.
           </p>
 
           <p>
-            No templates, no agencies. Direct, transparent, and built to rank — from a clean $199/month static site to a full eCommerce store.
+            No templates, no agencies, no middlemen. Just a clean site built to rank. Starting at $199/month.
           </p>
         </motion.div>
 

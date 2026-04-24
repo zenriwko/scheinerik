@@ -7,7 +7,7 @@ export default function About() {
     <section className={styles.about} id="about">
       <div className={styles.container}>
         <div className={styles.grid}>
-          {/* Left column – text */}
+          {/* Left column */}
           <motion.div
             className={styles.content}
             initial={{ opacity: 0, y: 40 }}
@@ -17,29 +17,29 @@ export default function About() {
           >
             <span className={styles.kicker}>ABOUT ME</span>
             <h2>
-              Tampa website developer — <span className={styles.gradient}>fast, custom, and built to rank</span>
+              Tampa website developer. <span className={styles.gradient}>Fast, custom, and built to rank.</span>
             </h2>
 
             <div className={styles.text}>
               <p>
-                Hi, I’m Erik — a website developer serving businesses in Tampa, FL and across the US. I build fast, custom websites and web apps using Next.js and TypeScript, with no templates and no bloat.
+                Hi, I'm Erik. I'm a website developer serving businesses in Tampa, FL and across the US. I build fast, custom websites and web apps with Next.js and TypeScript. No templates, no bloat.
               </p>
               <p>
-                I care deeply about <strong>performance</strong>, <strong>SEO</strong>, and <strong>long-term results</strong>. Every site I build scores 95+ on Lighthouse and is structured to rank — from day one.
+                I care deeply about <strong>performance</strong>, <strong>SEO</strong>, and <strong>long-term results</strong>. Every site I build scores 95+ on Lighthouse and is structured to rank from day one.
               </p>
               <p>
-                Working directly with Tampa businesses and US clients worldwide — no agency layer, no account managers. Just clean, fast websites that convert.
+                I work directly with Tampa businesses and clients across the US. No agency layer, no account managers. Just clean, fast websites that convert.
               </p>
             </div>
 
             <div className={styles.cta}>
               <a href="#contact" className="button">
-                Let’s build something together
+                Let's build something together
               </a>
             </div>
           </motion.div>
 
-          {/* Right column – image / visual */}
+          {/* Right column */}
           <motion.div
             className={styles.imageWrapper}
             initial={{ opacity: 0, scale: 0.92 }}
@@ -50,16 +50,15 @@ export default function About() {
             <div className={styles.imageFrame}>
               <Image
                 src="/images/portrait.webp"
-                alt="Erik Scheinpflug – Full-Stack Developer"
+                alt="Erik Scheinpflug, Website Developer"
                 className={styles.image}
                 priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 480px"
-                width={480}          // ← placeholder / intrinsic width of your image
+                width={480}
                 height={600}
               />
             </div>
 
-            {/* Optional floating badge / accent */}
             <div className={styles.badge}>
               <span>Available for freelance</span>
               <div className={styles.pulse} />

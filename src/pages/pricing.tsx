@@ -5,7 +5,7 @@ import SEO from '@/components/%SEO/SEO';
 import Contact from '@/components/Contact/Contact';
 import styles from './pricing.module.css';
 
-// ─── Data ───────────────────────────────────────────────────────────────────
+// --- Data ---
 
 const plans = [
   {
@@ -13,18 +13,18 @@ const plans = [
     price: '$199',
     priceNote: '/month',
     description:
-      'A custom, branded website built for speed and search engine visibility — ideal for portfolios, landing pages, and growing businesses.',
+      'A custom, branded website built for speed and search visibility. Great for portfolios, landing pages, and growing businesses.',
     features: [
-      'Custom branded design — no templates or page builders',
+      'Custom branded design, no templates or page builders',
       'Up to 5 pages included',
-      'Fully SEO optimized — meta tags, schema markup, sitemap',
-      'Mobile & responsive on all devices',
+      'Fully SEO optimized with meta tags, schema markup, and sitemap',
+      'Mobile responsive on all devices',
       'Lighthouse performance score 95+',
       'Contact form integration',
-      'Google Analytics & Tag Manager setup',
-      '3 rounds of revision included',
-      'Source code & full ownership on delivery',
-      'Ongoing updates — content, features, and improvements every month',
+      'Google Analytics and Tag Manager setup',
+      '3 rounds of revisions included',
+      'Source code and full ownership on delivery',
+      'Ongoing updates every month, content, features, and improvements',
     ],
     cta: 'Get Started',
     ctaHref: '#contact',
@@ -33,20 +33,20 @@ const plans = [
   {
     name: 'eCommerce',
     price: 'From $300',
-    priceNote: '/month — scales with scope',
+    priceNote: '/month, scales with scope',
     description:
-      'A full online store with catalog, checkout, and payments. Final price depends on the number of products and integrations needed.',
+      'A full online store with a product catalog, checkout, and payments. Final price depends on your product count and the integrations you need.',
     features: [
       'Everything in Static Website',
-      'Product catalog & variant management',
-      'Shopping cart & secure checkout flow',
-      'Payment gateway — Stripe, PayPal, or similar',
-      'Customer account & order history portal',
-      'Inventory & stock level management',
-      'Discount codes & promotional rules',
+      'Product catalog and variant management',
+      'Shopping cart and secure checkout flow',
+      'Payment gateway: Stripe, PayPal, or similar',
+      'Customer account and order history portal',
+      'Inventory and stock level management',
+      'Discount codes and promotional rules',
       'Automated order notification emails',
-      '5 rounds of revision included',
-      'Ongoing updates — new products, features, and improvements monthly',
+      '5 rounds of revisions included',
+      'Ongoing updates every month, new products, features, and improvements',
     ],
     cta: 'Get Started',
     ctaHref: '#contact',
@@ -57,15 +57,15 @@ const plans = [
     price: "Let's talk",
     priceNote: 'quote based on your scope',
     description:
-      'Web apps, internal tools, dashboards, SaaS products, or API-heavy integrations — anything outside the boxes above gets a fully tailored proposal.',
+      'Web apps, internal tools, dashboards, SaaS products, or API integrations. Anything outside the plans above gets a fully tailored proposal.',
     features: [
-      'Full discovery & scoping session',
-      'Web applications & internal tools',
-      'Custom dashboards & data portals',
-      'Third-party API & CRM integrations',
-      'SaaS & subscription platforms',
-      'Complex business logic & workflows',
-      'Authentication & role-based access',
+      'Full discovery and scoping session',
+      'Web applications and internal tools',
+      'Custom dashboards and data portals',
+      'Third-party API and CRM integrations',
+      'SaaS and subscription platforms',
+      'Complex business logic and workflows',
+      'Authentication and role-based access',
       'Dedicated project management',
       'Revision rounds agreed in the proposal',
       'Ongoing retainer available',
@@ -80,12 +80,12 @@ const guarantees = [
   {
     Icon: Code2,
     title: 'No templates',
-    desc: 'Every project is coded from scratch — no page builders, WordPress themes, or cookie-cutter solutions.',
+    desc: 'Every project is coded from scratch. No page builders, WordPress themes, or cookie-cutter solutions.',
   },
   {
     Icon: Shield,
     title: 'You own everything',
-    desc: 'Full source code handover on delivery. Your project, your IP — zero lock-in to me or any platform.',
+    desc: 'Full source code handover on delivery. Your project, your IP. No lock-in to me or any platform.',
   },
   {
     Icon: Smartphone,
@@ -95,7 +95,7 @@ const guarantees = [
   {
     Icon: Search,
     title: 'SEO ready',
-    desc: 'Semantic HTML, structured data, sitemaps, fast rendering — built for search engines from day one.',
+    desc: 'Semantic HTML, structured data, sitemaps, and fast rendering. Built for search engines from day one.',
   },
   {
     Icon: Zap,
@@ -105,7 +105,7 @@ const guarantees = [
   {
     Icon: HeartHandshake,
     title: 'Always improving',
-    desc: 'Your site is never "done". Every month brings updates, improvements, and new features as your business grows.',
+    desc: 'Your site is never done. Every month brings updates, improvements, and new features as your business grows.',
   },
 ];
 
@@ -113,17 +113,17 @@ const steps = [
   {
     num: '01',
     title: 'Get in touch',
-    desc: 'Send me a message with your idea, goals, and rough budget. No lengthy forms — just tell me what you need.',
+    desc: 'Send me a message with your idea, goals, and rough budget. No lengthy forms, just tell me what you need.',
   },
   {
     num: '02',
     title: 'Receive a proposal',
-    desc: "I'll send a clear scope document with a fixed price and delivery timeline before any work begins. No surprises.",
+    desc: "I will send a clear scope document with a fixed price and delivery timeline before any work begins. No surprises.",
   },
   {
     num: '03',
-    title: 'Build & review',
-    desc: "I build with regular check-ins at agreed milestones. You review, give feedback, and we iterate together.",
+    title: 'Build and review',
+    desc: "I build with regular check-ins at agreed milestones. You review, give feedback, and we work through it together.",
   },
   {
     num: '04',
@@ -135,31 +135,31 @@ const steps = [
 const faqs = [
   {
     q: "What's included in the base price?",
-    a: "The base price covers the core scope listed in each plan — design, development, SEO basics, and handover. Add-ons like extra pages beyond the included count, advanced animations, multi-language support, or specific third-party integrations are quoted as line items before work starts.",
+    a: "The base price covers the core scope listed in each plan: design, development, SEO basics, and handover. Add-ons like extra pages, advanced animations, multi-language support, or third-party integrations are quoted as line items before work starts.",
   },
   {
     q: 'What does the monthly fee cover?',
-    a: "The monthly fee covers your website in full — hosting, ongoing development, and continuous improvements. Every month your site gets updated: new content, feature additions, design tweaks, performance tuning, and anything else that keeps it sharp. You're not paying for a finished product that sits still — you're paying for a website that keeps getting better.",
+    a: "The monthly fee covers everything: hosting, ongoing development, and continuous improvements. Every month your site gets updated with new content, feature additions, design tweaks, and performance tuning. You are not paying for a finished product that sits still. You are paying for a website that keeps getting better.",
   },
   {
     q: 'How long does a typical project take?',
-    a: 'A static website usually takes 1–2 weeks from kickoff to launch. eCommerce projects range from 2–4 weeks depending on inventory size and integrations. Custom projects are scoped individually — a realistic timeline is always agreed before work begins.',
+    a: 'A static website usually takes 1 to 2 weeks from start to launch. eCommerce projects take 2 to 4 weeks depending on size and integrations. Custom projects are scoped individually, and a realistic timeline is always agreed before work begins.',
   },
   {
     q: 'How many revisions are included?',
-    a: 'Static plans include 3 rounds; eCommerce includes 5. A "round" means a single batch of collected feedback reviewed together — not individual back-and-forth changes. Additional rounds beyond what\'s included are billed at an hourly rate agreed upfront.',
+    a: "Static plans include 3 rounds and eCommerce includes 5. A revision round means a single batch of collected feedback reviewed together, not individual back-and-forth changes. Extra rounds beyond what is included are billed at an hourly rate agreed upfront.",
   },
   {
     q: 'What if my requirements grow mid-project?',
-    a: "Scope changes happen and that's completely fine. I'll flag anything outside the agreed scope early and send a revised quote before continuing. You'll never receive an unexpected invoice — everything is agreed in writing first.",
+    a: "Scope changes happen and that is completely fine. I will flag anything outside the agreed scope early and send a revised quote before continuing. You will never get a surprise invoice. Everything is agreed in writing first.",
   },
   {
     q: 'Can I pay in installments?',
-    a: "Yes. Projects are typically split 50% upfront to begin and 50% on delivery. For longer custom engagements we can agree on a milestone-based payment schedule. Accepted: bank transfer, PayPal, or Stripe.",
+    a: "Yes. Projects are split 50% upfront and 50% on delivery. For longer custom work, we can set up milestone-based payments. I accept bank transfer, PayPal, or Stripe.",
   },
 ];
 
-// ─── Page Component ──────────────────────────────────────────────────────────
+// --- Page Component ---
 
 export default function PricingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -172,7 +172,7 @@ export default function PricingPage() {
         path="/pricing"
       />
 
-      {/* ── Hero ──────────────────────────────────────────── */}
+      {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg} aria-hidden="true" />
         <div className={styles.container}>
@@ -191,7 +191,7 @@ export default function PricingPage() {
             </h1>
             <p className={styles.heroLead}>
               Monthly plans, no hidden fees. Your website is custom-built and continuously
-              updated — it grows with your business, not just sits there after launch.
+              updated. It grows with your business instead of just sitting there after launch.
             </p>
             <div className={styles.heroActions}>
               <a href="#plans" className="button">
@@ -205,7 +205,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* ── Plans ─────────────────────────────────────────── */}
+      {/* Plans */}
       <section className={styles.plans} id="plans">
         <div className={styles.container}>
           <div className={styles.plansGrid}>
@@ -245,12 +245,12 @@ export default function PricingPage() {
 
           <p className={styles.plansNote}>
             All prices are monthly and include ongoing updates. Final rate depends on scope and complexity.
-            Not sure which fits? <a href="#contact" className="link-underline">Drop me a message</a> and we&apos;ll figure it out.
+            Not sure which plan fits? <a href="#contact" className="link-underline">Drop me a message</a> and we will figure it out.
           </p>
         </div>
       </section>
 
-      {/* ── What's Always Included ────────────────────────── */}
+      {/* What's Always Included */}
       <section className={styles.guarantees}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
@@ -281,7 +281,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* ── Process ───────────────────────────────────────── */}
+      {/* Process */}
       <section className={styles.process}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
@@ -310,7 +310,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* ── FAQ ───────────────────────────────────────────── */}
+      {/* FAQ */}
       <section className={styles.faq}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
@@ -354,7 +354,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* ── Contact ───────────────────────────────────────── */}
+      {/* Contact */}
       <Contact />
     </>
   );

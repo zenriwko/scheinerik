@@ -13,7 +13,7 @@ const values = [
   {
     Icon: Zap,
     title: 'Performance is non-negotiable',
-    desc: "I don't consider a project done unless it scores 95+ on Lighthouse. Fast sites rank better, convert better, and keep users — slow ones don't.",
+    desc: "I do not consider a project done unless it scores 95+ on Lighthouse. Fast sites rank better, convert better, and keep users. Slow ones do not.",
   },
   {
     Icon: Code2,
@@ -23,12 +23,12 @@ const values = [
   {
     Icon: Search,
     title: 'SEO built in from the start',
-    desc: 'Structured data, semantic HTML, and fast server-side rendering are part of the process on every project — not retrofitted after the fact.',
+    desc: 'Structured data, semantic HTML, and fast server-side rendering are part of every project. Not added on after the fact.',
   },
   {
     Icon: Heart,
     title: 'Long-term thinking over quick fixes',
-    desc: "I'd rather spend an hour getting the architecture right than ship something that breaks in six months. Good software ages well.",
+    desc: "I would rather spend an hour getting the architecture right than ship something that breaks in six months. Good software ages well.",
   },
 ];
 
@@ -106,7 +106,7 @@ export default function AboutPage() {
                 I build modern web applications with Next.js and TypeScript — from high-performance eCommerce stores to SaaS tools and marketing sites. Serving businesses in Tampa, FL and clients across the US and worldwide.
               </p>
               <p className={styles.heroBio}>
-                I care about the details: load times, clean code, search rankings, and experiences that work on every device. Not just checking boxes — actually caring that the thing works properly.
+                I care about the details: load times, clean code, search rankings, and experiences that work on every device. Not just checking boxes. Actually caring that the thing works properly.
               </p>
               <div className={styles.heroActions}>
                 <a href="#contact" className="button">
@@ -135,13 +135,13 @@ export default function AboutPage() {
               <span className={styles.kicker}>Background</span>
               <h2>Where I&apos;m coming from</h2>
               <p>
-                I started building websites out of curiosity — tweaking themes, breaking things, figuring out why they broke. That early obsession with understanding <em>how</em> things work under the hood never left.
+                I started building websites out of curiosity. Tweaking themes, breaking things, figuring out why they broke. That early obsession with understanding how things work never left.
               </p>
               <p>
-                Over the past two years I&apos;ve been the full-stack and SEO lead at <a href="https://nextdigitalagency.com" target="_blank" rel="noopener noreferrer" className="link-underline">NEXT Digital Agency</a> — the technical backbone behind client projects ranging from eCommerce platforms to corporate sites, all scoring 95–100 on Lighthouse.
+                Over the past two years, I have been the full-stack and SEO lead at <a href="https://nextdigitalagency.com" target="_blank" rel="noopener noreferrer" className="link-underline">NEXT Digital Agency</a>, the technical backbone behind client projects ranging from eCommerce platforms to corporate sites. All scored 95 to 100 on Lighthouse.
               </p>
               <p>
-                Outside of client work, I build my own products. Currently developing <a href="https://bahayfind.com/" target="_blank" rel="noopener noreferrer" className="link-underline">BahayFind</a> — a Philippine real estate platform with multi-role auth, Mapbox-powered search, and payment-gated featured listings.
+                Outside of client work, I build my own products. I am currently developing <a href="https://bahayfind.com/" target="_blank" rel="noopener noreferrer" className="link-underline">BahayFind</a>, a Philippine real estate platform with multi-role auth, Mapbox-powered search, and payment-gated listings.
               </p>
             </motion.div>
             <motion.div
@@ -153,13 +153,13 @@ export default function AboutPage() {
               <span className={styles.kicker}>How I work</span>
               <h2>Direct, transparent, thorough</h2>
               <p>
-                I work directly with clients — no agency layer, no account managers, no miscommunication. You describe the problem, I propose a solution, we agree on a price before any code is written.
+                I work directly with clients. No agency layer, no account managers, no miscommunication. You describe the problem, I propose a solution, and we agree on a price before any code is written.
               </p>
               <p>
-                I prefer working on focused projects where quality matters over volume. I&apos;d rather build one excellent site than three mediocre ones. If a project isn&apos;t a good fit I&apos;ll tell you honestly rather than take on something I can&apos;t do justice to.
+                I prefer focused projects where quality matters more than volume. I would rather build one excellent site than three mediocre ones. If a project is not a good fit, I will tell you honestly.
               </p>
               <p>
-                When a project is done, you own everything — source code, assets, no lock-in. My goal is to hand you something you can run, maintain, and grow independently.
+                When a project is done, you own everything: source code, assets, no lock-in. My goal is to hand you something you can run, maintain, and grow on your own.
               </p>
             </motion.div>
           </div>
