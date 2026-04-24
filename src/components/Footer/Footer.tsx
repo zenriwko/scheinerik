@@ -89,7 +89,7 @@ export default function Footer() {
               </a>
               <div className={styles.contactRow}>
                 <MapPin size={15} />
-                Czech Republic
+                Serving Tampa, FL &amp; worldwide
               </div>
             </div>
             <div className={styles.availability}>

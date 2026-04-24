@@ -17,18 +17,18 @@ export default function About() {
           >
             <span className={styles.kicker}>ABOUT ME</span>
             <h2>
-              I build <span className={styles.gradient}>modern</span>, fast, and scalable web experiences
+              Tampa website developer — <span className={styles.gradient}>fast, custom, and built to rank</span>
             </h2>
 
             <div className={styles.text}>
               <p>
-                Hi, I’m Erik — a full-stack developer focused on creating clean, performant, and maintainable applications using Next.js, TypeScript, and modern tooling.
+                Hi, I’m Erik — a website developer serving businesses in Tampa, FL and across the US. I build fast, custom websites and web apps using Next.js and TypeScript, with no templates and no bloat.
               </p>
               <p>
-                I care deeply about <strong>developer experience</strong>, <strong>performance</strong>, and <strong>long-term code quality</strong>. Whether it's shipping fast prototypes or building production-grade systems that scale to thousands of users, I enjoy solving real problems with elegant solutions.
+                I care deeply about <strong>performance</strong>, <strong>SEO</strong>, and <strong>long-term results</strong>. Every site I build scores 95+ on Lighthouse and is structured to rank — from day one.
               </p>
               <p>
-                I work remotely with clients and teams worldwide — from startups to established products — helping turn ideas into reliable, user-loved software.
+                Working directly with Tampa businesses and US clients worldwide — no agency layer, no account managers. Just clean, fast websites that convert.
               </p>
             </div>
 

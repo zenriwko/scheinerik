@@ -167,8 +167,8 @@ export default function PricingPage() {
   return (
     <>
       <SEO
-        title="Web Development Pricing – From $199/month"
-        description="Monthly plans for custom websites and web apps. Static sites from $199/month, eCommerce from $300/month. Ongoing updates included — your site keeps improving every month."
+        title="Website Development Pricing Tampa FL – From $199/month"
+        description="Website development pricing for Tampa, FL businesses. Static sites from $199/month, eCommerce from $300/month. Custom-built, SEO-ready, no hidden fees."
         path="/pricing"
       />
 

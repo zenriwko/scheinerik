@@ -28,17 +28,15 @@ export default function Hero() {
           Full-Stack Developer · Next.js · SEO
         </motion.span>
 
-        <motion.h1 variants={item}>Erik Scheinpflug</motion.h1>
+        <motion.h1 variants={item}>Website Developer Tampa, FL</motion.h1>
 
         <motion.div className={styles.textWrapper} variants={item}>
           <p>
-            I build modern web applications with React and Next.js, focused on performance,
-            scalability, and long-term code maintainability.
+            I build fast, custom websites and web apps for businesses in Tampa, FL and across the US — using Next.js and React, focused on performance, SEO, and long-term results.
           </p>
 
           <p>
-            Every project is designed strategically — with emphasis on clean architecture,
-            speed optimization, and maximum technical quality.
+            No templates, no agencies. Direct, transparent, and built to rank — from a clean $199/month static site to a full eCommerce store.
           </p>
         </motion.div>
 

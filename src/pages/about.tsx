@@ -40,7 +40,7 @@ const personSchema = {
   url: 'https://scheinerik.dev',
   image: 'https://scheinerik.dev/og-image.png',
   description:
-    'Full-stack developer specialising in Next.js, eCommerce, and SEO-optimised web applications. Based in Czech Republic, working with clients worldwide.',
+    'Website developer serving Tampa, FL and clients worldwide. Specialising in Next.js, eCommerce, and SEO-optimised web applications.',
   jobTitle: 'Full-Stack Developer',
   worksFor: { '@type': 'Organization', name: 'Independent' },
   knowsAbout: ['Next.js', 'React', 'TypeScript', 'SEO', 'eCommerce', 'Web Performance'],
@@ -54,8 +54,8 @@ export default function AboutPage() {
   return (
     <>
       <SEO
-        title="About – Erik Scheinpflug, Next.js Developer"
-        description="Full-stack developer with 2+ years at NEXT Digital Agency — specialising in Next.js, eCommerce, and technical SEO. Based in Czech Republic, working worldwide."
+        title="Tampa Website Developer – Erik Scheinpflug"
+        description="Website developer serving Tampa, FL and US clients — specialising in Next.js, eCommerce, and technical SEO. Remote-first, US-time-zone friendly, fast turnaround."
         path="/about"
       />
       <JsonLd data={personSchema} />
@@ -103,7 +103,7 @@ export default function AboutPage() {
               </h1>
               <p className={styles.heroRole}>Full-Stack Developer · eCommerce · SEO</p>
               <p className={styles.heroBio}>
-                I build modern web applications with Next.js and TypeScript — from high-performance eCommerce stores to SaaS tools and marketing sites. Based in Mladá Boleslav, Czech Republic. Working remotely with clients worldwide.
+                I build modern web applications with Next.js and TypeScript — from high-performance eCommerce stores to SaaS tools and marketing sites. Serving businesses in Tampa, FL and clients across the US and worldwide.
               </p>
               <p className={styles.heroBio}>
                 I care about the details: load times, clean code, search rankings, and experiences that work on every device. Not just checking boxes — actually caring that the thing works properly.

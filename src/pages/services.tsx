@@ -158,8 +158,8 @@ const faqs = [
     a: "I work across a wide range — from a $250 single-page site to multi-month custom SaaS builds. The common thread is focused projects where quality matters. If your project genuinely needs a full agency team, I'll tell you that honestly rather than over-promise and under-deliver.",
   },
   {
-    q: 'Do you work with international clients?',
-    a: "Yes, fully remote and comfortable with clients across Europe, the US, and beyond. I work asynchronously well and adapt to time zones. Communication is in English, with payments in USD or EUR.",
+    q: 'Do you work with clients in Tampa, FL and the US?',
+    a: "Yes — I work fully remote and serve clients in Tampa, FL, across the US, and internationally. I'm comfortable with US time zones, communicate in English, and accept payments in USD. Being remote means you get a senior developer without the local agency markup.",
   },
 ];
 
@@ -180,8 +180,8 @@ export default function ServicesPage() {
   return (
     <>
       <SEO
-        title="Next.js Development & SEO Services"
-        description="Full-stack web development: Next.js, eCommerce, API integrations, performance optimisation, and technical SEO. Built clean, fast, and ranked from day one."
+        title="Website Development Services Tampa FL – Next.js & eCommerce"
+        description="Custom website development services in Tampa, FL — Next.js, eCommerce, performance optimisation, and technical SEO. Fast, clean, and built to rank from day one."
         path="/services"
       />
 
@@ -198,13 +198,12 @@ export default function ServicesPage() {
           >
             <span className={styles.kicker}>Services</span>
             <h1 className={styles.heroTitle}>
-              Fast, custom web development,
+              Tampa website development,
               <br />
               <span className={styles.gradient}>built to convert.</span>
             </h1>
             <p className={styles.heroLead}>
-              Clean code. Lighthouse 95+. SEO from day one. No templates, no bloat
-              — just a site that works as hard as your business.
+              Serving businesses in Tampa, FL and across the US. Clean code, Lighthouse 95+, SEO from day one — no templates, no bloat, just a site that works as hard as your business.
             </p>
             <div className={styles.heroActions}>
               <a href="#contact" className="button">
