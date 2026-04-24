@@ -63,9 +63,9 @@ export default function Contact() {
             <div className={styles.infoItem}>
               <MapPin size={28} />
               <div>
-                <p className={styles.label}>Based in</p>
+                <p className={styles.label}>Location</p>
                 <p className={styles.value}>
-                  Czech Republic
+                  Serving Tampa, FL and worldwide
                   <br />
                   <span className={styles.note}>Open to remote work worldwide</span>
                 </p>
