@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import Link from 'next/link';
-import { Home, Wrench, Zap, Shield, CheckCircle, Camera } from 'lucide-react';
+import { Home, Wrench, Zap, Shield, CheckCircle, Camera, Phone } from 'lucide-react';
 import SEO from '@/components/%SEO/SEO';
 import styles from '../demo.module.css';
 
@@ -29,7 +30,7 @@ const services = [
       'Synthetic underlayment over full deck',
       'Ridge ventilation system installation',
       'Manufacturer warranty transfer to homeowner',
-      '10-year Peak Roofing labour warranty',
+      '10-year Peak Roofing labor warranty',
     ],
     pricing: 'From $6,500 – $18,000+',
     reverse: false,
@@ -43,7 +44,7 @@ const services = [
     includes: [
       'Free leak investigation and root-cause diagnosis',
       'Written repair scope before any work starts',
-      'Colour-matched replacement shingles',
+      'Color-matched replacement shingles',
       'Flashing repair and resealing',
       'Skylight re-flashing and resealing',
       'Chimney cap and crown repair',
@@ -75,14 +76,14 @@ const services = [
     eyebrow: 'Gutters, Fascia & Soffits',
     title: 'Gutters & Fascia',
     photoLabel: 'Seamless gutter installation',
-    desc: 'Gutters and fascia are the first line of defence against water damage to your home\'s structure. We fabricate seamless gutters on-site for a perfect fit, install gutter guards to eliminate clogging, and replace rotted fascia and soffit boards before water reaches your rafters.',
+    desc: 'Gutters and fascia are the first line of defense against water damage to your home\'s structure. We fabricate seamless gutters on-site for a perfect fit, install gutter guards to eliminate clogging, and replace rotted fascia and soffit boards before water reaches your rafters.',
     includes: [
       'Seamless K-style and half-round gutter fabrication',
       'Gutter guard installation (leaf-free systems)',
       'Downspout routing and underground drainage',
       'Rotted fascia board replacement',
       'Soffit repair and ventilation upgrade',
-      'All paint-matched to your existing trim colour',
+      'All paint-matched to your existing trim color',
       '5-year warranty on gutter systems',
     ],
     pricing: 'From $1,200 – $4,500',
@@ -91,6 +92,8 @@ const services = [
 ];
 
 export default function RoofingServices() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <>
       <SEO
@@ -127,7 +130,25 @@ export default function RoofingServices() {
               </li>
             ))}
           </ul>
-          <a href="/demo/roofing/contact" className={styles.navBtn}>Get a Quote</a>
+          <div className={styles.navRight}>
+            <a href="/demo/roofing/contact" className={styles.navBtn}>Get a Quote</a>
+            <button
+              className={styles.hamburger}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={menuOpen}
+            >
+              <span /><span /><span />
+            </button>
+          </div>
+          {menuOpen && (
+            <div className={styles.mobileMenu}>
+              {NAV_LINKS.map(({ href, label }) => (
+                <a key={href} href={href} className={styles.mobileMenuLink}>{label}</a>
+              ))}
+              <a href="/demo/roofing/contact" className={styles.mobileMenuCta}>Get a Free Quote</a>
+            </div>
+          )}
         </nav>
 
         {/* ── Page header ── */}
@@ -215,6 +236,16 @@ export default function RoofingServices() {
             Demo built by <a href="https://scheinerik.dev">scheinerik.dev</a>
           </span>
         </footer>
+
+        {/* ── Mobile sticky call bar ── */}
+        <div className={styles.stickyCallBar}>
+          <a href="tel:+15550001234" className={styles.stickyCallBtn}>
+            <Phone size={18} /> (555) 000-1234
+          </a>
+          <a href="/demo/roofing/contact" className={styles.stickyQuoteBtn}>
+            Free Estimate →
+          </a>
+        </div>
       </div>
     </>
   );

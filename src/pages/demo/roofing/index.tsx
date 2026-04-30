@@ -13,7 +13,7 @@ const ACCENT_SOFT = 'rgba(249, 115, 22, 0.12)';
 const ACCENT_GLOW = 'rgba(249, 115, 22, 0.35)';
 
 const services = [
-  { Icon: Home,   title: 'Roof Installation', desc: 'Full new-construction and tear-off replacements. Every job includes a written labour warranty.' },
+  { Icon: Home,   title: 'Roof Installation', desc: 'Full new-construction and tear-off replacements. Every job includes a written labor warranty.' },
   { Icon: Wrench, title: 'Roof Repair',        desc: 'Single missing shingle or widespread damage — we diagnose fast and fix it right the first time.' },
   { Icon: Zap,    title: 'Storm Damage',       desc: 'Emergency response within 24 hours. We document damage and coordinate directly with your insurer.' },
   { Icon: Shield, title: 'Gutters & Fascia',   desc: 'Seamless gutter fabrication, downspout routing, gutter-guard installs, and fascia replacement.' },
@@ -29,12 +29,12 @@ const stats = [
 const features = [
   { Icon: Clock,    title: '24/7 Emergency Response',  desc: "Storms don't keep business hours — and neither do we. Emergency crews on call around the clock." },
   { Icon: Award,    title: 'NRCA-Certified Craftsmen', desc: 'Every installer holds a current NRCA certification, ensuring your job meets the industry\'s highest standards.' },
-  { Icon: ThumbsUp, title: 'No-Surprise Quotes',       desc: 'Written estimates are itemised and locked in. We discuss anything unexpected before touching it.' },
+  { Icon: ThumbsUp, title: 'No-Surprise Quotes',       desc: 'Written estimates are itemized and locked in. We discuss anything unexpected before touching it.' },
 ];
 
 const steps = [
   { num: '01', title: 'Free Inspection',    desc: 'A certified inspector visits, photographs every issue, and gives you an honest assessment.' },
-  { num: '02', title: 'Written Estimate',   desc: 'Clear, itemised quote within 24 hours — materials, labour, and a projected timeline.' },
+  { num: '02', title: 'Written Estimate',   desc: 'Clear, itemized quote within 24 hours — materials, labor, and a projected timeline.' },
   { num: '03', title: 'Professional Install', desc: 'Crew arrives on schedule, protects landscaping, works efficiently. Clean-up included.' },
   { num: '04', title: 'Final Walkthrough',  desc: 'We walk the finished job with you and hand over warranty documents before we leave.' },
 ];
@@ -79,6 +79,7 @@ const NAV_LINKS = [
 
 export default function RoofingDemo() {
   const [heroSent, setHeroSent] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
@@ -112,7 +113,25 @@ export default function RoofingDemo() {
               <li key={href}><a href={href}>{label}</a></li>
             ))}
           </ul>
-          <a href="/demo/roofing/contact" className={styles.navBtn}>Get a Quote</a>
+          <div className={styles.navRight}>
+            <a href="/demo/roofing/contact" className={styles.navBtn}>Get a Quote</a>
+            <button
+              className={styles.hamburger}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={menuOpen}
+            >
+              <span /><span /><span />
+            </button>
+          </div>
+          {menuOpen && (
+            <div className={styles.mobileMenu}>
+              {NAV_LINKS.map(({ href, label }) => (
+                <a key={href} href={href} className={styles.mobileMenuLink}>{label}</a>
+              ))}
+              <a href="/demo/roofing/contact" className={styles.mobileMenuCta}>Get a Free Quote</a>
+            </div>
+          )}
         </nav>
 
         {/* ── Hero ── */}
@@ -129,7 +148,7 @@ export default function RoofingDemo() {
               </h1>
               <p className={styles.heroLead}>
                 Expert roofing installation, repair, and storm-damage restoration.
-                Fast response, honest quotes, guaranteed workmanship — every time.
+                Fast response, honest quotes, and guaranteed workmanship, every time.
               </p>
               <div className={styles.heroActions}>
                 <a href="/demo/roofing/contact" className={styles.btnPrimary}>Get a Free Quote</a>
@@ -383,6 +402,16 @@ export default function RoofingDemo() {
             Demo built by <a href="https://scheinerik.dev">scheinerik.dev</a>
           </span>
         </footer>
+
+        {/* ── Mobile sticky call bar ── */}
+        <div className={styles.stickyCallBar}>
+          <a href="tel:+15550001234" className={styles.stickyCallBtn}>
+            <Phone size={18} /> (555) 000-1234
+          </a>
+          <a href="/demo/roofing/contact" className={styles.stickyQuoteBtn}>
+            Free Estimate →
+          </a>
+        </div>
       </div>
     </>
   );

@@ -45,11 +45,11 @@ const faqCategories = [
     items: [
       {
         q: 'How much does a new roof cost?',
-        a: "A residential roof replacement typically ranges from $6,500 to $18,000+ depending on size, pitch, material choice, and local disposal fees. We provide a free itemised estimate so you know exactly what you\'re paying for before committing.",
+        a: "A residential roof replacement typically ranges from $6,500 to $18,000+ depending on size, pitch, material choice, and local disposal fees. We provide a free itemized estimate so you know exactly what you\'re paying for before committing.",
       },
       {
         q: 'Do you offer financing?',
-        a: "Yes — we partner with two financing providers offering 12-month same-as-cash plans and 36–84 month instalment options. Ask about financing when you request your estimate and we\'ll send you the application link.",
+        a: "Yes — we partner with two financing providers offering 12-month same-as-cash plans and 36–84 month installment options. Ask about financing when you request your estimate and we\'ll send you the application link.",
       },
       {
         q: 'Will the final bill match the estimate?',
@@ -89,7 +89,7 @@ const faqCategories = [
     items: [
       {
         q: 'Do you work with insurance companies for storm damage?',
-        a: "Yes — storm damage claims represent a significant portion of our work. We document all damage with photos, provide detailed loss reports, and communicate directly with adjusters to maximise your coverage.",
+        a: "Yes — storm damage claims represent a significant portion of our work. We document all damage with photos, provide detailed loss reports, and communicate directly with adjusters to maximize your coverage.",
       },
       {
         q: 'What if my insurance adjuster underestimates the damage?',
@@ -115,7 +115,7 @@ const faqCategories = [
       },
       {
         q: 'Is your warranty transferable if I sell my home?',
-        a: "Yes. Our 10-year labour warranty is transferable to the next homeowner once, at no cost. This is a genuine selling point — buyers appreciate a recent roof with documented warranty coverage.",
+        a: "Yes. Our 10-year labor warranty is transferable to the next homeowner once, at no cost. This is a genuine selling point — buyers appreciate a recent roof with documented warranty coverage.",
       },
     ],
   },
@@ -123,6 +123,7 @@ const faqCategories = [
 
 export default function RoofingFaq() {
   const [openItem, setOpenItem] = useState<string | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const toggle = (key: string) => setOpenItem(openItem === key ? null : key);
 
@@ -162,7 +163,25 @@ export default function RoofingFaq() {
               </li>
             ))}
           </ul>
-          <a href="/demo/roofing/contact" className={styles.navBtn}>Get a Quote</a>
+          <div className={styles.navRight}>
+            <a href="/demo/roofing/contact" className={styles.navBtn}>Get a Quote</a>
+            <button
+              className={styles.hamburger}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={menuOpen}
+            >
+              <span /><span /><span />
+            </button>
+          </div>
+          {menuOpen && (
+            <div className={styles.mobileMenu}>
+              {NAV_LINKS.map(({ href, label }) => (
+                <a key={href} href={href} className={styles.mobileMenuLink}>{label}</a>
+              ))}
+              <a href="/demo/roofing/contact" className={styles.mobileMenuCta}>Get a Free Quote</a>
+            </div>
+          )}
         </nav>
 
         {/* ── Page header ── */}
@@ -259,6 +278,16 @@ export default function RoofingFaq() {
             Demo built by <a href="https://scheinerik.dev">scheinerik.dev</a>
           </span>
         </footer>
+
+        {/* ── Mobile sticky call bar ── */}
+        <div className={styles.stickyCallBar}>
+          <a href="tel:+15550001234" className={styles.stickyCallBtn}>
+            <Phone size={18} /> (555) 000-1234
+          </a>
+          <a href="/demo/roofing/contact" className={styles.stickyQuoteBtn}>
+            Free Estimate →
+          </a>
+        </div>
       </div>
     </>
   );

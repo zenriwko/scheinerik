@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import { CheckCircle, Phone, Camera } from 'lucide-react';
 import SEO from '@/components/%SEO/SEO';
@@ -33,10 +34,10 @@ const steps = [
     num: '02',
     title: 'Written Estimate Delivery',
     photoLabel: 'Homeowner reviewing estimate on tablet',
-    desc: 'Within 24 hours of the inspection, you\'ll receive a detailed written estimate by email. It\'s line-by-line: every material specified by brand and grade, every labour task priced individually, and a projected start-to-finish timeline.',
+    desc: 'Within 24 hours of the inspection, you\'ll receive a detailed written estimate by email. It\'s line-by-line: every material specified by brand and grade, every labor task priced individually, and a projected start-to-finish timeline.',
     note: '📋 Our estimates are fixed-price. The number on page one is the number on the final invoice — unless you change the scope.',
     details: [
-      'Line-item pricing — no lumped "labour + materials" totals',
+      'Line-item pricing — no lumped "labor + materials" totals',
       'Material brand and grade specified for every item',
       'Two or three material options with price comparisons',
       'Projected start date and completion timeline',
@@ -60,11 +61,11 @@ const steps = [
     title: 'Final Walkthrough & Warranty',
     photoLabel: 'Homeowner and crew lead on completed roof',
     desc: 'Before we close out the job, the project lead walks the finished roof with you. Every flashing is pointed out, every ridge vent shown, every detail explained. Any punch-list items are resolved same-day.',
-    note: '📄 You\'ll receive your Peak Roofing 10-year labour warranty certificate and the manufacturer\'s material warranty transfer document before we leave the site.',
+    note: '📄 You\'ll receive your Peak Roofing 10-year labor warranty certificate and the manufacturer\'s material warranty transfer document before we leave the site.',
     details: [
       'On-site walkthrough with the project lead',
       'All punch-list items resolved before final payment',
-      '10-year Peak Roofing labour warranty certificate',
+      '10-year Peak Roofing labor warranty certificate',
       'Manufacturer material warranty transferred to you in writing',
     ],
   },
@@ -86,6 +87,8 @@ const processFaqs = [
 ];
 
 export default function RoofingProcess() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <>
       <SEO
@@ -122,7 +125,25 @@ export default function RoofingProcess() {
               </li>
             ))}
           </ul>
-          <a href="/demo/roofing/contact" className={styles.navBtn}>Get a Quote</a>
+          <div className={styles.navRight}>
+            <a href="/demo/roofing/contact" className={styles.navBtn}>Get a Quote</a>
+            <button
+              className={styles.hamburger}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={menuOpen}
+            >
+              <span /><span /><span />
+            </button>
+          </div>
+          {menuOpen && (
+            <div className={styles.mobileMenu}>
+              {NAV_LINKS.map(({ href, label }) => (
+                <a key={href} href={href} className={styles.mobileMenuLink}>{label}</a>
+              ))}
+              <a href="/demo/roofing/contact" className={styles.mobileMenuCta}>Get a Free Quote</a>
+            </div>
+          )}
         </nav>
 
         {/* ── Page header ── */}
@@ -219,6 +240,16 @@ export default function RoofingProcess() {
             Demo built by <a href="https://scheinerik.dev">scheinerik.dev</a>
           </span>
         </footer>
+
+        {/* ── Mobile sticky call bar ── */}
+        <div className={styles.stickyCallBar}>
+          <a href="tel:+15550001234" className={styles.stickyCallBtn}>
+            <Phone size={18} /> (555) 000-1234
+          </a>
+          <a href="/demo/roofing/contact" className={styles.stickyQuoteBtn}>
+            Free Estimate →
+          </a>
+        </div>
       </div>
     </>
   );

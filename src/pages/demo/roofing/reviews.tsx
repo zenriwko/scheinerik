@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import { CheckCircle, Phone, Play, Camera } from 'lucide-react';
 import SEO from '@/components/%SEO/SEO';
@@ -89,6 +90,8 @@ const reviews = [
 ];
 
 export default function RoofingReviews() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <>
       <SEO
@@ -125,7 +128,25 @@ export default function RoofingReviews() {
               </li>
             ))}
           </ul>
-          <a href="/demo/roofing/contact" className={styles.navBtn}>Get a Quote</a>
+          <div className={styles.navRight}>
+            <a href="/demo/roofing/contact" className={styles.navBtn}>Get a Quote</a>
+            <button
+              className={styles.hamburger}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={menuOpen}
+            >
+              <span /><span /><span />
+            </button>
+          </div>
+          {menuOpen && (
+            <div className={styles.mobileMenu}>
+              {NAV_LINKS.map(({ href, label }) => (
+                <a key={href} href={href} className={styles.mobileMenuLink}>{label}</a>
+              ))}
+              <a href="/demo/roofing/contact" className={styles.mobileMenuCta}>Get a Free Quote</a>
+            </div>
+          )}
         </nav>
 
         {/* ── Page header ── */}
@@ -236,6 +257,16 @@ export default function RoofingReviews() {
             Demo built by <a href="https://scheinerik.dev">scheinerik.dev</a>
           </span>
         </footer>
+
+        {/* ── Mobile sticky call bar ── */}
+        <div className={styles.stickyCallBar}>
+          <a href="tel:+15550001234" className={styles.stickyCallBtn}>
+            <Phone size={18} /> (555) 000-1234
+          </a>
+          <a href="/demo/roofing/contact" className={styles.stickyQuoteBtn}>
+            Free Estimate →
+          </a>
+        </div>
       </div>
     </>
   );

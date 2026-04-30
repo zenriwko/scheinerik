@@ -18,6 +18,7 @@ const NAV_LINKS = [
 
 export default function RoofingContact() {
   const [formSent, setFormSent] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
@@ -55,7 +56,25 @@ export default function RoofingContact() {
               </li>
             ))}
           </ul>
-          <a href="#form" className={styles.navBtn}>Get a Quote</a>
+          <div className={styles.navRight}>
+            <a href="#form" className={styles.navBtn}>Get a Quote</a>
+            <button
+              className={styles.hamburger}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={menuOpen}
+            >
+              <span /><span /><span />
+            </button>
+          </div>
+          {menuOpen && (
+            <div className={styles.mobileMenu}>
+              {NAV_LINKS.map(({ href, label }) => (
+                <a key={href} href={href} className={styles.mobileMenuLink}>{label}</a>
+              ))}
+              <a href="#form" className={styles.mobileMenuCta}>Get a Free Quote</a>
+            </div>
+          )}
         </nav>
 
         {/* ── Page header ── */}
@@ -110,7 +129,7 @@ export default function RoofingContact() {
                     <div>
                       <span className={styles.contactInfoLabel}>Service Area</span>
                       <span className={styles.contactInfoValue}>Greater Metro Area</span>
-                      <span className={styles.contactInfoValueMuted}>30-mile radius from city centre</span>
+                      <span className={styles.contactInfoValueMuted}>30-mile radius from city center</span>
                     </div>
                   </div>
                 </div>
@@ -241,6 +260,16 @@ export default function RoofingContact() {
             Demo built by <a href="https://scheinerik.dev">scheinerik.dev</a>
           </span>
         </footer>
+
+        {/* ── Mobile sticky call bar ── */}
+        <div className={styles.stickyCallBar}>
+          <a href="tel:+15550001234" className={styles.stickyCallBtn}>
+            <Phone size={18} /> (555) 000-1234
+          </a>
+          <a href="#form" className={styles.stickyQuoteBtn}>
+            Free Estimate →
+          </a>
+        </div>
       </div>
     </>
   );
