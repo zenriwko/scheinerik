@@ -1,4 +1,4 @@
-import { Space_Grotesk, Inter, Geist_Mono } from 'next/font/google';
+import { Space_Grotesk, Inter, Geist_Mono, Nunito } from 'next/font/google';
 
 // Headings — geometric, techy, strong personality
 export const spaceGrotesk = Space_Grotesk({
@@ -13,6 +13,14 @@ export const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
+});
+
+// Cleaning demo — rounded, airy, gentle
+export const nunito = Nunito({
+  subsets: ['latin'],
+  variable: '--font-nunito',
+  weight: ['400', '500', '600', '700', '800'],
   display: 'swap',
 });
 

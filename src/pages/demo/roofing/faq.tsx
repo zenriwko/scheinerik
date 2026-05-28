@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { ChevronDown, Phone, CheckCircle } from 'lucide-react';
+import { ChevronDown, Phone, CheckCircle, X } from 'lucide-react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import SEO from '@/components/%SEO/SEO';
-import styles from '../demo.module.css';
+import styles from './roofing.module.css';
 
 const ACCENT      = '#f97316';
 const ACCENT_SOFT = 'rgba(249, 115, 22, 0.12)';
@@ -124,6 +125,7 @@ const faqCategories = [
 export default function RoofingFaq() {
   const [openItem, setOpenItem] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  useScrollReveal();
 
   const toggle = (key: string) => setOpenItem(openItem === key ? null : key);
 
@@ -140,31 +142,25 @@ export default function RoofingFaq() {
         className={styles.page}
         style={{ '--accent': ACCENT, '--accent-soft': ACCENT_SOFT, '--accent-glow': ACCENT_GLOW } as any}
       >
-        {/* ── Notice bar ── */}
-        <div className={styles.notice}>
-          <Link href="/" className={styles.noticeBack}>← scheinerik.dev</Link>
-          <div className={styles.noticeMeta}>
-            <span>This is a demo site — not a real business.</span>
-            <Link href="/pricing" className={styles.noticeLink}>Get one like this →</Link>
-          </div>
-        </div>
-
         {/* ── Company nav ── */}
         <nav className={styles.companyNav}>
-          <a href="/demo/roofing" className={styles.companyLogo}>
+          <Link href="/demo/roofing" className={styles.companyLogo}>
             Peak <span className={styles.logoAccent}>Roofing</span>
-          </a>
+          </Link>
           <ul className={styles.companyLinks}>
             {NAV_LINKS.map(({ href, label }) => (
               <li key={href}>
-                <a href={href} className={href === '/demo/roofing/faq' ? styles.companyLinkActive : ''}>
+                <Link href={href} className={href === '/demo/roofing/faq' ? styles.companyLinkActive : ''}>
                   {label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
           <div className={styles.navRight}>
-            <a href="/demo/roofing/contact" className={styles.navBtn}>Get a Quote</a>
+            <a href="tel:+15550001234" className={styles.navPhone}>
+              <Phone size={15} /> (555) 000-1234
+            </a>
+            <Link href="/demo/roofing/contact" className={styles.navBtn}>Get a Quote</Link>
             <button
               className={styles.hamburger}
               onClick={() => setMenuOpen(!menuOpen)}
@@ -177,9 +173,9 @@ export default function RoofingFaq() {
           {menuOpen && (
             <div className={styles.mobileMenu}>
               {NAV_LINKS.map(({ href, label }) => (
-                <a key={href} href={href} className={styles.mobileMenuLink}>{label}</a>
+                <Link key={href} href={href} className={styles.mobileMenuLink}>{label}</Link>
               ))}
-              <a href="/demo/roofing/contact" className={styles.mobileMenuCta}>Get a Free Quote</a>
+              <Link href="/demo/roofing/contact" className={styles.mobileMenuCta}>Get a Free Quote</Link>
             </div>
           )}
         </nav>
@@ -188,7 +184,7 @@ export default function RoofingFaq() {
         <div className={styles.pageHeader}>
           <div className={styles.sectionInner}>
             <div className={styles.breadcrumb}>
-              <a href="/demo/roofing">Peak Roofing</a>
+              <Link href="/demo/roofing">Peak Roofing</Link>
               <span className={styles.breadcrumbSep}>/</span>
               <span>FAQ</span>
             </div>
@@ -214,8 +210,8 @@ export default function RoofingFaq() {
 
               {/* FAQ content */}
               <div>
-                {faqCategories.map(({ id, title, items }) => (
-                  <div key={id} id={`faq-${id}`} className={styles.faqCategoryBlock}>
+                {faqCategories.map(({ id, title, items }, i) => (
+                  <div key={id} id={`faq-${id}`} className={styles.faqCategoryBlock} data-reveal style={{ '--reveal-delay': `${i * 60}ms` } as any}>
                     <p className={styles.faqCategoryTitle}>{title}</p>
                     <div className={styles.faqList}>
                       {items.map(({ q, a }) => {
@@ -249,7 +245,7 @@ export default function RoofingFaq() {
         {/* ── CTA ── */}
         <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className={styles.sectionInner}>
-            <div className={styles.ctaBox}>
+            <div className={styles.ctaBox} data-reveal>
               <h2 className={styles.ctaTitle}>Still have questions?</h2>
               <p className={styles.ctaLead}>
                 Call us directly or fill in the contact form — our team responds within 2 hours
@@ -261,7 +257,7 @@ export default function RoofingFaq() {
                 <span className={styles.guaranteeItem}><CheckCircle size={15} /> Free estimates</span>
               </div>
               <div className={styles.ctaActions}>
-                <a href="/demo/roofing/contact" className={styles.btnPrimary}>Send Us a Message</a>
+                <Link href="/demo/roofing/contact" className={styles.btnPrimary}>Send Us a Message</Link>
                 <a href="tel:+15550001234" className={styles.btnSecondary}>
                   <Phone size={16} /> (555) 000-1234
                 </a>
@@ -272,21 +268,51 @@ export default function RoofingFaq() {
 
         {/* ── Footer ── */}
         <footer className={styles.companyFooter}>
-          <span className={styles.footerLogo}>Peak Roofing Co.</span>
-          <span className={styles.footerCopy}>© 2026 Peak Roofing Co. All rights reserved.</span>
-          <span className={styles.footerCredit}>
-            Demo built by <a href="https://scheinerik.dev">scheinerik.dev</a>
-          </span>
+          <div className={styles.footerGrid}>
+            <div>
+              <Link href="/demo/roofing" className={styles.footerLogoLink}>Peak <span>Roofing</span> Co.</Link>
+              <p className={styles.footerTagline}>Licensed &amp; insured · Serving the greater metro area since 2009.</p>
+            </div>
+            <div>
+              <p className={styles.footerColHeading}>Navigation</p>
+              <nav className={styles.footerNavLinks}>
+                <Link href="/demo/roofing/services">Services</Link>
+                <Link href="/demo/roofing/process">Our Process</Link>
+                <Link href="/demo/roofing/reviews">Reviews</Link>
+                <Link href="/demo/roofing/faq">FAQ</Link>
+                <Link href="/demo/roofing/contact">Get a Quote</Link>
+              </nav>
+            </div>
+            <div>
+              <p className={styles.footerColHeading}>Contact</p>
+              <div className={styles.footerContactList}>
+                <a href="tel:+15550001234" className={styles.footerContactPhone}><Phone size={15} /> (555) 000-1234</a>
+                <span className={styles.footerContactMeta}>24/7 for storm emergencies</span>
+                <span className={styles.footerContactMeta}>info@peakroofing.example</span>
+                <span className={styles.footerContactMeta}>Mon–Fri 7am–6pm · Sat 8am–2pm</span>
+              </div>
+            </div>
+          </div>
+          <div className={styles.footerBottom}>
+            <span className={styles.footerCopy}>© 2026 Peak Roofing Co. All rights reserved.</span>
+            <span className={styles.footerCredit}>Demo by <a href="https://scheinerik.dev">scheinerik.dev</a></span>
+          </div>
         </footer>
+
+        {/* ── Back to portfolio ── */}
+        <Link href="/" className={styles.backBtn} aria-label="Back to scheinerik.dev">
+          <div className={styles.backBtnIcon}><X size={20} /></div>
+          <span className={styles.backBtnLabel}>Go back</span>
+        </Link>
 
         {/* ── Mobile sticky call bar ── */}
         <div className={styles.stickyCallBar}>
           <a href="tel:+15550001234" className={styles.stickyCallBtn}>
             <Phone size={18} /> (555) 000-1234
           </a>
-          <a href="/demo/roofing/contact" className={styles.stickyQuoteBtn}>
+          <Link href="/demo/roofing/contact" className={styles.stickyQuoteBtn}>
             Free Estimate →
-          </a>
+          </Link>
         </div>
       </div>
     </>

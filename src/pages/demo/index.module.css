@@ -79,13 +79,18 @@
   justify-content: center;
 }
 
-.cardLetter {
-  font-size: 5rem;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.05em;
-  opacity: 0.55;
-  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+.cardIconWrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .cardIconWrap {
+  transform: scale(1.1);
 }
 
 .cardBody {
@@ -98,7 +103,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #475569;
+  color: #94a3b8;
   margin-bottom: 0.5rem;
 }
 

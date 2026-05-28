@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { Phone, Mail, Clock, AlertTriangle, MapPin, CheckCircle, Camera } from 'lucide-react';
+import { Phone, Mail, Clock, AlertTriangle, MapPin, CheckCircle, X } from 'lucide-react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import SEO from '@/components/%SEO/SEO';
-import styles from '../demo.module.css';
+import styles from './roofing.module.css';
 
 const ACCENT      = '#f97316';
 const ACCENT_SOFT = 'rgba(249, 115, 22, 0.12)';
@@ -19,6 +20,7 @@ const NAV_LINKS = [
 export default function RoofingContact() {
   const [formSent, setFormSent] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  useScrollReveal();
 
   return (
     <>
@@ -33,30 +35,24 @@ export default function RoofingContact() {
         className={styles.page}
         style={{ '--accent': ACCENT, '--accent-soft': ACCENT_SOFT, '--accent-glow': ACCENT_GLOW } as any}
       >
-        {/* ── Notice bar ── */}
-        <div className={styles.notice}>
-          <Link href="/" className={styles.noticeBack}>← scheinerik.dev</Link>
-          <div className={styles.noticeMeta}>
-            <span>This is a demo site — not a real business.</span>
-            <Link href="/pricing" className={styles.noticeLink}>Get one like this →</Link>
-          </div>
-        </div>
-
         {/* ── Company nav ── */}
         <nav className={styles.companyNav}>
-          <a href="/demo/roofing" className={styles.companyLogo}>
+          <Link href="/demo/roofing" className={styles.companyLogo}>
             Peak <span className={styles.logoAccent}>Roofing</span>
-          </a>
+          </Link>
           <ul className={styles.companyLinks}>
             {NAV_LINKS.map(({ href, label }) => (
               <li key={href}>
-                <a href={href} className={href === '/demo/roofing/contact' ? styles.companyLinkActive : ''}>
+                <Link href={href} className={href === '/demo/roofing/contact' ? styles.companyLinkActive : ''}>
                   {label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
           <div className={styles.navRight}>
+            <a href="tel:+15550001234" className={styles.navPhone}>
+              <Phone size={15} /> (555) 000-1234
+            </a>
             <a href="#form" className={styles.navBtn}>Get a Quote</a>
             <button
               className={styles.hamburger}
@@ -70,7 +66,7 @@ export default function RoofingContact() {
           {menuOpen && (
             <div className={styles.mobileMenu}>
               {NAV_LINKS.map(({ href, label }) => (
-                <a key={href} href={href} className={styles.mobileMenuLink}>{label}</a>
+                <Link key={href} href={href} className={styles.mobileMenuLink}>{label}</Link>
               ))}
               <a href="#form" className={styles.mobileMenuCta}>Get a Free Quote</a>
             </div>
@@ -81,7 +77,7 @@ export default function RoofingContact() {
         <div className={styles.pageHeader}>
           <div className={styles.sectionInner}>
             <div className={styles.breadcrumb}>
-              <a href="/demo/roofing">Peak Roofing</a>
+              <Link href="/demo/roofing">Peak Roofing</Link>
               <span className={styles.breadcrumbSep}>/</span>
               <span>Contact</span>
             </div>
@@ -100,7 +96,7 @@ export default function RoofingContact() {
               {/* Left — info + map */}
               <div>
                 <div className={styles.contactInfo}>
-                  <div className={styles.contactInfoItem}>
+                  <div className={styles.contactInfoItem} data-reveal style={{ '--reveal-delay': '0ms' } as any}>
                     <div className={styles.contactInfoIcon}><Phone size={20} /></div>
                     <div>
                       <span className={styles.contactInfoLabel}>Phone</span>
@@ -108,7 +104,7 @@ export default function RoofingContact() {
                       <span className={styles.contactInfoValueMuted}>24/7 for emergencies</span>
                     </div>
                   </div>
-                  <div className={styles.contactInfoItem}>
+                  <div className={styles.contactInfoItem} data-reveal style={{ '--reveal-delay': '80ms' } as any}>
                     <div className={styles.contactInfoIcon}><Mail size={20} /></div>
                     <div>
                       <span className={styles.contactInfoLabel}>Email</span>
@@ -116,7 +112,7 @@ export default function RoofingContact() {
                       <span className={styles.contactInfoValueMuted}>Response within 2 hours</span>
                     </div>
                   </div>
-                  <div className={styles.contactInfoItem}>
+                  <div className={styles.contactInfoItem} data-reveal style={{ '--reveal-delay': '160ms' } as any}>
                     <div className={styles.contactInfoIcon}><Clock size={20} /></div>
                     <div>
                       <span className={styles.contactInfoLabel}>Office Hours</span>
@@ -124,7 +120,7 @@ export default function RoofingContact() {
                       <span className={styles.contactInfoValueMuted}>Sat 8 am – 2 pm</span>
                     </div>
                   </div>
-                  <div className={styles.contactInfoItem}>
+                  <div className={styles.contactInfoItem} data-reveal style={{ '--reveal-delay': '240ms' } as any}>
                     <div className={styles.contactInfoIcon}><MapPin size={20} /></div>
                     <div>
                       <span className={styles.contactInfoLabel}>Service Area</span>
@@ -134,14 +130,20 @@ export default function RoofingContact() {
                   </div>
                 </div>
 
-                {/* Map placeholder */}
-                <div className={styles.mapPlaceholder} style={{ marginTop: '2rem' }}>
-                  <Camera size={24} style={{ color: '#334155' }} />
-                  <span className={styles.mapLabel}>Add map: service area or office location</span>
+                {/* Map */}
+                <div className={styles.mapEmbed} data-reveal>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d496079.95393893577!2d-82.58411991807492!3d27.89951465169533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2b782b3b9d1e1%3A0xa75f1389af96b463!2sTampa%2C%20FL%2C%20USA!5e0!3m2!1sen!2sph!4v1779914029145!5m2!1sen!2sph"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Peak Roofing service area — Tampa, FL"
+                  />
                 </div>
 
                 {/* Emergency box */}
-                <div className={styles.emergencyBox}>
+                <div className={styles.emergencyBox} data-reveal>
                   <AlertTriangle size={22} className={styles.emergencyBoxIcon} />
                   <div className={styles.emergencyBoxText}>
                     <strong>Roof emergency?</strong>
@@ -151,7 +153,7 @@ export default function RoofingContact() {
               </div>
 
               {/* Right — full form */}
-              <div>
+              <div data-reveal>
                 {formSent ? (
                   <div className={styles.formSuccess}>
                     <CheckCircle size={44} />
@@ -242,7 +244,7 @@ export default function RoofingContact() {
                         Request My Free Inspection
                       </button>
                     </div>
-                    <p style={{ fontSize: '0.75rem', color: '#334155', textAlign: 'center', marginTop: '0.75rem', lineHeight: 1.4 }}>
+                    <p style={{ fontSize: '0.75rem', color: '#64748b', textAlign: 'center', marginTop: '0.75rem', lineHeight: 1.4 }}>
                       🔒 We never share your details. No spam, no high-pressure sales calls.
                     </p>
                   </form>
@@ -254,12 +256,42 @@ export default function RoofingContact() {
 
         {/* ── Footer ── */}
         <footer className={styles.companyFooter}>
-          <span className={styles.footerLogo}>Peak Roofing Co.</span>
-          <span className={styles.footerCopy}>© 2026 Peak Roofing Co. All rights reserved.</span>
-          <span className={styles.footerCredit}>
-            Demo built by <a href="https://scheinerik.dev">scheinerik.dev</a>
-          </span>
+          <div className={styles.footerGrid}>
+            <div>
+              <Link href="/demo/roofing" className={styles.footerLogoLink}>Peak <span>Roofing</span> Co.</Link>
+              <p className={styles.footerTagline}>Licensed &amp; insured · Serving the greater metro area since 2009.</p>
+            </div>
+            <div>
+              <p className={styles.footerColHeading}>Navigation</p>
+              <nav className={styles.footerNavLinks}>
+                <Link href="/demo/roofing/services">Services</Link>
+                <Link href="/demo/roofing/process">Our Process</Link>
+                <Link href="/demo/roofing/reviews">Reviews</Link>
+                <Link href="/demo/roofing/faq">FAQ</Link>
+                <Link href="/demo/roofing/contact">Get a Quote</Link>
+              </nav>
+            </div>
+            <div>
+              <p className={styles.footerColHeading}>Contact</p>
+              <div className={styles.footerContactList}>
+                <a href="tel:+15550001234" className={styles.footerContactPhone}><Phone size={15} /> (555) 000-1234</a>
+                <span className={styles.footerContactMeta}>24/7 for storm emergencies</span>
+                <span className={styles.footerContactMeta}>info@peakroofing.example</span>
+                <span className={styles.footerContactMeta}>Mon–Fri 7am–6pm · Sat 8am–2pm</span>
+              </div>
+            </div>
+          </div>
+          <div className={styles.footerBottom}>
+            <span className={styles.footerCopy}>© 2026 Peak Roofing Co. All rights reserved.</span>
+            <span className={styles.footerCredit}>Demo by <a href="https://scheinerik.dev">scheinerik.dev</a></span>
+          </div>
         </footer>
+
+        {/* ── Back to portfolio ── */}
+        <Link href="/" className={styles.backBtn} aria-label="Back to scheinerik.dev">
+          <div className={styles.backBtnIcon}><X size={20} /></div>
+          <span className={styles.backBtnLabel}>Go back</span>
+        </Link>
 
         {/* ── Mobile sticky call bar ── */}
         <div className={styles.stickyCallBar}>

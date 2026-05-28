@@ -89,7 +89,6 @@ export default function ProjectsPage() {
 
       {/* ── Hero ──────────────────────────────────────────── */}
       <section className={styles.hero}>
-        <div className={styles.heroBg} aria-hidden="true" />
         <div className={styles.container}>
           <motion.div
             className={styles.heroContent}

@@ -15,6 +15,7 @@
 
   /* ───── Brand – Friendly & Trustworthy ───── */
   --main: #14b8a6;                    /* Teal – most trusted modern dev color */
+  --main-dark: #0f766e;               /* Darker teal for WCAG AA contrast on white text */
   --secondary: #6366f1;               /* Indigo – smart & creative */
   --accent: #10b981;                  /* Emerald – success & reliability */
 

@@ -1,13 +1,16 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
-import { useForm, ValidationError } from '@formspree/react';
+import { useRef, useEffect, useState } from 'react';
+import { useForm } from '@formspree/react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Send, Loader2, CheckCircle } from 'lucide-react';
 import styles from './Contact.module.css';
 
+type FieldErrors = { name?: string; email?: string; message?: string };
+
 export default function Contact() {
   const [state, handleSubmit] = useForm('mgoryjpb');
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
 
   // ── Time gate: block submissions under 4 s (bots submit instantly) ──────────
   const mountTime = useRef(0);
@@ -16,12 +19,31 @@ export default function Contact() {
     mountTime.current = Date.now();
   }, []);
 
-  // ── Custom submit: run bot checks before handing off to Formspree ───────────
+  // ── Custom submit: validate, run bot checks, hand off to Formspree ──────────
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+
+    const name    = (form.elements.namedItem('name')    as HTMLInputElement).value.trim();
+    const email   = (form.elements.namedItem('email')   as HTMLInputElement).value.trim();
+    const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim();
+
+    const errors: FieldErrors = {};
+    if (!name)    errors.name    = 'Please enter your name.';
+    if (!email)   errors.email   = 'Please enter your email.';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+                  errors.email   = 'Please enter a valid email address.';
+    if (!message) errors.message = 'Please enter a message.';
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      return;
+    }
+
+    setFieldErrors({});
 
     // 1. Honeypot — bots fill hidden fields, humans don't
-    const honeypot = (e.currentTarget.elements.namedItem('website') as HTMLInputElement | null);
+    const honeypot = (form.elements.namedItem('website') as HTMLInputElement | null);
     if (honeypot?.value) return;
 
     // 2. Time gate — require at least 4 seconds (silent, no error shown)
@@ -114,11 +136,11 @@ export default function Contact() {
                   name="name"
                   type="text"
                   placeholder="Your name"
-                  required
                   disabled={state.submitting}
-                  className={styles.input}
+                  className={`${styles.input} ${fieldErrors.name ? styles.inputError : ''}`}
+                  onChange={() => fieldErrors.name && setFieldErrors(e => ({ ...e, name: undefined }))}
                 />
-                <ValidationError field="name" errors={state.errors} className={styles.fieldError} />
+                {fieldErrors.name && <span className={styles.fieldError}>{fieldErrors.name}</span>}
               </div>
 
               <div className={styles.inputGroup}>
@@ -128,11 +150,11 @@ export default function Contact() {
                   name="email"
                   type="email"
                   placeholder="your@email.com"
-                  required
                   disabled={state.submitting}
-                  className={styles.input}
+                  className={`${styles.input} ${fieldErrors.email ? styles.inputError : ''}`}
+                  onChange={() => fieldErrors.email && setFieldErrors(e => ({ ...e, email: undefined }))}
                 />
-                <ValidationError field="email" errors={state.errors} className={styles.fieldError} />
+                {fieldErrors.email && <span className={styles.fieldError}>{fieldErrors.email}</span>}
               </div>
 
               <div className={styles.inputGroup}>
@@ -142,11 +164,11 @@ export default function Contact() {
                   name="message"
                   placeholder="Tell me about your project..."
                   rows={6}
-                  required
                   disabled={state.submitting}
-                  className={styles.textarea}
+                  className={`${styles.textarea} ${fieldErrors.message ? styles.inputError : ''}`}
+                  onChange={() => fieldErrors.message && setFieldErrors(e => ({ ...e, message: undefined }))}
                 />
-                <ValidationError field="message" errors={state.errors} className={styles.fieldError} />
+                {fieldErrors.message && <span className={styles.fieldError}>{fieldErrors.message}</span>}
               </div>
 
               <button

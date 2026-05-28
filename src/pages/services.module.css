@@ -235,6 +235,68 @@
 }
 
 /* ────────────────────────────────────────────────
+   Brochure websites – local SEO
+──────────────────────────────────────────────── */
+.brochure {
+  border-top: 1px solid var(--separator);
+  border-bottom: 1px solid var(--separator);
+}
+
+.brochureInner {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.brochureTitle {
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  color: var(--heading);
+  margin: 0.75rem 0 1rem;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.brochureLead {
+  font-size: 0.97rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.brochureKeywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.kwChip {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted-strong);
+  background: var(--bg-soft);
+  border: 1px solid var(--border-base);
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.kwChip:hover {
+  border-color: var(--main);
+  color: var(--main);
+}
+
+@media (max-width: 768px) {
+  .brochureInner {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+/* ────────────────────────────────────────────────
    Why work with me
 ──────────────────────────────────────────────── */
 .reasons {}

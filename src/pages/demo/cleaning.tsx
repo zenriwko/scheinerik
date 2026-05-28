@@ -1,17 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Home, Building, Star, Truck,
   Phone, Mail, Clock,
-  CheckCircle, ChevronDown,
+  CheckCircle, ChevronDown, X,
   Shield, Leaf, CalendarCheck,
 } from 'lucide-react';
 import SEO from '@/components/%SEO/SEO';
-import styles from './demo.module.css';
+import styles from './cleaning.module.css';
 
-const ACCENT      = '#06b6d4';
-const ACCENT_SOFT = 'rgba(6, 182, 212, 0.12)';
-const ACCENT_GLOW = 'rgba(6, 182, 212, 0.35)';
+const ACCENT      = '#0ea5e9';
+const ACCENT_TEXT = '#0369a1';  // sky-700 — passes WCAG AA on all backgrounds
+const ACCENT_SOFT = 'rgba(14, 165, 233, 0.10)';
+const ACCENT_GLOW = 'rgba(14, 165, 233, 0.28)';
+
+const SPARKLE_COLORS = ['#38bdf8', '#7dd3fc', '#0ea5e9', '#fbbf24', '#ffffff'];
+
+type SparkleItem = {
+  id: number; top: string; left: string;
+  size: number; delay: string; duration: string; color: string;
+};
 
 const services = [
   {
@@ -140,6 +148,21 @@ const faqs = [
 export default function CleaningDemo() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [formSent, setFormSent] = useState(false);
+  const [sparkles, setSparkles] = useState<SparkleItem[]>([]);
+
+  useEffect(() => {
+    setSparkles(
+      Array.from({ length: 22 }, (_, i) => ({
+        id: i,
+        top:      `${5  + Math.random() * 84}%`,
+        left:     `${4  + Math.random() * 88}%`,
+        size:     Math.round(8 + Math.random() * 14),
+        delay:    `${(Math.random() * 6).toFixed(2)}s`,
+        duration: `${(3 + Math.random() * 3).toFixed(2)}s`,
+        color:    SPARKLE_COLORS[Math.floor(Math.random() * SPARKLE_COLORS.length)],
+      }))
+    );
+  }, []);
 
   return (
     <>
@@ -152,17 +175,8 @@ export default function CleaningDemo() {
 
       <div
         className={styles.page}
-        style={{ '--accent': ACCENT, '--accent-soft': ACCENT_SOFT, '--accent-glow': ACCENT_GLOW } as any}
+        style={{ '--accent': ACCENT, '--accent-text': ACCENT_TEXT, '--accent-soft': ACCENT_SOFT, '--accent-glow': ACCENT_GLOW } as any}
       >
-        {/* ── Notice bar ── */}
-        <div className={styles.notice}>
-          <Link href="/" className={styles.noticeBack}>← scheinerik.dev</Link>
-          <div className={styles.noticeMeta}>
-            <span>This is a demo site — not a real business.</span>
-            <Link href="/pricing" className={styles.noticeLink}>Get one like this →</Link>
-          </div>
-        </div>
-
         {/* ── Company nav ── */}
         <nav className={styles.companyNav}>
           <a href="#" className={styles.companyLogo}>
@@ -181,6 +195,25 @@ export default function CleaningDemo() {
         {/* ── Hero ── */}
         <section className={styles.hero}>
           <div className={styles.heroBg} aria-hidden="true" />
+          <div className={styles.sparklesLayer} aria-hidden="true">
+            {sparkles.map((s) => (
+              <span
+                key={s.id}
+                className={styles.sparkle}
+                style={{
+                  top: s.top, left: s.left,
+                  width: `${s.size}px`, height: `${s.size}px`,
+                  color: s.color,
+                  animationDelay: s.delay,
+                  animationDuration: s.duration,
+                }}
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%">
+                  <path d="M12 1 L14.5 9.5 L23 12 L14.5 14.5 L12 23 L9.5 14.5 L1 12 L9.5 9.5 Z" />
+                </svg>
+              </span>
+            ))}
+          </div>
           <div className={styles.heroContent}>
             <span className={styles.heroEyebrow}>Eco-Friendly · Vetted Staff · Same-Day Booking Available</span>
             <h1 className={styles.heroTitle}>
@@ -445,8 +478,8 @@ export default function CleaningDemo() {
                     </div>
                   </div>
                   <div className={styles.formGroup}>
-                    <label className={styles.formLabel}>Service needed</label>
-                    <select className={styles.formSelect} defaultValue="">
+                    <label className={styles.formLabel} htmlFor="service-select">Service needed</label>
+                    <select id="service-select" className={styles.formSelect} defaultValue="">
                       <option value="" disabled>Select a service…</option>
                       <option>Residential Cleaning</option>
                       <option>Commercial Cleaning</option>
@@ -481,6 +514,12 @@ export default function CleaningDemo() {
             Demo built by <a href="https://scheinerik.dev">scheinerik.dev</a>
           </span>
         </footer>
+
+        {/* ── Back to portfolio ── */}
+        <Link href="/" className={styles.backBtn} aria-label="Back to scheinerik.dev">
+          <div className={styles.backBtnIcon}><X size={20} /></div>
+          <span className={styles.backBtnLabel}>Go back</span>
+        </Link>
       </div>
     </>
   );

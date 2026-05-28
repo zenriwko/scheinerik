@@ -5,7 +5,7 @@ import Head from "next/head";
 import Script from "next/script";
 import { useRouter } from "next/router";
 
-import { spaceGrotesk, inter, geistMono } from '@/lib/fonts';
+import { spaceGrotesk, inter, geistMono, nunito } from '@/lib/fonts';
 
 import NodeNetworkBackground from "@/components/NodeNetworkBackground";
 import Navigation from "@/components/Navigation/Navigation";
@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <div className={`${spaceGrotesk.variable} ${inter.variable} ${geistMono.variable}`}>
+      <div className={`${spaceGrotesk.variable} ${inter.variable} ${geistMono.variable} ${nunito.variable}`}>
 
       <Head>
         <meta property="og:site_name" content={SITE_NAME} />

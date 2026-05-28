@@ -71,7 +71,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div className={styles.col}>
-            <h4 className={styles.colHeading}>Navigation</h4>
+            <p className={styles.colHeading}>Navigation</p>
             <nav className={styles.navLinks}>
               {navLinks.map(({ label, href }) => (
                 <Link key={href} href={href}>{label}</Link>
@@ -81,7 +81,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div className={styles.col}>
-            <h4 className={styles.colHeading}>Contact</h4>
+            <p className={styles.colHeading}>Contact</p>
             <div className={styles.contactList}>
               <a href="mailto:scheinerik@gmail.com" className={styles.contactRow}>
                 <Mail size={15} />

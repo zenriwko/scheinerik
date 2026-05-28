@@ -1,5 +1,5 @@
 /*
-  Shared CSS for all demo pages.
+  CSS for the Peak Roofing Co. demo — isolated to demo/roofing/* pages only.
   Each page sets --accent, --accent-soft, --accent-glow on .page via inline style.
 */
 
@@ -1115,11 +1115,6 @@
   .trustBadge { font-size: 0.75rem; padding: 0.3rem 0.75rem; }
   .galleryMore { flex-direction: column; align-items: flex-start; }
 }
-
-/* ═══════════════════════════════════════════════════════════
-   LEAD MAGNET / MULTI-PAGE EXTENSIONS
-   Used by roofing/index.tsx and its sub-pages
-═══════════════════════════════════════════════════════════ */
 
 /* ── Active nav link (sub-pages) ── */
 .companyLinkActive {

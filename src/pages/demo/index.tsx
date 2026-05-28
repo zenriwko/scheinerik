@@ -1,10 +1,20 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, HardHat, Hammer, Sparkles, type LucideIcon } from 'lucide-react';
 import SEO from '@/components/%SEO/SEO';
 import styles from './index.module.css';
 
-const demos = [
+interface Demo {
+  slug: string;
+  name: string;
+  type: string;
+  description: string;
+  accent: string;
+  accentSoft: string;
+  icon: LucideIcon;
+}
+
+const demos: Demo[] = [
   {
     slug: 'roofing',
     name: 'Peak Roofing Co.',
@@ -13,6 +23,7 @@ const demos = [
       'A conversion-focused site for a local roofing business — services, trust signals, and a clear call to action built around getting quote requests.',
     accent: '#f97316',
     accentSoft: 'rgba(249, 115, 22, 0.14)',
+    icon: HardHat,
   },
   {
     slug: 'remodeling',
@@ -22,6 +33,7 @@ const demos = [
       'A professional home renovation site showcasing kitchen, bathroom, and full-home remodeling with a warm, trustworthy aesthetic.',
     accent: '#d97706',
     accentSoft: 'rgba(217, 119, 6, 0.14)',
+    icon: Hammer,
   },
   {
     slug: 'cleaning',
@@ -31,6 +43,7 @@ const demos = [
       'A modern cleaning service site with service tiers, same-day booking emphasis, and a clean, professional look that builds instant trust.',
     accent: '#06b6d4',
     accentSoft: 'rgba(6, 182, 212, 0.14)',
+    icon: Sparkles,
   },
 ];
 
@@ -86,9 +99,15 @@ export default function DemoIndexPage() {
                     background: `radial-gradient(ellipse 70% 60% at 50% 40%, ${demo.accentSoft} 0%, transparent 70%), #0c1420`,
                   }}
                 >
-                  <span className={styles.cardLetter} style={{ color: demo.accent }}>
-                    {demo.name.charAt(0)}
-                  </span>
+                  <div
+                    className={styles.cardIconWrap}
+                    style={{
+                      background: demo.accentSoft,
+                      boxShadow: `0 0 40px -8px ${demo.accent}55`,
+                    }}
+                  >
+                    <demo.icon size={36} color={demo.accent} strokeWidth={1.75} />
+                  </div>
                 </div>
                 <div className={styles.cardBody}>
                   <span className={styles.cardType}>{demo.type}</span>

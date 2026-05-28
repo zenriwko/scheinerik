@@ -276,6 +276,33 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Brochure websites – local SEO section */}
+      <section className={styles.brochure}>
+        <div className={styles.container}>
+          <div className={styles.brochureInner}>
+            <div className={styles.brochureText}>
+              <span className={styles.kicker}>Brochure Websites</span>
+              <h2 className={styles.brochureTitle}>Local service business websites in Tampa, FL</h2>
+              <p className={styles.brochureLead}>
+                I build fast, conversion-focused websites for local service businesses across Tampa Bay and the US. Every site is structured to rank on Google and turn visitors into calls.
+              </p>
+            </div>
+            <div className={styles.brochureKeywords}>
+              {[
+                'Cleaners Tampa FL', 'Roofers Tampa FL', 'Remodeling Tampa FL',
+                'Plumbers Tampa FL', 'HVAC Tampa FL', 'Electricians Tampa FL',
+                'Landscaping Tampa FL', 'Pest Control Tampa FL', 'Painters Tampa FL',
+                'Auto Repair Tampa FL', 'Pressure Washing Tampa FL', 'Pool Service Tampa FL',
+                'Law Firms Tampa FL', 'Dentists Tampa FL', 'Real Estate Tampa FL',
+                'Salons Tampa FL', 'Personal Trainers Tampa FL', 'Contractors Tampa FL',
+              ].map((kw) => (
+                <span key={kw} className={styles.kwChip}>{kw}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Why work with me */}
       <section className={styles.reasons}>
         <div className={styles.container}>
