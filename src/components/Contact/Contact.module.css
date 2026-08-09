@@ -9,6 +9,16 @@
   margin: 0 auto 4rem;
 }
 
+/* Overrides just the size/spacing that globals.css sets differently for a
+   bare h1 vs h2, so promoting this heading to an h1 on the standalone
+   /contact page (see Contact.tsx) has no visual effect. Weight, margin,
+   and color already match via the shared h1..h6 selector in globals.css. */
+.pageHeading {
+  font-size: clamp(1.95rem, 4.8vw, 3.25rem);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
 .kicker {
   display: inline-block;
   margin-bottom: 1.25rem;

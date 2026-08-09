@@ -52,7 +52,7 @@ export default function DemoIndexPage() {
     <>
       <SEO
         title="Demo Websites – Local Business Site Examples"
-        description="Browse live demo websites built for local businesses — roofing, cleaning, remodeling, and more. See exactly what your site could look like before you commit."
+        description="Browse live demo websites built for local businesses: roofing, cleaning, remodeling, and more. See exactly what your site could look like before you commit."
         path="/demo"
       />
 

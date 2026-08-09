@@ -180,7 +180,7 @@ export default function ServicesPage() {
   return (
     <>
       <SEO
-        title="Website Development Services Tampa FL – Next.js and eCommerce"
+        title="Website Development Services in Tampa, FL"
         description="Custom website development services in Tampa, FL. Next.js, eCommerce, performance optimization, and technical SEO. Fast, clean, and built to rank from day one."
         path="/services"
       />

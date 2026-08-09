@@ -40,7 +40,7 @@ const personSchema = {
   url: 'https://scheinerik.dev',
   image: 'https://scheinerik.dev/og-image.png',
   description:
-    'Website developer serving Tampa, FL and clients worldwide. Specialising in Next.js, eCommerce, and SEO-optimised web applications.',
+    'Website developer serving Tampa, FL and clients worldwide. Specializing in Next.js, eCommerce, and SEO-optimized web applications.',
   jobTitle: 'Full-Stack Developer',
   worksFor: { '@type': 'Organization', name: 'Independent' },
   knowsAbout: ['Next.js', 'React', 'TypeScript', 'SEO', 'eCommerce', 'Web Performance'],
@@ -55,7 +55,7 @@ export default function AboutPage() {
     <>
       <SEO
         title="Tampa Website Developer – Erik Scheinpflug"
-        description="Website developer serving Tampa, FL and US clients — specialising in Next.js, eCommerce, and technical SEO. Remote-first, US-time-zone friendly, fast turnaround."
+        description="Website developer serving Tampa, FL and US clients. Specializing in Next.js, eCommerce, and technical SEO. Remote-first, US-time-zone friendly, fast turnaround."
         path="/about"
       />
       <JsonLd data={personSchema} />

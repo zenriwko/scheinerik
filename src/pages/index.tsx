@@ -19,9 +19,9 @@ export default function HomePage() {
     "@id": "https://scheinerik.dev/#business",
     name: "Erik Scheinpflug – Website Developer",
     url: "https://scheinerik.dev",
-    image: "https://scheinerik.dev/og-image.jpg",
+    image: "https://scheinerik.dev/og-image.png",
     description:
-      "Website developer serving Tampa, FL and clients worldwide. Specialising in fast, custom Next.js websites, eCommerce solutions, and technical SEO — built to rank and convert.",
+      "Website developer serving Tampa, FL and clients worldwide. Specializing in fast, custom Next.js websites, eCommerce solutions, and technical SEO, built to rank and convert.",
     priceRange: "$199–$300+/month",
     areaServed: [
       { "@type": "City", "name": "Tampa", "addressRegion": "FL", "addressCountry": "US" },
@@ -35,7 +35,7 @@ export default function HomePage() {
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Static Website Development Tampa" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "eCommerce Website Development Tampa" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Web Application Development" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Technical SEO Optimisation" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Technical SEO Optimization" } },
       ],
     },
     founder: {
@@ -54,7 +54,7 @@ export default function HomePage() {
       "eCommerce Website Development",
       "Custom Website Design",
       "Technical SEO",
-      "Web Performance Optimisation",
+      "Web Performance Optimization",
       "React Development",
       "TypeScript",
     ],
@@ -67,8 +67,8 @@ export default function HomePage() {
   return (
     <>
       <SEO
-        title="Website Developer Tampa FL – Fast, Custom & SEO-Optimised"
-        description="Tampa website developer specialising in fast, custom Next.js websites and eCommerce stores. Serving businesses in Tampa, FL and the US. Static sites from $199/month."
+        title="Fast Custom Website Developer in Tampa, FL"
+        description="Tampa website developer specializing in fast, custom Next.js and eCommerce sites for businesses in Tampa, FL and the US. Static sites start at $199 per month."
         path="/"
         featuredImage="/og-image.png"
       />

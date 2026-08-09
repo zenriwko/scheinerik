@@ -1,16 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import styles from "./Navigation.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
+// Free standalone tools, grouped under one "Tools" nav entry — add future
+// tools here rather than growing the top-level nav list.
+const TOOLS = [{ href: "/mockup", label: "Mockup Generator" }];
+
 export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
 
   const isActive = (path: string) => pathname === path;
+  const isToolsActive = TOOLS.some((t) => isActive(t.href));
+
+  const openTools = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setToolsOpen(true);
+  };
+  const scheduleCloseTools = () => {
+    closeTimer.current = setTimeout(() => setToolsOpen(false), 150);
+  };
 
   return (
     <header className={styles.nav}>
@@ -75,6 +90,36 @@ export default function Navigation() {
                 Demos
               </Link>
             </li>
+            <li
+              className={styles.dropdown}
+              onMouseEnter={openTools}
+              onMouseLeave={scheduleCloseTools}
+            >
+              <button
+                type="button"
+                className={`${styles.dropdownTrigger} ${isToolsActive ? styles.activeLink : ""}`}
+                onClick={() => setToolsOpen((v) => !v)}
+                aria-haspopup="true"
+                aria-expanded={toolsOpen}
+              >
+                Tools
+              </button>
+              {toolsOpen && (
+                <ul className={styles.dropdownMenu}>
+                  {TOOLS.map((tool) => (
+                    <li key={tool.href}>
+                      <Link
+                        href={tool.href}
+                        className={isActive(tool.href) ? styles.activeLink : ""}
+                        onClick={() => setToolsOpen(false)}
+                      >
+                        {tool.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
             <li>
               <Link
                 href="/about"
@@ -136,6 +181,22 @@ export default function Navigation() {
               >
                 Demos
               </Link>
+            </li>
+            <li className={styles.overlayToolsGroup}>
+              <span className={styles.overlayToolsLabel}>Tools</span>
+              <ul className={styles.overlayToolsList}>
+                {TOOLS.map((tool) => (
+                  <li key={tool.href}>
+                    <Link
+                      href={tool.href}
+                      className={isActive(tool.href) ? styles.activeLink : ""}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {tool.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </li>
             <li>
               <Link

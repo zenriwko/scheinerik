@@ -83,7 +83,7 @@ export default function ProjectsPage() {
     <>
       <SEO
         title="Portfolio – Next.js & Full-Stack Projects"
-        description="Web development projects by Erik Scheinpflug — client websites, eCommerce stores, and personal SaaS builds using Next.js, TypeScript, and Supabase."
+        description="Web development projects by Erik Scheinpflug: client websites, eCommerce stores, and personal SaaS builds using Next.js, TypeScript, and Supabase."
         path="/projects"
       />
 

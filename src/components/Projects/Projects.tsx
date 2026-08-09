@@ -32,7 +32,7 @@ export default function Projects() {
           <div className={styles.card}>
             <div className={styles.imageWrapper}>
               <Image
-                src="images/projects/nocni-nebe-project.webp"
+                src="/images/projects/nocni-nebe-project.webp"
                 alt="Nocni Nebe – optical fiber ambient lighting for car interiors"
                 fill
                 sizes="(max-width: 768px) 100vw, 100vw"

@@ -8,7 +8,16 @@ import styles from './Contact.module.css';
 
 type FieldErrors = { name?: string; email?: string; message?: string };
 
-export default function Contact() {
+type ContactProps = {
+  // This component is reused as a bottom-of-page CTA on the homepage and
+  // /about (which already have their own h1 higher up the page), and as the
+  // entire content of the standalone /contact route (which otherwise has no
+  // h1 at all). Set this when rendering it as that standalone page so it
+  // gets a real h1 instead of an h2, without changing how it looks.
+  asPage?: boolean;
+};
+
+export default function Contact({ asPage = false }: ContactProps) {
   const [state, handleSubmit] = useForm('mgoryjpb');
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
 
@@ -57,7 +66,11 @@ export default function Contact() {
       <div className={styles.container}>
         <div className={styles.header}>
           <span className={styles.kicker}>Let&apos;s work together</span>
-          <h2>Ready to build something exceptional?</h2>
+          {asPage ? (
+            <h1 className={styles.pageHeading}>Ready to build something exceptional?</h1>
+          ) : (
+            <h2>Ready to build something exceptional?</h2>
+          )}
           <p className={styles.lead}>
             I&apos;m currently available for new projects — from high-performance websites to complete digital solutions.
           </p>

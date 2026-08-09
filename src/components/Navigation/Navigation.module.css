@@ -103,6 +103,106 @@
   box-shadow: 0 0 6px var(--secondary-glow);
 }
 
+/* === TOOLS DROPDOWN (desktop) === */
+.dropdown {
+  position: relative;
+}
+
+.dropdownTrigger {
+  position: relative;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: inherit;
+  color: rgba(255, 255, 255, 0.82);
+  letter-spacing: 0.01em;
+  padding: 22px 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dropdownTrigger:hover {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(92, 201, 190, 0.4);
+}
+
+.dropdownTrigger::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--main), var(--secondary));
+  box-shadow: 0 0 8px rgba(92, 201, 190, 0.4);
+  transform: translateX(-50%);
+  transition: width 0.4s ease;
+  border-radius: 2px;
+}
+
+.dropdownTrigger:hover::after {
+  width: 100%;
+}
+
+.dropdownTrigger.activeLink::after {
+  width: 100%;
+  background: linear-gradient(90deg, var(--main), var(--secondary));
+  box-shadow: 0 0 6px var(--secondary-glow);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 200px;
+  padding: 0.5rem;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  background: rgba(8, 12, 24, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 20px 45px -18px rgba(0, 0, 0, 0.6);
+  backdrop-filter: saturate(1.1) blur(8px);
+  animation: dropdownFadeIn 0.18s ease forwards;
+}
+
+.dropdownMenu a {
+  display: block;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.dropdownMenu a::after {
+  display: none;
+}
+
+.dropdownMenu a:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Named distinctly from the mobile .overlay's own @keyframes fadeIn below —
+   @keyframes names aren't scoped per-selector, so a same-named rule later in
+   this file would silently replace this one (and it uses a plain scale
+   transform, which would clobber the translateX(-50%) centering here). */
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -4px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
 /* === CTA INLINE === */
 .ctaInline {
   display: flex;
@@ -256,6 +356,30 @@
     background-clip: text;
     -webkit-background-clip: text;
     text-shadow: 0 0 10px rgba(92, 201, 190, 0.6);
+  }
+
+  .overlayToolsGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .overlayToolsLabel {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .overlayToolsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
   }
 
   .overlayCTA {
