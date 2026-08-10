@@ -1,5 +1,4 @@
 name = "scheinerik"
-account_id = "b519cb489a3799cbdac3dcb7ce6294c4" # Scheinerik@gmail.com's Account
 compatibility_date = "2025-10-08"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = "out"
@@ -7,17 +6,17 @@ pages_build_output_dir = "out"
 # Browser Rendering binding used by functions/api/mockup.ts to launch a
 # headless Chromium session and capture screenshots server-side.
 #
-# Browser Rendering has no local emulation — even during `wrangler pages
-# dev`, this binding always talks to Cloudflare's real remote service under
-# your account (requires `wrangler login` + Browser Rendering enabled on the
-# account). `remote = true` makes that happen automatically instead of
-# requiring the `--remote` CLI flag on every run.
+# Cloudflare Pages' Git-integration build reads this file directly and
+# validates it against a Pages-specific schema that is stricter than plain
+# Workers config: it rejects a top-level `account_id` ("Configuration file
+# for Pages projects does not support account_id") and rejects `remote`
+# under [browser] ("Unexpected fields found in browser field: remote").
+# Both were here only to smooth out local `wrangler pages dev` — do not
+# re-add them, they break production deploys.
 #
-# This file only takes effect when deploying with `wrangler pages deploy`.
-# If this project deploys via the Cloudflare dashboard's Git integration
-# instead, add the same binding manually there:
-#   Pages project -> Settings -> Functions -> Browser Rendering bindings
-#   -> Variable name: MYBROWSER
+# For local dev instead: run `wrangler pages dev out --remote` (Browser
+# Rendering has no local emulation, so `--remote` is required every time),
+# and make sure `wrangler login` is on the right account if you have more
+# than one — there's no config-file equivalent of account_id here anymore.
 [browser]
 binding = "MYBROWSER"
-remote = true
