@@ -1,8 +1,8 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
 import {
   Download, ImageDown, Loader2, Monitor, Laptop, Tablet, Smartphone, TriangleAlert, RotateCcw,
-  Maximize2, Globe, Link2, Palette, Zap, ShieldCheck, Users, LayoutGrid, SlidersHorizontal,
+  Maximize2, Globe, Link2, Palette, Zap, ShieldCheck, Users, LayoutGrid, SlidersHorizontal, Pause,
 } from 'lucide-react';
 import SEO from '@/components/%SEO/SEO';
 import JsonLd from '@/components/%SEO/JsonLd';
@@ -42,16 +42,16 @@ const MIN_WIDTH_PCT = 6;
 const MAX_WIDTH_PCT = 92;
 
 // Real capture viewport sizes — must stay in sync with VIEWPORTS in
-// functions/api/mockup.ts. Used to render the live-preview iframes at their
-// actual device width (so the site's own responsive breakpoints kick in
-// correctly) before scaling the whole thing down to fit a card.
+// workers/mockup-capture/src/index.ts. Used to render the live-preview
+// iframes at their actual device width (so the site's own responsive
+// breakpoints kick in correctly) before scaling the whole thing down to
+// fit its frame.
 const REAL_DEVICE_SIZE: Record<DeviceKey, { w: number; h: number }> = {
   desktop: { w: 1920, h: 1080 },
   laptop: { w: 1366, h: 768 },
   tablet: { w: 768, h: 1024 },
   phone: { w: 375, h: 812 },
 };
-const LIVE_PREVIEW_TARGET_W = 300;
 
 const BACKGROUND_LABELS: Record<BackgroundStyle, string> = {
   gradient: 'Gradient',
@@ -322,6 +322,34 @@ function normalizeUrl(input: string): string {
   return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
 }
 
+// Catches obviously-incomplete input ("test", "example") before it ever
+// reaches the capture API or gets set as a live-preview iframe src, where
+// it would otherwise just silently fail (a broken iframe with no
+// explanation, or a vague backend error). A bare word parses fine as a URL
+// (new URL('https://example') succeeds), so this specifically requires
+// something that looks like a real domain: a dot-separated host, or a
+// literal IP address.
+function isValidUrlInput(raw: string): boolean {
+  const trimmed = raw.trim();
+  if (!trimmed) return false;
+
+  let url: URL;
+  try {
+    url = new URL(normalizeUrl(trimmed));
+  } catch {
+    return false;
+  }
+
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') return false;
+
+  const host = url.hostname;
+  const isIPv4 = /^\d{1,3}(\.\d{1,3}){3}$/.test(host);
+  const isIPv6 = host.includes(':');
+  if (isIPv4 || isIPv6) return true;
+
+  return host.includes('.') && !host.startsWith('.') && !host.endsWith('.');
+}
+
 function siteSlug(input: string): string {
   try {
     return new URL(normalizeUrl(input)).hostname.replace(/^www\./, '');
@@ -564,6 +592,104 @@ function DraggableDevice({
   );
 }
 
+// Renders a live iframe inside the same device-frame chrome (browser or
+// modern style) used everywhere else in the tool, instead of a plain box —
+// so the live-preview grid looks like the rest of the mockup UI rather than
+// a special case. The iframe is drawn at the device's real pixel size and
+// scaled down with a transform to exactly fill the frame's screen area;
+// that area's width is fluid (matches the results grid's own responsive
+// card width), so a ResizeObserver tracks it instead of a fixed constant.
+function LiveFrame({
+  deviceKey,
+  label,
+  liveUrl,
+  deviceStyle,
+}: {
+  deviceKey: DeviceKey;
+  label: string;
+  liveUrl: string;
+  deviceStyle: DeviceStyle;
+}) {
+  const screenRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const el = screenRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver((entries) => {
+      const w = entries[0]?.contentRect.width;
+      if (w) setWidth(w);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  const real = REAL_DEVICE_SIZE[deviceKey];
+  const scale = width > 0 ? width / real.w : 0;
+
+  const iframe = width > 0 && (
+    <iframe
+      key={liveUrl}
+      src={liveUrl}
+      title={`${label} live preview of ${liveUrl}`}
+      loading="lazy"
+      // "no-referrer" (the previous value) strips the Referer header
+      // entirely, which a lot of video CDNs and hotlink-protected media
+      // treat as a bot/scraper signal and refuse to serve — hence videos
+      // failing to load while images/text were fine. This still hides the
+      // full page path, just reveals the origin, which is what most
+      // legitimate-embed checks actually look for.
+      referrerPolicy="strict-origin-when-cross-origin"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
+      allow="autoplay; encrypted-media; fullscreen; picture-in-picture; clipboard-write"
+      className={styles.liveFrame}
+      style={{ width: real.w, height: real.h, transform: `scale(${scale})` }}
+    />
+  );
+
+  if (deviceStyle === 'modern') {
+    return (
+      <div className={`${styles.frameModern} ${styles[`${deviceKey}Modern`]}`}>
+        <div className={styles.screenModern} ref={screenRef}>{iframe}</div>
+        {deviceKey === 'phone' && (
+          <>
+            <div className={styles.pillNotch} />
+            <div className={`${styles.phoneBtn} ${styles.phoneBtnMute}`} />
+            <div className={`${styles.phoneBtn} ${styles.phoneBtnVolUp}`} />
+            <div className={`${styles.phoneBtn} ${styles.phoneBtnVolDown}`} />
+            <div className={`${styles.phoneBtn} ${styles.phoneBtnPower}`} />
+          </>
+        )}
+        {deviceKey === 'tablet' && <div className={styles.cameraDot} />}
+        {deviceKey === 'laptop' && <div className={styles.laptopNotch} />}
+        <div className={styles.glassHighlight} />
+        {deviceKey === 'laptop' && <div className={styles.laptopBaseModern} />}
+        {deviceKey === 'desktop' && (
+          <>
+            <div className={styles.desktopNeck} />
+            <div className={styles.desktopFoot} />
+          </>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className={`${styles.frame} ${styles[deviceKey]}`}>
+      {(deviceKey === 'desktop' || deviceKey === 'laptop') && (
+        <div className={styles.chrome}>
+          <span />
+          <span />
+          <span />
+        </div>
+      )}
+      <div className={styles.screen} ref={screenRef}>{iframe}</div>
+      {deviceKey === 'laptop' && <div className={styles.laptopBase} />}
+      {(deviceKey === 'tablet' || deviceKey === 'phone') && <div className={styles.homeIndicator} />}
+    </div>
+  );
+}
+
 export default function MockupPage() {
   const [url, setUrl] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -598,23 +724,12 @@ export default function MockupPage() {
     resetForRatio(ratio);
   };
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!url.trim()) return;
-
-    const target = normalizeUrl(url);
-
-    if (livePreview) {
-      // No capture call at all — just point the iframes at the real site.
-      // This is the point of live preview: it works even when the
-      // screenshot API is down, rate-limited, or the target blocks
-      // headless-browser capture outright.
-      setLiveUrl(target);
-      setSubmittedUrl(target);
-      return;
-    }
-
-    if (status === 'loading') return;
+  // Shared by the normal "Generate mockup" submit and the live-preview
+  // "Pause" button — both end up wanting the same real capture, just
+  // triggered from different UI. Returns whether it succeeded so callers
+  // can decide what to do next (Pause only drops out of live mode on
+  // success, so a failed capture leaves the live iframes as a fallback).
+  const captureScreenshots = async (target: string): Promise<boolean> => {
     setStatus('loading');
     setErrorMessage('');
     setResults(null);
@@ -633,16 +748,56 @@ export default function MockupPage() {
       if (!res.ok) {
         setStatus('error');
         setErrorMessage(data.error ?? 'Something went wrong generating that mockup.');
-        return;
+        return false;
       }
 
       setResults(data.screenshots ?? {});
       setSubmittedUrl(target);
       setStatus('success');
+      return true;
     } catch {
       setStatus('error');
       setErrorMessage('Could not reach the mockup service. Check your connection and try again.');
+      return false;
     }
+  };
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!url.trim()) return;
+
+    if (!isValidUrlInput(url)) {
+      setStatus('error');
+      setErrorMessage('Enter a full website address, like example.com or https://example.com.');
+      return;
+    }
+
+    const target = normalizeUrl(url);
+
+    if (livePreview) {
+      // No capture call at all — just point the iframes at the real site.
+      // This is the point of live preview: it works even when the
+      // screenshot API is down, rate-limited, or the target blocks
+      // headless-browser capture outright.
+      setLiveUrl(target);
+      setSubmittedUrl(target);
+      return;
+    }
+
+    if (status === 'loading') return;
+    await captureScreenshots(target);
+  };
+
+  // "Pause" turns the live iframes into a real, downloadable/arrangeable
+  // capture — there's no way to rasterize cross-origin iframe content onto
+  // a canvas client-side (it taints the canvas), so this is the only way to
+  // get an actual image out of a live preview: capture it for real.
+  // Dropping livePreview to false on success is what reveals the arrange/
+  // download UI, which already only renders for non-live mode.
+  const handlePause = async () => {
+    if (!liveUrl || status === 'loading') return;
+    const ok = await captureScreenshots(liveUrl);
+    if (ok) setLivePreview(false);
   };
 
   const downloadOne = (key: DeviceKey, image: string) => {
@@ -780,19 +935,19 @@ export default function MockupPage() {
             Live preview instead of screenshots
           </button>
 
-          {livePreview && (
+          {livePreview && status !== 'loading' && (
             <p className={styles.hint}>
               Loads the real site directly in each viewport, no capture needed. It works even if screenshot generation
-              fails. Some sites block embedding and will show blank below. Nothing in this mode can be downloaded or
-              arranged.
+              fails. Some sites block embedding and will show blank below. Hit Pause on the live preview to turn it into
+              a real, downloadable, arrangeable capture.
             </p>
           )}
 
-          {!livePreview && status === 'loading' && (
+          {status === 'loading' && (
             <p className={styles.hint}>Capturing 4 screenshots. This usually takes 10–20 seconds, longer for slower sites.</p>
           )}
 
-          {!livePreview && status === 'error' && (
+          {status === 'error' && (
             <div className={styles.errorBox} role="alert">
               <TriangleAlert size={20} />
               <span>{errorMessage}</span>
@@ -964,47 +1119,49 @@ export default function MockupPage() {
         <section className={styles.results}>
           <div className={styles.container}>
             <div className={styles.resultsHeader}>
-              <h2>Live preview</h2>
-              <span className={styles.dims}>{liveUrl.replace(/^https?:\/\//, '')}</span>
+              <div>
+                <h2>Live preview</h2>
+                <span className={styles.dims}>{liveUrl.replace(/^https?:\/\//, '')}</span>
+              </div>
+              <button
+                type="button"
+                className="button secondary"
+                onClick={handlePause}
+                disabled={status === 'loading'}
+                title="Capture a real screenshot from the live preview so it can be arranged and downloaded"
+              >
+                {status === 'loading' ? (
+                  <>
+                    <Loader2 size={18} className={styles.spin} />
+                    <span>Pausing...</span>
+                  </>
+                ) : (
+                  <>
+                    <Pause size={18} />
+                    <span>Pause &amp; capture</span>
+                  </>
+                )}
+              </button>
             </div>
 
             <div className={styles.grid}>
-              {DEVICES.map(({ key, Icon, label, dims }) => {
-                const { w, h } = REAL_DEVICE_SIZE[key];
-                const scale = LIVE_PREVIEW_TARGET_W / w;
-                const displayH = h * scale;
-                return (
-                  <motion.div
-                    key={key}
-                    className={styles.card}
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <div className={styles.cardHead}>
-                      <Icon size={18} />
-                      <span>{label}</span>
-                      <span className={styles.dims}>{dims}</span>
-                    </div>
+              {DEVICES.map(({ key, Icon, label, dims }) => (
+                <motion.div
+                  key={key}
+                  className={styles.card}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className={styles.cardHead}>
+                    <Icon size={18} />
+                    <span>{label}</span>
+                    <span className={styles.dims}>{dims}</span>
+                  </div>
 
-                    <div
-                      className={styles.liveFrameOuter}
-                      style={{ width: LIVE_PREVIEW_TARGET_W, height: displayH }}
-                    >
-                      <iframe
-                        key={liveUrl}
-                        src={liveUrl}
-                        title={`${label} live preview of ${liveUrl}`}
-                        loading="lazy"
-                        referrerPolicy="no-referrer"
-                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-                        className={styles.liveFrame}
-                        style={{ width: w, height: h, transform: `scale(${scale})` }}
-                      />
-                    </div>
-                  </motion.div>
-                );
-              })}
+                  <LiveFrame deviceKey={key} label={label} liveUrl={liveUrl} deviceStyle={deviceStyle} />
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>

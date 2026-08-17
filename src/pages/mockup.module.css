@@ -628,6 +628,7 @@
 }
 
 .screen {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
@@ -635,19 +636,12 @@
 }
 
 /* ── Live preview iframes ──────────────────────── */
-/* The iframe is rendered at the device's real pixel width/height (so the
-   site's own responsive breakpoints apply correctly) and then visually
-   scaled down with a CSS transform to fit a fixed-size card — the outer
-   wrapper clips to that scaled-down size. Sizes are set inline per device
-   from REAL_DEVICE_SIZE / LIVE_PREVIEW_TARGET_W in mockup.tsx. */
-.liveFrameOuter {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  background: #0a0a0a;
-  box-shadow: 0 20px 45px -18px rgba(0, 0, 0, 0.5);
-}
-
+/* Rendered inside the same .screen/.screenModern box used for real
+   screenshots (see LiveFrame in mockup.tsx), at the device's real pixel
+   width/height so the site's own responsive breakpoints apply correctly,
+   then visually scaled down with a CSS transform to exactly fill that box
+   — whose width a ResizeObserver tracks, since it's fluid like the rest of
+   the results grid rather than a fixed size. */
 .liveFrame {
   position: absolute;
   top: 0;
@@ -777,6 +771,7 @@
 }
 
 .screenModern {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
