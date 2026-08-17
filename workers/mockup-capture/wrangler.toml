@@ -1,0 +1,18 @@
+# A genuine Cloudflare Worker (not a Pages project) — Browser Rendering
+# bindings only work on real Workers, not Pages Functions (confirmed via
+# Cloudflare's own binding compatibility docs: Browser Run is unsupported
+# for Pages). The main site's wrangler.toml (project root) reaches this
+# Worker via a service binding, so /api/mockup on the live site keeps
+# working exactly as before — this is purely the capture backend for it.
+#
+# account_id is fine to commit here (unlike the Pages project's
+# wrangler.toml, which rejects it) — Workers config doesn't have that
+# restriction, and an account_id alone isn't a credential.
+name = "scheinerik-mockup-capture"
+main = "src/index.ts"
+account_id = "b519cb489a3799cbdac3dcb7ce6294c4" # Scheinerik@gmail.com's Account
+compatibility_date = "2025-10-08"
+compatibility_flags = ["nodejs_compat"]
+
+[browser]
+binding = "MYBROWSER"

@@ -726,10 +726,10 @@
   background: var(--tint-highlight, #3a3a40);
 }
 
-/* Tablet / phone — thick bezel, portrait aspect */
+/* Tablet / phone — thin bezel, portrait aspect */
 .frame.tablet,
 .frame.phone {
-  border: 10px solid var(--tint-frame, #1a1a1a);
+  border: 5px solid var(--tint-frame, #1a1a1a);
   border-radius: 26px;
   background: var(--tint-frame, #1a1a1a);
 }
@@ -741,7 +741,7 @@
 }
 
 .frame.phone {
-  border-width: 12px;
+  border-width: 6px;
   border-radius: 34px;
   max-width: 220px;
   margin: 0 auto;
@@ -749,18 +749,6 @@
 
 .frame.phone .screen {
   aspect-ratio: 9 / 19.5;
-}
-
-.notch {
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70px;
-  height: 16px;
-  background: var(--tint-frame, #1a1a1a);
-  border-radius: 0 0 12px 12px;
-  z-index: 1;
 }
 
 .homeIndicator {

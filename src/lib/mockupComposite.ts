@@ -63,13 +63,10 @@ const LAPTOP_HIGHLIGHT_W = 60;
 const LAPTOP_HIGHLIGHT_H = 4;
 const FLAT_FRAME_RADIUS = 10; // .frame border-radius (desktop/laptop)
 const SCREEN_RADIUS_ROUNDED = 4; // .frame.tablet/.phone .screen border-radius
-const BORDER: Record<'tablet' | 'phone', number> = { tablet: 10, phone: 12 }; // .frame.tablet/.phone border
+const BORDER: Record<'tablet' | 'phone', number> = { tablet: 5, phone: 6 }; // .frame.tablet/.phone border
 const ROUNDED_FRAME_RADIUS: Record<'tablet' | 'phone', number> = { tablet: 26, phone: 34 };
 const HOME_INDICATOR_H = 8;
 const HOME_INDICATOR_W = 50;
-const NOTCH_TOP = 12;
-const NOTCH_W = 70;
-const NOTCH_H = 16;
 
 // "Modern" device style — thin uniform bezels, no browser chrome bar, a
 // Dynamic-Island-style notch, a laptop hinge/base bar wider than the
@@ -448,13 +445,6 @@ function drawDeviceBrowser(
       w,
       h
     );
-
-    if (key === 'phone') {
-      ctx.fillStyle = '#1a1a1a';
-      const notchW = NOTCH_W * scale;
-      const notchH = NOTCH_H * scale;
-      ctx.fillRect(frameX + frameW / 2 - notchW / 2, frameY + NOTCH_TOP * scale, notchW, notchH);
-    }
   }
 
   if (tint) {

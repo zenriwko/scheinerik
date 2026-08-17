@@ -3,20 +3,19 @@ compatibility_date = "2025-10-08"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = "out"
 
-# Browser Rendering binding used by functions/api/mockup.ts to launch a
-# headless Chromium session and capture screenshots server-side.
+# functions/api/mockup.ts forwards capture requests to a separate Worker
+# (workers/mockup-capture/) via this service binding, rather than launching
+# Browser Rendering directly here — Cloudflare Pages Functions don't support
+# Browser Rendering bindings at all (confirmed against Cloudflare's own
+# binding compatibility docs: "Browser Run" is unsupported for Pages, only
+# for genuine Workers). A [browser] binding block used to sit here instead;
+# it passed this file's build-time validation but was never actually
+# functional in production, which is why /api/mockup 504'd.
 #
-# Cloudflare Pages' Git-integration build reads this file directly and
-# validates it against a Pages-specific schema that is stricter than plain
-# Workers config: it rejects a top-level `account_id` ("Configuration file
-# for Pages projects does not support account_id") and rejects `remote`
-# under [browser] ("Unexpected fields found in browser field: remote").
-# Both were here only to smooth out local `wrangler pages dev` — do not
-# re-add them, they break production deploys.
-#
-# For local dev instead: run `wrangler pages dev out --remote` (Browser
-# Rendering has no local emulation, so `--remote` is required every time),
-# and make sure `wrangler login` is on the right account if you have more
-# than one — there's no config-file equivalent of account_id here anymore.
-[browser]
-binding = "MYBROWSER"
+# The satellite Worker needs to be deployed separately: from the project
+# root, `wrangler deploy` won't pick it up since this file's `name` targets
+# the Pages project — deploy it explicitly with its own config, e.g.
+#   cd workers/mockup-capture && wrangler deploy
+[[services]]
+binding = "MOCKUP_WORKER"
+service = "scheinerik-mockup-capture"

@@ -517,7 +517,6 @@ function DraggableDevice({
           </div>
         ) : (
           <div className={`${styles.frame} ${styles[deviceKey]}`}>
-            {deviceKey === 'phone' && <div className={styles.notch} />}
             {(deviceKey === 'desktop' || deviceKey === 'laptop') && (
               <div className={styles.chrome}>
                 <span />
@@ -1041,7 +1040,6 @@ export default function MockupPage() {
                     </div>
 
                     <div className={`${styles.frame} ${styles[key]}`}>
-                      {key === 'phone' && <div className={styles.notch} />}
                       {(key === 'desktop' || key === 'laptop') && (
                         <div className={styles.chrome}>
                           <span />
